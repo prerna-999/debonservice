@@ -1,25 +1,4 @@
-/* :root {
-  --font-family: "DM Sans", Arial, sans-serif;
-  --font-family-display: "Space Grotesk", Arial, sans-serif;
-  --bg-white: #ffffff;
-  --bg-paper: #f4f8fb;
-  --text-color: #56687c;
-  --text-color-2: #62768d;
-  --primary-color: #17709f;
-  --color-white: #ffffff;
-  --color-1: #eef6fa;
-  --color-2: #0c2448;
-  --color-black: #000000;
-  --line-color: #cfdce7;
-  --eyebrow-color: #a8bed2;
-  --link-line: #6e839a;
-  --border-soft: rgba(12, 36, 72, 0.1);
-  --box-shadow: rgba(10, 19, 34, 0.14) 0px 30px 50px 0px;
-  --box-shadow-2: rgba(23, 112, 159, 0.35) 0px 12px 26px 0px;
-  --box-shadow-3: rgba(0, 0, 0, 0.12) 0px 20px 30px 0px;
-  --hero-gradient: linear-gradient(135deg, #2aafc2 0%, #3084b4 50%, #533c8a 100%);
-  --glass-bg: rgba(244, 248, 251, 0.96);
-} */
+
 
 :root {
   --font-family: "DM Sans", Arial, sans-serif;

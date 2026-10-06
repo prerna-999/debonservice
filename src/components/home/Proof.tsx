@@ -1,19 +1,21 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const LIST: string[] = [
+const POINTS = [
   "Agreed goals before launch",
   "Clear channel and campaign reporting",
   "Regular tests and next steps",
 ];
 
-const METRICS: string[] = ["VISIBILITY", "ENGAGEMENT", "CONVERSION"];
+const METRICS = ["VISIBILITY", "ENGAGEMENT", "CONVERSION"];
 
 export default function Proof() {
   const rootRef = useRef<HTMLElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -26,16 +28,11 @@ export default function Proof() {
           duration: 0.85,
           ease: "power3.out",
           clearProps: "all",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 91%",
-            toggleActions: "play none none reverse",
-            invalidateOnRefresh: true,
-          },
+          scrollTrigger: { trigger: el, start: "top 91%", toggleActions: "play none none reverse", invalidateOnRefresh: true },
         });
       });
 
-      const path = rootRef.current?.querySelector<SVGPathElement>(".home-proof__chart-path");
+      const path = pathRef.current;
       if (path) {
         const length = path.getTotalLength();
         gsap.fromTo(
@@ -61,10 +58,9 @@ export default function Proof() {
 
   return (
     <section className="home-proof" id="proof" aria-labelledby="proof-title" ref={rootRef}>
-      <Container fluid className="home-proof__container">
-        <div className="home-proof__layout">
-          {/* ---- Copy ---- */}
-          <div className="home-proof__copy">
+      <Container >
+        <Row className="home-proof__row align-items-center">
+          <Col lg={5}>
             <p className="home-proof__eyebrow" data-reveal>
               04 / How we earn trust
             </p>
@@ -74,47 +70,54 @@ export default function Proof() {
               <em>See the why</em>
             </h2>
             <p className="home-proof__text" data-reveal>
-              Good reporting should help you make a decision. We define the goal, share the work and show what the data
-              actually says, including what needs to change.
+              Good reporting should help you make a decision. We define the goal, share the work and show what
+              the data actually says, including what needs to change.
             </p>
+
             <div className="home-proof__list" data-reveal>
-              {LIST.map((item, i) => (
-                <div className="home-proof__item" key={item}>
+              {POINTS.map((point, i) => (
+                <div className="home-proof__item" key={point}>
                   <b>{String(i + 1).padStart(2, "0")}</b>
-                  <span>{item}</span>
+                  <span>{point}</span>
                 </div>
               ))}
             </div>
-          </div>
+          </Col>
 
-          <div className="home-proof__display" data-reveal>
-            <div className="home-proof__panel">
-              <div className="home-proof__panel-top">
-                <span>PERFORMANCE REVIEW</span>
-                <span>DEBON / LIVE THINKING</span>
+          <Col lg={7}>
+            <div className="home-proof__display" data-reveal>
+              <div className="home-proof__panel">
+                <div className="home-proof__panel-top">
+                  <span>PERFORMANCE REVIEW</span>
+                  <span>DEBON / LIVE THINKING</span>
+                </div>
+
+                <div className="home-proof__chart">
+                  <svg viewBox="0 0 520 250" role="img" aria-label="Illustration of a growth trend">
+                    <path className="home-proof__grid" d="M0 50H520M0 110H520M0 170H520M0 230H520" />
+                    <path
+                      ref={pathRef}
+                      className="home-proof__line"
+                      d="M8 212C48 209 57 180 99 184S147 141 184 150 228 181 267 134 318 126 352 107 390 126 429 65 480 73 510 22"
+                    />
+                  </svg>
+                </div>
+
+                <div className="home-proof__panel-bottom">
+                  {METRICS.map((m) => (
+                    <span key={m}>
+                      {m} <ArrowUpRight size={16} strokeWidth={2.6} aria-hidden="true" />
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="home-proof__chart">
-                <svg viewBox="0 0 520 250" role="img" aria-label="Illustration of a growth trend">
-                  <path className="home-proof__chart-grid" d="M0 50H520M0 110H520M0 170H520M0 230H520" />
-                  <path
-                    className="home-proof__chart-path"
-                    d="M8 212C48 209 57 180 99 184S147 141 184 150 228 181 267 134 318 126 352 107 390 126 429 65 480 73 510 22"
-                  />
-                </svg>
-              </div>
-              <div className="home-proof__panel-bottom">
-                {METRICS.map((m) => (
-                  <span key={m}>
-                    {m} <b>↗</b>
-                  </span>
-                ))}
+
+              <div className="home-proof__caption">
+                An example of the decision framework. Actual reporting uses your own data.
               </div>
             </div>
-            <div className="home-proof__caption">
-              An example of the decision framework. Actual reporting uses your own data.
-            </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </Container>
     </section>
   );
