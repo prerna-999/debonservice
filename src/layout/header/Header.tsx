@@ -58,7 +58,7 @@ export const NAV_GROUPS: NavGroup[] = [
 export const NAV_LINKS: NavLink[] = [
   { label: "Business Operations", href: "#Business Operations" },
   { label: "Corporate Support Services", href: "#Corporate-Support-Services" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "about" },
 ];
 
 export const CTA = { label: "Let's talk", href: "#contact" };
