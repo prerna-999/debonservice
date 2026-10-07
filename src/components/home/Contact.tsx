@@ -53,7 +53,7 @@ export default function Contact() {
 
   return (
     <section className="home-contact" id="contact" aria-labelledby="contact-title" ref={rootRef}>
-      <Container fluid className="home-contact__container">
+      <Container>
         <Row className="home-contact__layout">
           {/* ---- Left copy ---- */}
           <Col lg={5}>

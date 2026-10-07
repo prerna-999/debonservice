@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Container } from "react-bootstrap";
+
 
 const COMPANY = {
   name: "Debon Servces",
@@ -119,7 +121,8 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="site-footer__inner">
+      <Container>
+        <div className="site-footer__inner">
         <div className="site-footer__col site-footer__brand">
           <Link href="/" aria-label={COMPANY.name} className="site-footer__logo">
             <Image src={COMPANY.logo} alt={COMPANY.name} width={250} height={80} priority={false} />
@@ -210,6 +213,7 @@ export default function Footer() {
           <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
       </button>
+      </Container>
     </footer>
   );
 }

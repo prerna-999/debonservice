@@ -88,7 +88,7 @@ export default function Header() {
 
   return (
     <header className="debon-header" id="top" ref={headerRef}>
-      <Container fluid className="header-shell">
+      <Container>
         <Row className="justify-content-between align-items-center flex-nowrap g-0">
           {/* Logo */}
           <Col xs="auto" className="logo-col">

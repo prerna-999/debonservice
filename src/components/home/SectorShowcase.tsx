@@ -307,7 +307,7 @@ export default function SectorShowcase() {
 
   return (
     <section className="home-sector" id="sector-showcase" aria-labelledby="sector-showcase-title" ref={rootRef}>
-      <Container fluid className="home-sector__container">
+      <Container>
         {/* ---- Heading ---- */}
         <Row className="home-sector__head align-items-end justify-content-between">
           <Col md={7}>
