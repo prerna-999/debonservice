@@ -1,8 +1,5 @@
-
-
 import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
-
 
 const TORN = (() => {
   const W = 1440;
@@ -25,7 +22,7 @@ const TORN = (() => {
   return `${d} L${W} 60 Z`;
 })();
 
-export default function AboutHero() {
+export default function ContactBanner() {
     return (
         <section className="contact-banner" aria-labelledby="contact-banner-title">
            <Image src="/assets/img/all-img/home/home-about-1.avif" alt="" fill priority sizes="100vw" className="contact-banner__bg" />
@@ -37,7 +34,7 @@ export default function AboutHero() {
                         <div className="contact-banner__inner">
                             <span className="contact-banner__pill">We&apos;d love to hear from you</span>
                             <h1 id="contact-banner-title" className="contact-banner__title">
-                               About Us
+                                Contact Us
                             </h1>
                             <p className="contact-banner__text">
                                 Tell us about your business and your growth goals. Our team will get back to you with a clear next
