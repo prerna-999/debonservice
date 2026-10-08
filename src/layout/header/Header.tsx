@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Container, Row, Col } from "react-bootstrap";
 import { ChevronDown, ArrowUpRight, Menu } from "lucide-react";
 import MobileMenu from "./Mobile-Menu";
@@ -9,7 +10,7 @@ import MobileMenu from "./Mobile-Menu";
 export type MegaItem = { label: string; desc: string; href: string };
 export type NavGroup = {
   label: string;
-  href?: string; // main page link for the group
+  href?: string;
   eyebrow: string;
   title: string;
   accent: string;
@@ -30,12 +31,12 @@ export const NAV_GROUPS: NavGroup[] = [
       "Six complementary practices shaped around the way people discover, choose and trust a business.",
     cta: { label: "Explore all services", href: "/online-growth" },
     items: [
-      { label: "Organic Search Optimization", desc: "Rank higher on Google and bring in steady organic traffic.", href: "/online-growth#organic-seo" },
-      { label: "AI-Powered SEO", desc: "Get discovered in AI search results and answer engines.", href: "/online-growth#ai-seo" },
-      { label: "Social Media Growth Management", desc: "Grow and manage your audience across social platforms.", href: "/online-growth#social-growth" },
-      { label: "Performance Marketing", desc: "Paid campaigns focused on measurable results.", href: "/online-growth#performance" },
-      { label: "Conversion & Reputation", desc: "Turn visitors into customers and build trust online.", href: "/online-growth#conversion" },
-      { label: "Content Creation", desc: "Content that attracts, engages and converts.", href: "/online-growth#content" },
+      { label: "Organic Search Optimization", desc: "Rank higher on Google and bring in steady organic traffic.", href: "/organic-seo" },
+      { label: "AI-Powered SEO", desc: "Get discovered in AI search results and answer engines.", href: "/ai-seo" },
+      { label: "Social Media Growth Management", desc: "Grow and manage your audience across social platforms.", href: "/social-growth" },
+      { label: "Performance Marketing", desc: "Paid campaigns focused on measurable results.", href: "/performance" },
+      { label: "Conversion & Reputation", desc: "Turn visitors into customers and build trust online.", href: "/conversion" },
+      { label: "Content Creation", desc: "Content that attracts, engages and converts.", href: "content" },
     ],
   },
   {
@@ -48,12 +49,12 @@ export const NAV_GROUPS: NavGroup[] = [
       "Debonaire Capital Assets delivers scalable, business-focused technology that helps organizations modernize operations, improve customer experiences and accelerate digital growth.",
     cta: { label: "Explore all IT services", href: "/it-technology" },
     items: [
-      { label: "Website Design & Development", desc: "Modern, responsive, secure and conversion-focused websites.", href: "/it-technology#website-development" },
-      { label: "Software Development", desc: "Custom software built around your business processes.", href: "/it-technology#software-development" },
-      { label: "Mobile App Development", desc: "User-friendly Android and iOS applications.", href: "/it-technology#mobile-apps" },
-      { label: "UI/UX Design", desc: "Intuitive interfaces focused on usability and engagement.", href: "/it-technology#ui-ux" },
-      { label: "Business Intelligence & Analytics", desc: "Dashboards that turn business data into insights.", href: "/it-technology#analytics" },
-      { label: "API & System Integration", desc: "Seamless links between your apps, CRM and payment tools.", href: "/it-technology#integration" },
+      { label: "Website Design & Development", desc: "Modern, responsive, secure and conversion-focused websites.", href: "/website-development" },
+      { label: "Software Development", desc: "Custom software built around your business processes.", href: "/software-development" },
+      { label: "Mobile App Development", desc: "User-friendly Android and iOS applications.", href: "/mobile-apps" },
+      { label: "UI/UX Design", desc: "Intuitive interfaces focused on usability and engagement.", href: "/ui-ux" },
+      { label: "Business Intelligence & Analytics", desc: "Dashboards that turn business data into insights.", href: "/analytics" },
+      { label: "API & System Integration", desc: "Seamless links between your apps, CRM and payment tools.", href: "/integration" },
     ],
   },
 ];
@@ -73,10 +74,13 @@ export default function Header() {
   const [logoError, setLogoError] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname() ?? "";
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpenMenu(null);
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
+      }
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpenMenu(null);
@@ -100,7 +104,7 @@ export default function Header() {
                 <span className="logo-fallback">DebonServices</span>
               ) : (
                 <Image
-                  src="/assets/img/logo/logo.png"
+                  src={logoSrc}
                   alt="Debonaire logo"
                   className="logo-img"
                   width={84}
@@ -115,9 +119,17 @@ export default function Header() {
           <Col as="nav" className="col-nav" aria-label="Main navigation">
             {NAV_GROUPS.map((group) => {
               const isOpen = openMenu === group.label;
+              const isActive =
+                !!group.href &&
+                (pathname === group.href || pathname.startsWith(group.href + "/"));
+
               return (
-                <div key={group.label} className={`nav-item has-mega ${isOpen ? "is-open" : ""}`}>
-                  {/* Label goes to the page; chevron opens the dropdown */}
+                <div
+                  key={group.label}
+                  className={`nav-item has-mega ${isOpen ? "is-open" : ""} ${isActive ? "is-active" : ""}`}
+                  onMouseEnter={() => setOpenMenu(group.label)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                >
                   <div className="nav-link nav-trigger nav-split">
                     {group.href ? (
                       <Link
@@ -151,13 +163,21 @@ export default function Header() {
                           <em>{group.accent}</em>
                         </h2>
                         <p className="mega-intro">{group.intro}</p>
-                        <Link href={group.cta.href} className="text-link" onClick={() => setOpenMenu(null)}>
+                        <Link
+                          href={group.cta.href}
+                          className="text-link"
+                          onClick={() => setOpenMenu(null)}
+                        >
                           {group.cta.label} <ArrowUpRight size={16} strokeWidth={2.4} />
                         </Link>
                       </div>
                       <div className="mega-items">
                         {group.items.map((item, i) => (
-                          <Link key={item.label} href={item.href} onClick={() => setOpenMenu(null)}>
+                          <Link
+                            key={item.label}
+                            href={item.href}
+                            onClick={() => setOpenMenu(null)}
+                          >
                             <b>{String(i + 1).padStart(2, "0")}</b>
                             <span>
                               <strong>{item.label}</strong>
@@ -173,15 +193,23 @@ export default function Header() {
               );
             })}
 
-            {NAV_LINKS.map((link) => (
-              <div key={link.label} className="nav-item">
-                <Link href={link.href} className="nav-link">
-                  <span className="nav-label">{link.label}</span>
-                </Link>
-              </div>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive =
+                pathname === link.href || pathname.startsWith(link.href + "/");
+              return (
+                <div key={link.label} className="nav-item">
+                  <Link
+                    href={link.href}
+                    className={`nav-link ${isActive ? "is-active" : ""}`}
+                  >
+                    <span className="nav-label">{link.label}</span>
+                  </Link>
+                </div>
+              );
+            })}
           </Col>
 
+          {/* Right side: CTA + mobile hamburger */}
           <Col xs="auto" className="col-icons">
             <Link href={CTA.href} className="header-cta desktop-only">
               <span className="cta-label">

@@ -51,14 +51,36 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             const isOpen = expanded === group.label;
             return (
               <div key={group.label} className="drawer-nav-item">
-                <button
-                  className="drawer-nav-toggle"
-                  aria-expanded={isOpen}
-                  onClick={() => setExpanded((prev) => (prev === group.label ? null : group.label))}
-                >
-                  {group.label}
-                  <ChevronDown size={18} strokeWidth={2.6} className={`chevron ${isOpen ? "rotated" : ""}`} />
-                </button>
+                <div className="drawer-nav-row">
+                  {group.href ? (
+                    <Link
+                      href={group.href}
+                      className="drawer-nav-toggle drawer-nav-group-link"
+                      onClick={onClose}
+                    >
+                      {group.label}
+                    </Link>
+                  ) : (
+                    <span className="drawer-nav-toggle drawer-nav-group-link">
+                      {group.label}
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    className="drawer-nav-chevron-btn"
+                    aria-expanded={isOpen}
+                    aria-label={`Toggle ${group.label} submenu`}
+                    onClick={() =>
+                      setExpanded((prev) => (prev === group.label ? null : group.label))
+                    }
+                  >
+                    <ChevronDown
+                      size={18}
+                      strokeWidth={2.6}
+                      className={`chevron ${isOpen ? "rotated" : ""}`}
+                    />
+                  </button>
+                </div>
 
                 <div className={`drawer-nav-children ${isOpen ? "expanded" : ""}`}>
                   <ul>
@@ -73,12 +95,18 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                         </Link>
                       </li>
                     ))}
+                    {group.href && (
+                      <li>
+                        <Link href={group.cta.href} onClick={onClose} className="drawer-nav-cta-link">
+                          {group.cta.label} <ArrowUpRight size={16} strokeWidth={2.4} />
+                        </Link>
+                      </li>
+                    )}
                   </ul>
                 </div>
               </div>
             );
           })}
-
           {NAV_LINKS.map((link) => (
             <div key={link.label} className="drawer-nav-item">
               <Link href={link.href} className="drawer-nav-toggle drawer-nav-link" onClick={onClose}>
