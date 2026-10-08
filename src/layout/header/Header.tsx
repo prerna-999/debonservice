@@ -9,6 +9,7 @@ import MobileMenu from "./Mobile-Menu";
 export type MegaItem = { label: string; desc: string; href: string };
 export type NavGroup = {
   label: string;
+  href?: string; // main page link for the group
   eyebrow: string;
   title: string;
   accent: string;
@@ -21,47 +22,49 @@ export type NavLink = { label: string; href: string };
 export const NAV_GROUPS: NavGroup[] = [
   {
     label: "Online Growth Services",
+    href: "/online-growth",
     eyebrow: "What we do",
     title: "Connected thinking",
     accent: "Measurable movement",
     intro:
       "Six complementary practices shaped around the way people discover, choose and trust a business.",
-    cta: { label: "Explore all services", href: "#services" },
+    cta: { label: "Explore all services", href: "/online-growth" },
     items: [
-      { label: "Organic Search Optimization", desc: "Rank higher on Google and bring in steady organic traffic.", href: "#organic-seo" },
-      { label: "AI-Powered SEO", desc: "Get discovered in AI search results and answer engines.", href: "#ai-seo" },
-      { label: "Social Media Growth Management", desc: "Grow and manage your audience across social platforms.", href: "#social-growth" },
-      { label: "Performance Marketing", desc: "Paid campaigns focused on measurable results.", href: "#performance" },
-      { label: "Conversion & Reputation", desc: "Turn visitors into customers and build trust online.", href: "#conversion" },
-      { label: "Content Creation", desc: "Content that attracts, engages and converts.", href: "#content" },
+      { label: "Organic Search Optimization", desc: "Rank higher on Google and bring in steady organic traffic.", href: "/online-growth#organic-seo" },
+      { label: "AI-Powered SEO", desc: "Get discovered in AI search results and answer engines.", href: "/online-growth#ai-seo" },
+      { label: "Social Media Growth Management", desc: "Grow and manage your audience across social platforms.", href: "/online-growth#social-growth" },
+      { label: "Performance Marketing", desc: "Paid campaigns focused on measurable results.", href: "/online-growth#performance" },
+      { label: "Conversion & Reputation", desc: "Turn visitors into customers and build trust online.", href: "/online-growth#conversion" },
+      { label: "Content Creation", desc: "Content that attracts, engages and converts.", href: "/online-growth#content" },
     ],
   },
   {
     label: "IT & Technology Services",
+    href: "/it-technology",
     eyebrow: "Our IT & technology",
     title: "Reliable technology",
     accent: "Built to scale",
     intro:
       "Debonaire Capital Assets delivers scalable, business-focused technology that helps organizations modernize operations, improve customer experiences and accelerate digital growth.",
-    cta: { label: "Explore all IT services", href: "#contact" },
+    cta: { label: "Explore all IT services", href: "/it-technology" },
     items: [
-      { label: "Website Design & Development", desc: "Modern, responsive, secure and conversion-focused websites.", href: "#contact" },
-      { label: "Software Development", desc: "Custom software built around your business processes.", href: "#contact" },
-      { label: "Mobile App Development", desc: "User-friendly Android and iOS applications.", href: "#contact" },
-      { label: "UI/UX Design", desc: "Intuitive interfaces focused on usability and engagement.", href: "#contact" },
-      { label: "Business Intelligence & Analytics", desc: "Dashboards that turn business data into insights.", href: "#contact" },
-      { label: "API & System Integration", desc: "Seamless links between your apps, CRM and payment tools.", href: "#contact" },
+      { label: "Website Design & Development", desc: "Modern, responsive, secure and conversion-focused websites.", href: "/it-technology#website-development" },
+      { label: "Software Development", desc: "Custom software built around your business processes.", href: "/it-technology#software-development" },
+      { label: "Mobile App Development", desc: "User-friendly Android and iOS applications.", href: "/it-technology#mobile-apps" },
+      { label: "UI/UX Design", desc: "Intuitive interfaces focused on usability and engagement.", href: "/it-technology#ui-ux" },
+      { label: "Business Intelligence & Analytics", desc: "Dashboards that turn business data into insights.", href: "/it-technology#analytics" },
+      { label: "API & System Integration", desc: "Seamless links between your apps, CRM and payment tools.", href: "/it-technology#integration" },
     ],
   },
 ];
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Business Operations", href: "#Business Operations" },
-  { label: "Corporate Support Services", href: "#Corporate-Support-Services" },
-  { label: "About", href: "about" },
+  { label: "Business Operations", href: "/business-operations" },
+  { label: "Corporate Support Services", href: "/corporate-support" },
+  { label: "About", href: "/about" },
 ];
 
-export const CTA = { label: "Let's talk", href: "#contact" };
+export const CTA = { label: "Let's talk", href: "/contact" };
 export const logoSrc = "/assets/img/logo/logo.png";
 export const logoSrc3x = "/assets/img/logo/logo@3x.png";
 
@@ -114,15 +117,29 @@ export default function Header() {
               const isOpen = openMenu === group.label;
               return (
                 <div key={group.label} className={`nav-item has-mega ${isOpen ? "is-open" : ""}`}>
-                  <button
-                    type="button"
-                    className="nav-link nav-trigger"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpenMenu(isOpen ? null : group.label)}
-                  >
-                    <span className="nav-label">{group.label}</span>
-                    <ChevronDown size={16} strokeWidth={2.6} className="chevron" />
-                  </button>
+                  {/* Label goes to the page; chevron opens the dropdown */}
+                  <div className="nav-link nav-trigger nav-split">
+                    {group.href ? (
+                      <Link
+                        href={group.href}
+                        className="nav-label"
+                        onClick={() => setOpenMenu(null)}
+                      >
+                        {group.label}
+                      </Link>
+                    ) : (
+                      <span className="nav-label">{group.label}</span>
+                    )}
+                    <button
+                      type="button"
+                      className="chevron-btn"
+                      aria-label={`Open ${group.label} menu`}
+                      aria-expanded={isOpen}
+                      onClick={() => setOpenMenu(isOpen ? null : group.label)}
+                    >
+                      <ChevronDown size={16} strokeWidth={2.6} className="chevron" />
+                    </button>
+                  </div>
 
                   <div className="mega-menu">
                     <div className="mega-inner">
