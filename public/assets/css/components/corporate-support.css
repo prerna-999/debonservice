@@ -1,0 +1,934 @@
+/* 
+   Base & Shared Styles (page, sections, headings) Start
+    */
+.corporate-support-page {
+   --corporate-text-dark: var(--color-2);
+   --corporate-text-muted: var(--text-color);
+   --corporate-line-color: var(--line-color);
+   --corporate-card-background: #fff;
+   font-family: var(--font-family);
+   color: var(--corporate-text-muted);
+   line-height: 1.7;
+   background: var(--bg-white);
+}
+
+.corporate-support-page a {
+   text-decoration: none;
+}
+
+.corporate-support-page h1,
+.corporate-support-page h2,
+.corporate-support-page h3 {
+   font-family: var(--font-family-display);
+   color: var(--corporate-text-dark);
+   margin: 0;
+   line-height: 1.1;
+   letter-spacing: -.02em;
+}
+
+.corporate-section {
+   padding: 96px 0;
+}
+
+.corporate-section-paper {
+   background: var(--bg-paper);
+}
+
+.corporate-section-dark {
+   background: var(--color-2);
+   --corporate-text-dark: #fff;
+   --corporate-text-muted: var(--text-on-dark);
+   --corporate-line-color: rgba(255, 255, 255, .17);
+   --corporate-card-background: #12315f;
+   color: var(--text-on-dark);
+}
+
+.corporate-margin-bottom {
+   margin-bottom: 40px;
+}
+
+.corporate-margin-top {
+   margin-top: 30px;
+}
+
+.corporate-section-label {
+   font: 600 14px var(--font-family-display);
+   letter-spacing: .04em;
+   color: var(--primary-color);
+   margin-bottom: 12px;
+}
+
+.corporate-section-dark .corporate-section-label {
+   color: var(--accent-light);
+}
+
+.corporate-section-title {
+   font-size: clamp(32px, 4.6vw, 54px);
+   font-weight: 600;
+   margin-bottom: 16px;
+}
+
+.corporate-section-title em {
+   font-style: italic;
+   font-weight: 500;
+   color: var(--primary-color);
+}
+
+.corporate-section-dark .corporate-section-title em {
+   color: var(--accent-light);
+}
+
+.corporate-lead-text {
+   max-width: 540px;
+   font-size: 17px;
+}
+
+
+
+/* 
+   Buttons Start
+    */
+.corporate-button {
+   display: inline-block;
+   padding: 14px 28px;
+   border-radius: 999px;
+   font: 600 15px var(--font-family-display);
+   border: 0;
+   cursor: pointer;
+   transition: transform .25s, box-shadow .25s;
+   margin-top: 20px;
+}
+
+.corporate-button-primary {
+   background: var(--primary-color);
+   color: #fff;
+}
+
+.corporate-button-primary:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--box-shadow-2);
+   color: #fff;
+}
+
+.corporate-button-outline {
+   border: 1.5px solid var(--corporate-line-color);
+   color: var(--corporate-text-dark);
+}
+
+.corporate-button-outline:hover {
+   border-color: var(--primary-color);
+   color: var(--corporate-text-dark);
+}
+
+.corporate-button-white {
+   background: #fff;
+   color: var(--color-2);
+}
+
+.corporate-button-white:hover {
+   transform: translateY(-2px);
+   color: var(--primary-color);
+}
+
+.corporate-section-dark .corporate-button-primary {
+   background: var(--accent-light);
+   color: var(--color-2);
+}
+
+.corporate-support-page :focus-visible {
+   outline: 3px solid var(--accent-light);
+   outline-offset: 3px;
+}
+
+.corporate-hero-actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 12px;
+   margin-top: 28px;
+}
+
+/* 
+   Buttons End
+    */
+
+/* 
+   Hero Section Start
+    */
+.corporate-hero {
+   padding: 80px 0;
+   background: var(--bg-paper);
+}
+
+.corporate-hero h1 {
+   font-size: clamp(42px, 6.6vw, 84px);
+   font-weight: 700;
+   margin: 14px 0 20px;
+}
+
+.corporate-hero h1 span {
+   display: block;
+   color: var(--primary-color);
+}
+
+.corporate-hero h1 span+span {
+   color: var(--color-2);
+}
+
+.corporate-hero-tags {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-top: 30px;
+}
+
+.corporate-hero-tags i {
+   font: 500 13px var(--font-family-display);
+   font-style: normal;
+   padding: 7px 14px;
+   border: 1px solid var(--line-color);
+   border-radius: 999px;
+   color: var(--color-2);
+   background: #fff;
+}
+
+.corporate-hero-panel {
+   position: relative;
+   min-height: 440px;
+   margin-top: 36px;
+   padding: 22px;
+   border-radius: 30px;
+   background: var(--hero-gradient);
+   overflow: hidden;
+   display: flex;
+   align-items: flex-end;
+}
+
+.corporate-hero-panel::before,
+.corporate-hero-panel::after {
+   content: "";
+   position: absolute;
+   border-radius: 50%;
+   border: 1.5px solid rgba(255, 255, 255, .35);
+}
+
+.corporate-hero-panel::before {
+   width: 380px;
+   height: 380px;
+   right: -90px;
+   top: -100px;
+}
+
+.corporate-hero-panel::after {
+   width: 240px;
+   height: 240px;
+   right: -20px;
+   top: -30px;
+}
+
+.corporate-hero-glass-card {
+   position: relative;
+   width: 100%;
+   padding: 22px 24px;
+   border-radius: 20px;
+   background: rgba(244, 248, 251, .95);
+}
+
+.corporate-hero-glass-card small {
+   font: 600 12px var(--font-family-display);
+   letter-spacing: .08em;
+   color: var(--primary-color);
+}
+
+.corporate-hero-glass-card b {
+   display: block;
+   margin: 6px 0 4px;
+   font: 600 28px var(--font-family-display);
+   color: var(--color-2);
+}
+
+.corporate-hero-chip {
+   position: absolute;
+   padding: 9px 14px;
+   border-radius: 14px;
+   background: #fff;
+   font: 600 13px var(--font-family-display);
+   color: var(--color-2);
+   box-shadow: 0 14px 28px rgba(12, 36, 72, .2);
+}
+
+.corporate-hero-chip::before {
+   content: "\2713";
+   margin-right: 8px;
+   color: #22a06b;
+}
+
+.corporate-hero-chip-one {
+   top: 34px;
+   left: 24px;
+}
+
+.corporate-hero-chip-two {
+   top: 110px;
+   left: 70px;
+}
+
+.corporate-hero-chip-three {
+   top: 186px;
+   left: 28px;
+}
+
+/* 
+   Hero Section End
+    */
+
+/* 
+   Marquee Strip Start
+    */
+.corporate-marquee {
+   padding: 26px 0;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
+.corporate-marquee>div {
+   display: inline-block;
+   animation: corporate-marquee-scroll 26s linear infinite;
+}
+
+.corporate-marquee span {
+   margin: 0 30px;
+   font: 600 26px var(--font-family-display);
+   color: #fff;
+}
+
+.corporate-marquee span:nth-child(even) {
+   color: var(--accent-light);
+}
+
+@keyframes corporate-marquee-scroll {
+   to {
+      transform: translateX(-50%);
+   }
+}
+
+/* 
+   Marquee Strip End
+    */
+
+/* 
+   About Section (01 / About) Start
+    */
+.corporate-about-desk {
+   position: relative;
+   min-height: 410px;
+   margin-top: 20px;
+   border: 1px solid var(--line-color);
+   border-radius: 30px;
+   overflow: hidden;
+   background-color: var(--bg-paper);
+   background-image: linear-gradient(rgba(23, 112, 159, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(23, 112, 159, .08) 1px, transparent 1px);
+   background-size: 34px 34px;
+}
+
+.corporate-about-document {
+   position: absolute;
+   width: 74%;
+   padding: 16px 18px;
+   background: #fff;
+   border: 1px solid var(--line-color);
+   border-radius: 18px;
+   box-shadow: 0 18px 36px rgba(12, 36, 72, .12);
+   transition: transform .5s;
+}
+
+.corporate-about-document-title {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+   font: 600 15px var(--font-family-display);
+   color: var(--color-2);
+}
+
+.corporate-about-status-pill {
+   padding: 4px 11px;
+   border-radius: 999px;
+   background: #e3f6ee;
+   color: #17855a;
+   font: 600 12px var(--font-family-display);
+}
+
+.corporate-about-document-line {
+   height: 8px;
+   margin-top: 10px;
+   border-radius: 6px;
+   background: #e6eef5;
+}
+
+.corporate-about-document-line-short {
+   width: 58%;
+}
+
+.corporate-about-document-one {
+   top: 26px;
+   left: 22px;
+   transform: rotate(-3deg);
+}
+
+.corporate-about-document-two {
+   top: 146px;
+   right: 22px;
+   transform: rotate(2.5deg);
+}
+
+.corporate-about-document-three {
+   top: 268px;
+   left: 36px;
+   transform: rotate(-1.5deg);
+}
+
+.corporate-about-desk:hover .corporate-about-document {
+   transform: rotate(0);
+}
+
+.corporate-about-deadline-chip {
+   position: absolute;
+   right: 20px;
+   bottom: 18px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   padding: 9px 16px;
+   border-radius: 999px;
+   background: var(--color-2);
+   color: #fff;
+   font: 600 13px var(--font-family-display);
+}
+
+.corporate-about-deadline-chip::before {
+   content: "";
+   width: 9px;
+   height: 9px;
+   border-radius: 50%;
+   background: var(--accent-light);
+}
+
+.corporate-about-content {
+   padding-top: 20px;
+}
+
+.corporate-about-content p {
+   margin: 0 0 14px;
+}
+
+.corporate-about-takeover-list {
+   display: grid;
+   gap: 10px;
+   margin: 22px 0 26px;
+   padding: 0;
+   list-style: none;
+}
+
+.corporate-about-takeover-list li {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   font-weight: 500;
+   color: var(--color-2);
+}
+
+.corporate-about-takeover-list li::before {
+   content: "\2713";
+   flex: none;
+   width: 28px;
+   height: 28px;
+   display: grid;
+   place-items: center;
+   border-radius: 9px;
+   background: var(--hero-gradient);
+   color: #fff;
+   font-size: 14px;
+}
+
+/* 
+   About Section (01 / About) End
+    */
+
+/* 
+   Services Section (02 / What we do) Start
+    */
+.corporate-service-card {
+   position: relative;
+   display: block;
+   overflow: hidden;
+   min-height: 250px;
+   padding: 30px;
+   margin-bottom: 24px;
+   background: #fff;
+   border: 1px solid var(--line-color);
+   border-radius: 24px;
+   color: var(--text-color);
+   transition: transform .4s, box-shadow .4s, border-color .4s;
+}
+
+.corporate-service-card::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background: var(--hero-gradient);
+   opacity: 0;
+   transition: opacity .4s;
+}
+
+.corporate-service-card>* {
+   position: relative;
+}
+
+.corporate-service-card-label {
+   font: 600 13px var(--font-family-display);
+   letter-spacing: .06em;
+   color: var(--primary-color);
+}
+
+.corporate-service-card h3 {
+   font-size: 27px;
+   margin: 12px 0 10px;
+}
+
+.corporate-service-card p {
+   margin: 0 0 20px;
+   font-size: 15.5px;
+}
+
+.corporate-service-card-link {
+   display: flex;
+   justify-content: space-between;
+   font: 600 14px var(--font-family-display);
+   color: var(--primary-color);
+}
+
+.corporate-service-card-link small {
+   font-weight: 500;
+   color: var(--text-color);
+}
+
+.corporate-service-card:hover {
+   transform: translateY(-6px);
+   border-color: transparent;
+   box-shadow: var(--box-shadow);
+}
+
+.corporate-service-card:hover::before {
+   opacity: 1;
+}
+
+.corporate-service-card:hover h3,
+.corporate-service-card:hover p,
+.corporate-service-card:hover .corporate-service-card-label,
+.corporate-service-card:hover .corporate-service-card-link,
+.corporate-service-card:hover small {
+   color: #fff;
+}
+
+/* 
+   Services Section (02 / What we do) End
+    */
+
+/* 
+   Find Your Next Move Section (02A) Start
+    */
+.corporate-brief-options {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 9px;
+}
+
+.corporate-brief-option {
+   padding: 10px 18px;
+   border-radius: 999px;
+   border: 1.5px solid var(--corporate-line-color);
+   background: transparent;
+   color: var(--corporate-text-dark);
+   font: 500 15px var(--font-family);
+   cursor: pointer;
+   transition: .2s;
+}
+
+.corporate-brief-option:hover {
+   border-color: var(--accent-light);
+}
+
+.corporate-brief-option[aria-pressed="true"] {
+   background: var(--accent-light);
+   border-color: var(--accent-light);
+   color: var(--color-2);
+}
+
+.corporate-brief-selectors {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 22px 36px;
+   margin: 22px 0 26px;
+}
+
+.corporate-brief-selectors h3 {
+   margin-bottom: 10px;
+   font: 600 14px var(--font-family-display);
+   color: var(--accent-light);
+   letter-spacing: .02em;
+}
+
+.corporate-brief-tiles {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 12px;
+}
+
+@media (max-width: 600px) {
+   .corporate-brief-tiles {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+.corporate-brief-tile {
+   display: flex;
+   flex-direction: column;
+   gap: 14px;
+   min-height: 118px;
+   padding: 16px;
+   text-align: left;
+   border-radius: 20px;
+   border: 1.5px solid var(--corporate-line-color);
+   background: rgba(255, 255, 255, .04);
+   color: var(--corporate-text-dark);
+   cursor: pointer;
+   font: 600 16px/1.25 var(--font-family-display);
+   transition: .25s;
+}
+
+.corporate-brief-tile i {
+   width: 40px;
+   height: 40px;
+   display: grid;
+   place-items: center;
+   border-radius: 12px;
+   background: rgba(95, 208, 227, .16);
+   color: var(--accent-light);
+   font-style: normal;
+   font-size: 19px;
+}
+
+.corporate-brief-tile:hover {
+   border-color: var(--accent-light);
+   transform: translateY(-3px);
+}
+
+.corporate-brief-tile[aria-pressed="true"] {
+   background: var(--accent-light);
+   border-color: var(--accent-light);
+   color: var(--color-2);
+}
+
+.corporate-brief-tile[aria-pressed="true"] i {
+   background: var(--color-2);
+   color: var(--accent-light);
+}
+
+.corporate-brief-ticket {
+   position: relative;
+   padding: 30px;
+   border-radius: 28px;
+   background: #fff;
+   color: var(--text-color);
+   box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+}
+
+.corporate-brief-ticket small {
+   font: 600 12px var(--font-family-display);
+   letter-spacing: .08em;
+   color: var(--primary-color);
+}
+
+.corporate-brief-ticket h3 {
+   margin: 8px 0 14px;
+   font-size: 30px;
+   color: var(--color-2);
+}
+
+.corporate-brief-ticket-meta {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 8px;
+   font-size: 14px;
+}
+
+.corporate-brief-ticket-meta span {
+   padding: 5px 12px;
+   border-radius: 999px;
+   background: var(--color-1);
+   color: var(--color-2);
+   font-weight: 500;
+}
+
+.corporate-brief-ticket-meta em {
+   font-style: normal;
+}
+
+.corporate-brief-ticket-divider {
+   position: relative;
+   margin: 24px -30px;
+   border-top: 2px dashed var(--line-color);
+}
+
+.corporate-brief-ticket-divider::before,
+.corporate-brief-ticket-divider::after {
+   content: "";
+   position: absolute;
+   top: -14px;
+   width: 26px;
+   height: 26px;
+   border-radius: 50%;
+   background: var(--color-2);
+}
+
+.corporate-brief-ticket-divider::before {
+   left: -13px;
+}
+
+.corporate-brief-ticket-divider::after {
+   right: -13px;
+}
+
+.corporate-brief-ticket-subtitle {
+   margin-bottom: 10px;
+   font: 600 15px var(--font-family-display);
+   color: var(--color-2);
+}
+
+.corporate-brief-ticket ul {
+   margin: 0 0 24px;
+   padding: 0;
+   list-style: none;
+}
+
+.corporate-brief-ticket li {
+   display: flex;
+   gap: 10px;
+   padding: 8px 0;
+   border-bottom: 1px solid #e6eef5;
+   font-size: 15px;
+   color: var(--color-2);
+}
+
+.corporate-brief-ticket li::before {
+   content: "\2713";
+   color: #22a06b;
+   font-weight: 700;
+}
+
+.corporate-brief-ticket .corporate-button-primary {
+   background: var(--primary-color);
+   color: #fff;
+}
+
+/* 
+   Find Your Next Move Section (02A) End
+    */
+
+/* 
+   Process Section (03 / How we work) Start
+    */
+.corporate-process-list {
+   margin-top: 20px;
+}
+
+.corporate-process-card {
+   height: calc(100% - 24px);
+   margin-top: 24px;
+   padding: 26px;
+   background: var(--bg-paper);
+   border: 1px solid var(--line-color);
+   border-radius: 24px;
+   transition: transform .3s, box-shadow .3s;
+}
+
+.corporate-process-card:hover {
+   transform: translateY(-6px);
+   box-shadow: 0 22px 44px rgba(12, 36, 72, .12);
+}
+
+.corporate-process-number {
+   width: 58px;
+   height: 58px;
+   display: grid;
+   place-items: center;
+   border-radius: 18px;
+   background: var(--hero-gradient);
+   color: #fff;
+   font: 600 18px var(--font-family-display);
+   box-shadow: var(--box-shadow-2);
+}
+
+.corporate-process-card h3 {
+   font-size: 22px;
+   margin: 18px 0 6px;
+}
+
+.corporate-process-card p {
+   margin: 0;
+   font-size: 15px;
+}
+
+/* 
+   Process Section (03 / How we work) End
+    */
+
+/* 
+   Why Choose Section (04) Start
+    */
+.corporate-why-list {
+   margin-top: 20px;
+}
+
+.corporate-why-card {
+   height: calc(100% - 24px);
+   margin-top: 24px;
+   padding: 28px;
+   border: 1px solid var(--corporate-line-color);
+   border-radius: 22px;
+   background: rgba(255, 255, 255, .04);
+   transition: .3s;
+}
+
+.corporate-why-card:hover {
+   border-color: var(--accent-light);
+   transform: translateY(-4px);
+}
+
+.corporate-why-card::before {
+   width: 48px;
+   height: 48px;
+   display: grid;
+   place-items: center;
+   margin-bottom: 18px;
+   border-radius: 14px;
+   background: var(--hero-gradient);
+   color: #fff;
+   font: 600 20px var(--font-family-display);
+}
+
+.corporate-why-list .col-md-6:nth-child(1) .corporate-why-card::before {
+   content: "\25CE";
+}
+
+.corporate-why-list .col-md-6:nth-child(2) .corporate-why-card::before {
+   content: "\25C9";
+}
+
+.corporate-why-list .col-md-6:nth-child(3) .corporate-why-card::before {
+   content: "\2713";
+}
+
+.corporate-why-list .col-md-6:nth-child(4) .corporate-why-card::before {
+   content: "\2197";
+}
+
+.corporate-why-card h3 {
+   font-size: 23px;
+   margin-bottom: 8px;
+}
+
+.corporate-why-card p {
+   margin: 0;
+   font-size: 15.5px;
+}
+
+/* 
+   Why Choose Section (04) End
+    */
+
+/* 
+   FAQ Section (05) Start
+    */
+.corporate-faq-item {
+   margin-bottom: 14px;
+   padding: 18px 22px;
+   background: #fff;
+   border: 1px solid var(--line-color);
+   border-radius: 18px;
+}
+
+.corporate-faq-item[open] {
+   border-color: var(--primary-color);
+}
+
+.corporate-faq-item summary {
+   display: flex;
+   justify-content: space-between;
+   gap: 12px;
+   cursor: pointer;
+   list-style: none;
+   font: 600 18px var(--font-family-display);
+   color: var(--color-2);
+}
+
+.corporate-faq-item summary::-webkit-details-marker {
+   display: none;
+}
+
+.corporate-faq-item summary::after {
+   content: "+";
+   font-size: 24px;
+   line-height: 1;
+   color: var(--primary-color);
+}
+
+.corporate-faq-item[open] summary::after {
+   content: "\2212";
+}
+
+.corporate-faq-item p {
+   margin: 12px 0 0;
+   font-size: 15px;
+}
+
+/* 
+   FAQ Section (05) End
+    */
+
+
+/* 
+   Responsive & Reduced Motion Start
+    */
+@media (max-width: 767px) {
+   .corporate-section {
+      padding: 64px 0;
+   }
+
+   .corporate-hero {
+      padding: 56px 0;
+   }
+
+   .corporate-cta-box {
+      padding: 40px 24px;
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .corporate-marquee>div {
+      animation: none;
+   }
+
+   .corporate-about-document,
+   .corporate-service-card,
+   .corporate-process-card,
+   .corporate-why-card,
+   .corporate-brief-tile,
+   .corporate-button {
+      transition: none;
+   }
+}
+
+/* 
+   Responsive & Reduced Motion End
+    */
