@@ -1,3 +1,5 @@
+
+
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -18,8 +20,6 @@ type Service = {
   icon: LucideIcon;
 };
 
-// const U = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=650&q=80`;
-
 const SERVICES: Service[] = [
   {
     category: "SEARCH",
@@ -27,7 +27,7 @@ const SERVICES: Service[] = [
     description: "Improve technical foundations and useful content so more of the right people find your business.",
     anchor: "organic-seo",
     service: "Organic Search Optimization",
-    image: "",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: Search,
   },
   {
@@ -36,7 +36,7 @@ const SERVICES: Service[] = [
     description: "Shape clear, credible information that helps your expertise surface in AI search experiences.",
     anchor: "ai-seo",
     service: "AI-Powered SEO",
-    image:"",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: Sparkles,
   },
   {
@@ -45,7 +45,7 @@ const SERVICES: Service[] = [
     description: "Create a consistent social presence and a stronger relationship with your community.",
     anchor: "social-growth",
     service: "Social Media Growth Management",
-    image: "",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: Users,
   },
   {
@@ -54,7 +54,7 @@ const SERVICES: Service[] = [
     description: "Connect focused paid campaigns with creative, tracking and a clear route to action.",
     anchor: "performance",
     service: "Performance Marketing",
-    image: "",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: TrendingUp,
   },
   {
@@ -63,7 +63,7 @@ const SERVICES: Service[] = [
     description: "Reduce friction, sharpen your offer and strengthen the proof people need to choose you.",
     anchor: "conversion",
     service: "Conversion & Reputation",
-    image:"",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: ShieldCheck,
   },
   {
@@ -72,7 +72,7 @@ const SERVICES: Service[] = [
     description: "Bring a clear story to search, social and campaigns with content built to help people act.",
     anchor: "content",
     service: "Content Creation",
-    image: "",
+    image: "/assets/img/all-img/home/home-about-1.avif",
     icon: FileText,
   },
 ];
@@ -108,6 +108,7 @@ export default function ServiceFinder() {
   const rootRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const animatingRef = useRef(false);
 
   const [openStep, setOpenStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -132,6 +133,52 @@ export default function ServiceFinder() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    let raf = 0;
+
+    const onScroll = () => {
+      if (animatingRef.current) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const first = cardRefs.current[0];
+        if (!first) return;
+        const max = vp.scrollWidth - vp.clientWidth;
+        if (vp.scrollLeft >= max - 2) {
+          setActiveCard(SERVICES.length - 1);
+          return;
+        }
+        let best = 0;
+        let dist = Infinity;
+        cardRefs.current.forEach((c, i) => {
+          if (!c) return;
+          const d = Math.abs(c.offsetLeft - first.offsetLeft - vp.scrollLeft);
+          if (d < dist) {
+            dist = d;
+            best = i;
+          }
+        });
+        setActiveCard(best);
+      });
+    };
+
+    vp.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      vp.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      gsap.killTweensOf(vp);
+    };
+  }, []);
+
+  const stopAnimation = () => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    gsap.killTweensOf(vp);
+    animatingRef.current = false;
+    vp.classList.remove("is-animating");
+  };
+
   const goToCard = (index: number, move = false) => {
     const next = Math.max(0, Math.min(index, SERVICES.length - 1));
     setActiveCard(next);
@@ -140,10 +187,26 @@ export default function ServiceFinder() {
     const first = cardRefs.current[0];
     const target = cardRefs.current[next];
     if (!viewport || !first || !target) return;
+
     const left = target.offsetLeft - first.offsetLeft;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) viewport.scrollLeft = left;
-    else gsap.to(viewport, { scrollLeft: left, duration: 0.55, ease: "power2.inOut", overwrite: true });
+    if (reduce) {
+      viewport.scrollLeft = left;
+      return;
+    }
+
+    animatingRef.current = true;
+    viewport.classList.add("is-animating");
+    gsap.to(viewport, {
+      scrollLeft: left,
+      duration: 0.8,
+      ease: "power3.inOut",
+      overwrite: true,
+      onComplete: () => {
+        animatingRef.current = false;
+        viewport.classList.remove("is-animating");
+      },
+    });
   };
 
   const answer = (stepIndex: number, value: string, match?: number) => {
@@ -265,6 +328,9 @@ export default function ServiceFinder() {
                 tabIndex={0}
                 aria-label="Service cards. Scroll horizontally or use the arrow buttons."
                 onKeyDown={onViewportKey}
+                onWheel={stopAnimation}
+                onPointerDown={stopAnimation}
+                onTouchStart={stopAnimation}
               >
                 <div className="home-finder__track">
                   {SERVICES.map((s, i) => {
@@ -275,10 +341,7 @@ export default function ServiceFinder() {
                         ref={(el) => {
                           cardRefs.current[i] = el;
                         }}
-                        className={`home-finder__card ${i === activeCard ? "is-current" : ""}`}
-                        onPointerEnter={(e) => {
-                          if (e.pointerType === "mouse") goToCard(i);
-                        }}
+                        className="home-finder__card"
                         onFocus={() => goToCard(i)}
                       >
                         <div className="home-finder__card-top">
@@ -294,7 +357,7 @@ export default function ServiceFinder() {
                         </div>
 
                         <Link href={`#${s.anchor}`} className="home-finder__card-link" aria-label={`Explore ${s.service}`}>
-                          <Image src={s.image} alt="" fill sizes="360px" />
+                          {s.image ? <Image src={s.image} alt="" fill sizes="360px" /> : null}
                           <span>Explore service</span>
                           <span className="home-finder__card-arrow" aria-hidden="true">
                             <ArrowUpRight size={20} strokeWidth={2} />

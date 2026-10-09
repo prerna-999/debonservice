@@ -2206,7 +2206,7 @@
 .home-finder {
     --fnd-ink: var(--color-2);
     --fnd-brand: var(--primary-color);
-    padding: clamp(56px, 6vw, 92px) 0;
+    padding: clamp(56px, 6vw, 50px) 0;
     background: #f2f7fa;
     color: var(--fnd-ink);
     font-family: var(--font-family);
@@ -2408,12 +2408,19 @@
     outline-offset: 2px;
 }
 
+/* ---------- Carousel ---------- */
 .home-finder__viewport {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* snap is switched off while the GSAP tween runs, otherwise it fights the animation */
+.home-finder__viewport.is-animating {
+    scroll-snap-type: none;
 }
 
 .home-finder__viewport::-webkit-scrollbar {
@@ -2427,6 +2434,7 @@
     width: max-content;
 }
 
+/* cards are LIGHT by default, dark only on hover / keyboard focus */
 .home-finder__card {
     display: flex;
     flex-direction: column;
@@ -2442,7 +2450,6 @@
     transition: background 0.32s ease, border-color 0.32s ease, color 0.32s ease;
 }
 
-.home-finder__card.is-current,
 .home-finder__card:hover,
 .home-finder__card:focus-within {
     border-color: #16294b;
@@ -2471,7 +2478,6 @@
     transition: border-color 0.32s, background 0.32s, color 0.32s, transform 0.32s;
 }
 
-.home-finder__card.is-current .home-finder__card-icon,
 .home-finder__card:hover .home-finder__card-icon,
 .home-finder__card:focus-within .home-finder__card-icon {
     border-color: #76d4e7;
@@ -2501,7 +2507,6 @@
     transition: color 0.32s;
 }
 
-.home-finder__card.is-current .home-finder__card-copy p,
 .home-finder__card:hover .home-finder__card-copy p,
 .home-finder__card:focus-within .home-finder__card-copy p {
     color: #c9d7e3;
@@ -2521,6 +2526,7 @@
     isolation: isolate;
     font-size: 15px;
     font-weight: 700;
+    transition: border-color 0.32s, color 0.32s;
 }
 
 .home-finder__card-link img {
@@ -2541,21 +2547,18 @@
     transition: opacity 0.35s;
 }
 
-.home-finder__card.is-current .home-finder__card-link,
 .home-finder__card:hover .home-finder__card-link,
 .home-finder__card:focus-within .home-finder__card-link {
     border-color: #899aad;
     color: #ffffff;
 }
 
-.home-finder__card.is-current .home-finder__card-link img,
 .home-finder__card:hover .home-finder__card-link img,
 .home-finder__card:focus-within .home-finder__card-link img {
     opacity: 1;
     transform: scale(1);
 }
 
-.home-finder__card.is-current .home-finder__card-link::after,
 .home-finder__card:hover .home-finder__card-link::after,
 .home-finder__card:focus-within .home-finder__card-link::after {
     opacity: 1;
