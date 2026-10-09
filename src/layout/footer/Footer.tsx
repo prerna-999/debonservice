@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 
 const COMPANY = {
   name: "Debon Servces",
-  logo: "/assets/img/logo/logo.png", 
+  logo: "/assets/img/logo/Debonaire-Logo-PNG.png", 
   phone: "+91 6239845962",
   email: "support@demo.com",
   address:

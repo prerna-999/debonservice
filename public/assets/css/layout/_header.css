@@ -34,7 +34,7 @@
 
 .debon-header .logo-img {
     width: auto;
-    height: 62px;
+    height: 100px;
     max-width: 100%;
 }
 
@@ -737,7 +737,7 @@
     }
 
     .debon-header .logo-img {
-        height: 54px;
+        height: 70px;
     }
 
     .debon-header .col-nav,
@@ -760,7 +760,7 @@
     }
 
     .debon-header .logo-img {
-        height: 48px;
+        height: 60px;
     }
 
     .mobile-menu .drawer {

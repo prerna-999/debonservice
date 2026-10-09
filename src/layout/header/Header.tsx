@@ -66,7 +66,7 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const CTA = { label: "Let's talk", href: "/contact" };
-export const logoSrc = "/assets/img/logo/logo.png";
+export const logoSrc = "/assets/img/logo/Debonaire-Logo-PNG.png";
 export const logoSrc3x = "/assets/img/logo/logo@3x.png";
 
 export default function Header() {

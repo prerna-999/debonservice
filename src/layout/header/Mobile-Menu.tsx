@@ -38,7 +38,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             {logoError ? (
               <span className="logo-fallback">DebonServices</span>
             ) : (
-              <img src="/assets/img/logo/logo.png" alt="Debonaire logo" className="logo-img" onError={() => setLogoError(true)} />
+              <img src="/assets/img/logo/Debonaire-Logo-PNG.png" alt="Debonaire logo" className="logo-img" onError={() => setLogoError(true)} />
             )}
           </Link>
           <button aria-label="Close menu" className="close-btn" onClick={onClose}>
