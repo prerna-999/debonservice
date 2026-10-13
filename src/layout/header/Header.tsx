@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { ChevronDown, ArrowUpRight, Menu } from "lucide-react";
 import MobileMenu from "./Mobile-Menu";
 
-export type MegaItem = { label: string; desc: string; href: string };
+export type MegaItem = { label: string; href: string };
 export type NavGroup = {
   label: string;
   href?: string;
@@ -15,46 +15,39 @@ export type NavGroup = {
   title: string;
   accent: string;
   intro: string;
-  cta: { label: string; href: string };
   items: MegaItem[];
 };
 export type NavLink = { label: string; href: string };
 
 export const NAV_GROUPS: NavGroup[] = [
   {
-    label: "Online Growth Services",
-    href: "/online-growth",
+    label: "Digital Marketing Services",
+    href: "/digital-marketing",
     eyebrow: "What we do",
     title: "Connected thinking",
     accent: "Measurable movement",
     intro:
-      "Six complementary practices shaped around the way people discover, choose and trust a business.",
-    cta: { label: "Explore all services", href: "/online-growth" },
+      "Five complementary practices shaped around the way people discover, choose and trust a business.",
     items: [
-      { label: "Organic Search Optimization", desc: "Rank higher on Google and bring in steady organic traffic.", href: "/organic-seo" },
-      { label: "AI-Powered SEO", desc: "Get discovered in AI search results and answer engines.", href: "/ai-seo" },
-      { label: "Social Media Growth Management", desc: "Grow and manage your audience across social platforms.", href: "/social-growth" },
-      { label: "Performance Marketing", desc: "Paid campaigns focused on measurable results.", href: "/performance" },
-      { label: "Conversion & Reputation", desc: "Turn visitors into customers and build trust online.", href: "/conversion" },
-      { label: "Content Creation", desc: "Content that attracts, engages and converts.", href: "content" },
+      { label: "SEO & AI SEO", href: "/ai-seo" },
+      { label: "Paid Media & Performance Marketing", href: "/performance" },
+      { label: "Content & Social", href: "/social-growth" },
+      { label: "Customer Engagement", href: "/conversion" },
+      { label: "Reputation & Optimization", href: "/reputation" },
     ],
   },
   {
-    label: "IT & Technology Services",
-    href: "/it-technology",
+    label: "Web and App Development Services",
+    href: "/web-app-development",
     eyebrow: "Our IT & technology",
     title: "Reliable technology",
     accent: "Built to scale",
     intro:
       "Debonaire Capital Assets delivers scalable, business-focused technology that helps organizations modernize operations, improve customer experiences and accelerate digital growth.",
-    cta: { label: "Explore all IT services", href: "/it-technology" },
     items: [
-      { label: "Website Design & Development", desc: "Modern, responsive, secure and conversion-focused websites.", href: "/website-development" },
-      { label: "Software Development", desc: "Custom software built around your business processes.", href: "/software-development" },
-      { label: "Mobile App Development", desc: "User-friendly Android and iOS applications.", href: "/mobile-apps" },
-      { label: "UI/UX Design", desc: "Intuitive interfaces focused on usability and engagement.", href: "/ui-ux" },
-      { label: "Business Intelligence & Analytics", desc: "Dashboards that turn business data into insights.", href: "/analytics" },
-      { label: "API & System Integration", desc: "Seamless links between your apps, CRM and payment tools.", href: "/integration" },
+      { label: "Web Development", href: "/website-development" },
+      { label: "Software & App Development", href: "/software-development" },
+      { label: "AI Solutions", href: "/ai-solutions" },
     ],
   },
 ];
@@ -163,13 +156,6 @@ export default function Header() {
                           <em>{group.accent}</em>
                         </h2>
                         <p className="mega-intro">{group.intro}</p>
-                        <Link
-                          href={group.cta.href}
-                          className="text-link"
-                          onClick={() => setOpenMenu(null)}
-                        >
-                          {group.cta.label} <ArrowUpRight size={16} strokeWidth={2.4} />
-                        </Link>
                       </div>
                       <div className="mega-items">
                         {group.items.map((item, i) => (
@@ -181,7 +167,6 @@ export default function Header() {
                             <b>{String(i + 1).padStart(2, "0")}</b>
                             <span>
                               <strong>{item.label}</strong>
-                              <small>{item.desc}</small>
                             </span>
                             <ArrowUpRight size={16} strokeWidth={2.4} className="item-arrow" />
                           </Link>
@@ -209,7 +194,6 @@ export default function Header() {
             })}
           </Col>
 
-          {/* Right side: CTA + mobile hamburger */}
           <Col xs="auto" className="col-icons">
             <Link href={CTA.href} className="header-cta desktop-only">
               <span className="cta-label">

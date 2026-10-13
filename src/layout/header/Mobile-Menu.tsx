@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ChevronDown, ArrowUpRight } from "lucide-react";
-import { NAV_GROUPS, NAV_LINKS, CTA, logoSrc } from "./Header";
+import { X, ChevronDown,ArrowUpRight } from "lucide-react";
+import { NAV_GROUPS, NAV_LINKS, CTA } from "./Header";
 
 type MobileMenuProps = {
   open: boolean;
@@ -90,18 +90,10 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                           <b>{String(i + 1).padStart(2, "0")}</b>
                           <span>
                             <strong>{item.label}</strong>
-                            <small>{item.desc}</small>
                           </span>
                         </Link>
                       </li>
                     ))}
-                    {group.href && (
-                      <li>
-                        <Link href={group.cta.href} onClick={onClose} className="drawer-nav-cta-link">
-                          {group.cta.label} <ArrowUpRight size={16} strokeWidth={2.4} />
-                        </Link>
-                      </li>
-                    )}
                   </ul>
                 </div>
               </div>
