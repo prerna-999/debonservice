@@ -14,7 +14,7 @@ export type NavGroup = {
   eyebrow: string;
   title: string;
   accent: string;
-  intro: string;
+  
   items: MegaItem[];
 };
 export type NavLink = { label: string; href: string };
@@ -26,8 +26,6 @@ export const NAV_GROUPS: NavGroup[] = [
     eyebrow: "What we do",
     title: "Connected thinking",
     accent: "Measurable movement",
-    intro:
-      "Five complementary practices shaped around the way people discover, choose and trust a business.",
     items: [
       { label: "SEO & AI SEO", href: "/ai-seo" },
       { label: "Paid Media & Performance Marketing", href: "/performance" },
@@ -42,8 +40,6 @@ export const NAV_GROUPS: NavGroup[] = [
     eyebrow: "Our IT & technology",
     title: "Reliable technology",
     accent: "Built to scale",
-    intro:
-      "Debonaire Capital Assets delivers scalable, business-focused technology that helps organizations modernize operations, improve customer experiences and accelerate digital growth.",
     items: [
       { label: "Web Development", href: "/website-development" },
       { label: "Software & App Development", href: "/software-development" },
@@ -155,7 +151,7 @@ export default function Header() {
                           <br />
                           <em>{group.accent}</em>
                         </h2>
-                        <p className="mega-intro">{group.intro}</p>
+                    
                       </div>
                       <div className="mega-items">
                         {group.items.map((item, i) => (
