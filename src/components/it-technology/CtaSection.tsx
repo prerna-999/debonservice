@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Reveal from "./Reveal";
+import Reveal from "../online-growth/Reveal";
 
 export default function Cta() {
   return (

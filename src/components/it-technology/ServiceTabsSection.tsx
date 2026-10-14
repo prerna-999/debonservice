@@ -1,0 +1,501 @@
+"use client";
+
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { CSSProperties, ReactNode } from "react";
+import type { IconType } from "react-icons";
+import {
+  TbWorldWww,
+  TbDeviceMobileCode,
+  TbBrain,
+  TbDeviceDesktop,
+  TbSearch,
+  TbBolt,
+  TbShieldCheck,
+  TbDevices,
+  TbApi,
+  TbCloudUpload,
+  TbHeadset,
+  TbMessageChatbot,
+  TbSettingsAutomation,
+  TbPlugConnected,
+  TbChartDots,
+  TbShoppingCart,
+  TbUsers,
+  TbChartBar,
+  TbBrandAndroid,
+  TbBrandApple,
+  TbClock,
+  TbTicket,
+} from "react-icons/tb";
+import { Container, joinClasses } from "./Grid";
+
+if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
+
+// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+type ServiceTabFeature = {
+  icon: IconType;
+  title: string;
+  text: string;
+};
+
+type ServiceTab = {
+  anchor: string;
+  tabIcon: IconType;
+  tabLabel: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  featureList: ServiceTabFeature[];
+  visual: ReactNode;
+};
+
+type ServiceTabsSectionProps = {
+  serviceTabList?: ServiceTab[];
+  defaultActiveIndex?: number;
+  primaryButton?: { label: string; href: string };
+  secondaryButton?: { label: string; href: string };
+};
+
+const Chip = ({
+  icon: ChipIcon,
+  label,
+  position,
+}: {
+  icon: IconType;
+  label: string;
+  position: CSSProperties;
+}) => (
+  <div
+    className="web-app-development-service-tabs-chip web-app-development-service-tabs-pop"
+    style={position}
+  >
+    <ChipIcon />
+    {label}
+  </div>
+);
+
+const WebVisual = () => (
+  <>
+    <div className="web-app-development-service-tabs-win web-app-development-service-tabs-float">
+      <div className="web-app-development-service-tabs-win-bar">
+        <i />
+        <i />
+        <i />
+        <em>yourbrand.com</em>
+      </div>
+      <div className="web-app-development-service-tabs-win-body">
+        <div
+          className="web-app-development-service-tabs-win-hero web-app-development-service-tabs-grow"
+        />
+        <div className="web-app-development-service-tabs-win-cols">
+          {[1, 2, 3].map((cell) => (
+            <div key={cell} className="web-app-development-service-tabs-pop" />
+          ))}
+        </div>
+        <div
+          className="web-app-development-service-tabs-win-line web-app-development-service-tabs-grow"
+          style={{ width: "90%" }}
+        />
+        <div
+          className="web-app-development-service-tabs-win-line web-app-development-service-tabs-grow"
+          style={{ width: "65%" }}
+        />
+      </div>
+    </div>
+    <Chip icon={TbBolt} label="Loads in 1.2s" position={{ top: 18, right: 16 }} />
+    <Chip icon={TbSearch} label="SEO score 98" position={{ bottom: 18, left: 16 }} />
+  </>
+);
+
+const AppVisual = () => (
+  <>
+    <div className="web-app-development-service-tabs-phone web-app-development-service-tabs-float">
+      <div className="web-app-development-service-tabs-phone-screen">
+        <div className="web-app-development-service-tabs-phone-notch" />
+        <div
+          className="web-app-development-service-tabs-phone-card web-app-development-service-tabs-pop"
+        >
+          <span>Monthly orders</span>
+          <b>1,284</b>
+        </div>
+        {[TbShoppingCart, TbUsers, TbChartBar].map((ItemIcon, itemIndex) => (
+          <div
+            key={itemIndex}
+            className="web-app-development-service-tabs-phone-item web-app-development-service-tabs-pop"
+          >
+            <i>
+              <ItemIcon />
+            </i>
+            <span />
+          </div>
+        ))}
+      </div>
+    </div>
+    <Chip icon={TbBrandAndroid} label="Android" position={{ top: 22, left: 14 }} />
+    <Chip icon={TbBrandApple} label="iOS" position={{ bottom: 26, right: 14 }} />
+  </>
+);
+
+const AiVisual = () => (
+  <>
+    <div className="web-app-development-service-tabs-chat web-app-development-service-tabs-float">
+      <div className="web-app-development-service-tabs-chat-head">
+        <span className="web-app-development-service-tabs-chat-avatar">
+          <TbMessageChatbot />
+        </span>
+        <div>
+          Support assistant
+          <small>Online</small>
+        </div>
+      </div>
+      <div className="web-app-development-service-tabs-chat-messages">
+        <div
+          className="web-app-development-service-tabs-msg web-app-development-service-tabs-msg-user web-app-development-service-tabs-pop"
+        >
+          Where is my order?
+        </div>
+        <div
+          className="web-app-development-service-tabs-msg web-app-development-service-tabs-msg-bot web-app-development-service-tabs-dots web-app-development-service-tabs-typing web-app-development-service-tabs-pop"
+        >
+          <i />
+          <i />
+          <i />
+        </div>
+        <div
+          className="web-app-development-service-tabs-msg web-app-development-service-tabs-msg-bot web-app-development-service-tabs-pop"
+        >
+          Your order shipped today and arrives on Friday.
+        </div>
+      </div>
+    </div>
+    <Chip icon={TbClock} label="Replies in 2s" position={{ top: 16, right: 14 }} />
+    <Chip icon={TbTicket} label="80% tickets automated" position={{ bottom: 16, left: 14 }} />
+  </>
+);
+
+const defaultServiceTabList: ServiceTab[] = [
+  {
+    anchor: "web-development",
+    tabIcon: TbWorldWww,
+    tabLabel: "Web development",
+    eyebrow: "Web development",
+    title: "Websites built to perform",
+    description:
+      "From landing pages to full e-commerce platforms, we build fast, SEO-ready, mobile-first websites.",
+    featureList: [
+      { icon: TbDeviceDesktop, title: "Responsive design", text: "Looks right on every screen" },
+      { icon: TbSearch, title: "SEO optimised", text: "Built to rank from day one" },
+      { icon: TbBolt, title: "Fast loading", text: "Under two seconds" },
+      { icon: TbShieldCheck, title: "Secure and scalable", text: "Safe code, ready to grow" },
+    ],
+    visual: <WebVisual />,
+  },
+  {
+    anchor: "software-app-development",
+    tabIcon: TbDeviceMobileCode,
+    tabLabel: "Software and app development",
+    eyebrow: "Software and app development",
+    title: "Software made around your workflow",
+    description:
+      "Custom apps and internal tools that replace spreadsheets and manual processes.",
+    featureList: [
+      { icon: TbDevices, title: "Cross-platform apps", text: "One codebase, two stores" },
+      { icon: TbApi, title: "API development", text: "Clean, documented endpoints" },
+      { icon: TbCloudUpload, title: "Cloud deployment", text: "Hosted and monitored" },
+      { icon: TbHeadset, title: "Ongoing support", text: "Updates after launch" },
+    ],
+    visual: <AppVisual />,
+  },
+  {
+    anchor: "ai-solutions",
+    tabIcon: TbBrain,
+    tabLabel: "AI solutions",
+    eyebrow: "AI solutions",
+    title: "Put AI to work in your business",
+    description:
+      "Smart assistants and automation that save hours every week and improve customer experience.",
+    featureList: [
+      { icon: TbMessageChatbot, title: "Custom chatbots", text: "Trained on your content" },
+      { icon: TbSettingsAutomation, title: "Process automation", text: "Less manual work" },
+      { icon: TbPlugConnected, title: "LLM integrations", text: "Add AI to your product" },
+      { icon: TbChartDots, title: "Data insights", text: "Answers from your data" },
+    ],
+    visual: <AiVisual />,
+  },
+];
+
+const ServiceTabsSection = ({
+  serviceTabList = defaultServiceTabList,
+  defaultActiveIndex = 0,
+  primaryButton = { label: "Get a free quote", href: "#contact" },
+  secondaryButton = { label: "See our work", href: "#web-development" },
+}: ServiceTabsSectionProps) => {
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(defaultActiveIndex);
+  const sectionRef = useRef<HTMLElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+  const [isPillReady, setIsPillReady] = useState(false);
+
+  useEffect(() => {
+    const openTabFromHash = () => {
+      const hashAnchor = window.location.hash.replace("#", "");
+      const matchedTabIndex = serviceTabList.findIndex(
+        (serviceTab) => serviceTab.anchor === hashAnchor
+      );
+      if (matchedTabIndex === -1) return;
+      setActiveTabIndex(matchedTabIndex);
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    openTabFromHash();
+    window.addEventListener("hashchange", openTabFromHash);
+    return () => window.removeEventListener("hashchange", openTabFromHash);
+  }, [serviceTabList]);
+
+  // Sliding pill behind the active tab (CSS highlight is the no-JS fallback).
+  useIsoLayoutEffect(() => {
+    const bar = barRef.current;
+    const pill = pillRef.current;
+    if (!bar || !pill) return;
+
+    const tabButtonList = bar.querySelectorAll<HTMLButtonElement>("[role='tab']");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const placePill = (isInstant: boolean) => {
+      const activeButton = tabButtonList[activeTabIndex];
+      if (!activeButton) return;
+      gsap.to(pill, {
+        x: activeButton.offsetLeft,
+        y: activeButton.offsetTop,
+        width: activeButton.offsetWidth,
+        height: activeButton.offsetHeight,
+        duration: isInstant ? 0 : 0.55,
+        ease: "power3.inOut",
+        overwrite: true,
+      });
+    };
+
+    placePill(isFirstRender.current || prefersReducedMotion);
+    setIsPillReady(true);
+
+    const handleResize = () => placePill(true);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [activeTabIndex]);
+
+  // Content motion: plays on scroll the first time, instantly on every tab switch.
+  useIsoLayoutEffect(() => {
+    const panel = panelRef.current;
+    const bar = barRef.current;
+    const section = sectionRef.current;
+    if (!panel || !bar || !section) return;
+
+    const isFirst = isFirstRender.current;
+    isFirstRender.current = false;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const q = gsap.utils.selector(panel);
+    const cls = (name: string) => `.web-app-development-service-tabs-${name}`;
+
+    const ctx = gsap.context(() => {
+      const timeline = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        paused: isFirst,
+      });
+
+      if (isFirst) {
+        timeline.from(bar, { y: 28, autoAlpha: 0, duration: 0.7 }, 0);
+      }
+
+      timeline
+        .from(
+          q(cls("in")),
+          {
+            y: 16,
+            autoAlpha: 0,
+            duration: 0.5,
+            stagger: 0.07,
+            clearProps: "opacity,visibility,transform",
+          },
+          0.05
+        )
+        .from(q(cls("stage")), { scale: 0.96, autoAlpha: 0, duration: 0.6 }, 0.1)
+        .from(
+          q(cls("grow")),
+          { scaleX: 0, transformOrigin: "left", duration: 0.6, stagger: 0.1 },
+          0.35
+        )
+        .from(
+          q(cls("pop")),
+          { scale: 0.8, y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.1, ease: "back.out(1.7)" },
+          0.45
+        );
+
+      gsap.to(q(cls("float")), {
+        y: -6,
+        duration: 2,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // AI tab: user message -> typing dots -> bot reply
+      if (q(cls("msg-user")).length) {
+        timeline
+          .from(q(cls("msg-user")), { y: 10, autoAlpha: 0, scale: 0.9, duration: 0.4, ease: "back.out(1.6)" }, 0.9)
+          .from(q(cls("dots")), { autoAlpha: 0, duration: 0.25 }, 1.4)
+          .to(q(cls("dots")), { autoAlpha: 0, height: 0, padding: 0, marginTop: -9, duration: 0.3 }, 3)
+          .from(
+            q(`${cls("msg-bot")}:not(${cls("dots")})`),
+            { y: 10, autoAlpha: 0, scale: 0.9, duration: 0.4, ease: "back.out(1.6)" },
+            3.1
+          );
+
+        gsap.to(q(`${cls("dots")} i`), {
+          y: -3,
+          opacity: 1,
+          duration: 0.35,
+          stagger: 0.15,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+        });
+      }
+
+      if (isFirst) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 75%",
+          once: true,
+          onEnter: () => timeline.play(),
+        });
+      }
+    }, panel);
+
+    return () => ctx.revert();
+  }, [activeTabIndex]);
+
+  const activeService = serviceTabList[activeTabIndex];
+
+  return (
+    <section
+      ref={sectionRef}
+      id="service-tabs"
+      className="web-app-development-service-tabs-section"
+    >
+      <Container>
+        <div
+          ref={barRef}
+          className={joinClasses(
+            "web-app-development-service-tabs-bar",
+            isPillReady && "web-app-development-service-tabs-bar-pill-ready"
+          )}
+          role="tablist"
+        >
+          <span
+            ref={pillRef}
+            className="web-app-development-service-tabs-pill"
+            aria-hidden="true"
+          />
+          {serviceTabList.map((serviceTab, tabIndex) => {
+            const TabIcon = serviceTab.tabIcon;
+            const isActive = tabIndex === activeTabIndex;
+            return (
+              <button
+                key={serviceTab.anchor}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={joinClasses(
+                  "web-app-development-service-tabs-button",
+                  isActive && "web-app-development-service-tabs-button-active"
+                )}
+                onClick={() => setActiveTabIndex(tabIndex)}
+              >
+                <TabIcon className="web-app-development-service-tabs-button-icon" />
+                {serviceTab.tabLabel}
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          key={activeService.anchor}
+          ref={panelRef}
+          role="tabpanel"
+          className="web-app-development-service-tabs-panel"
+        >
+          <div className="web-app-development-service-tabs-content">
+            <p
+              className="web-app-development-service-detail-eyebrow web-app-development-service-tabs-in"
+            >
+              {activeService.eyebrow}
+            </p>
+            <h2
+              className="web-app-development-service-detail-title web-app-development-service-tabs-in"
+            >
+              {activeService.title}
+            </h2>
+            <p
+              className="web-app-development-service-detail-description web-app-development-service-tabs-in"
+            >
+              {activeService.description}
+            </p>
+
+            <div className="web-app-development-service-detail-feature-grid">
+              {activeService.featureList.map((feature) => {
+                const FeatureIcon = feature.icon;
+                return (
+                  <div
+                    key={feature.title}
+                    className="web-app-development-service-detail-feature-item web-app-development-service-tabs-in"
+                  >
+                    <span className="web-app-development-service-detail-feature-icon">
+                      <FeatureIcon />
+                    </span>
+                    <div>
+                      <b>{feature.title}</b>
+                      <span>{feature.text}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div
+              className="web-app-development-service-tabs-cta-group web-app-development-service-tabs-in"
+            >
+              <a
+                href={primaryButton.href}
+                className="web-app-development-service-tabs-cta-primary"
+              >
+                {primaryButton.label}
+              </a>
+              <a
+                href={secondaryButton.href}
+                className="web-app-development-service-tabs-cta-secondary"
+              >
+                {secondaryButton.label}
+              </a>
+            </div>
+          </div>
+
+          <div className="web-app-development-service-tabs-stage">
+            {activeService.visual}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+export default ServiceTabsSection;
