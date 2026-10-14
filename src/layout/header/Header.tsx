@@ -20,20 +20,20 @@ export type NavGroup = {
 export type NavLink = { label: string; href: string };
 
 export const NAV_GROUPS: NavGroup[] = [
-  {
-    label: "Digital Marketing Services",
-    href: "/digital-marketing",
-    eyebrow: "What we do",
-    title: "Connected thinking",
-    accent: "Measurable movement",
-    items: [
-      { label: "SEO & AI SEO", href: "/ai-seo" },
-      { label: "Paid Media & Performance Marketing", href: "/performance" },
-      { label: "Content & Social", href: "/social-growth" },
-      { label: "Customer Engagement", href: "/conversion" },
-      { label: "Reputation & Optimization", href: "/reputation" },
-    ],
-  },
+{
+  label: "Digital Marketing Services",
+  href: "/digital-marketing",
+  eyebrow: "What we do",
+  title: "Connected thinking",
+  accent: "Measurable movement",
+  items: [
+    { label: "SEO & AI SEO", href: "/digital-marketing/seo-ai-seo" },
+    { label: "Paid Media & Performance Marketing", href: "/digital-marketing/paid-media" },
+    { label: "Content & Social", href: "/digital-marketing/content-social" },
+    { label: "Customer Engagement", href: "/digital-marketing/customer-engagement" },
+    { label: "Reputation & Optimization", href: "/digital-marketing/reputation-optimization" },
+  ],
+},
   {
     label: "Web and App Development Services",
     href: "/web-app-development",
