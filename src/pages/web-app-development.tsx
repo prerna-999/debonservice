@@ -1,6 +1,6 @@
 import Head from "next/head";
 import ITTechnologyPage from "@/components/it-technology";
-export default function ITTechnology() {
+export default function WebAppDevelopment() {
   return (
     <>
       <Head>
