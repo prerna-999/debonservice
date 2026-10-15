@@ -41,8 +41,8 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Reliable technology",
     accent: "Built to scale",
     items: [
-      { label: "Web Development", href: "/website-development" },
-      { label: "Software & App Development", href: "/software-development" },
+      { label: "Web Development", href: "/web-development" },
+      { label: "Software & App Development", href: "/software-app-development" },
       { label: "AI Solutions", href: "/ai-solutions" },
     ],
   },
