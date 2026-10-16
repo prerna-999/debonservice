@@ -1,12 +1,11 @@
+
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight, CalendarCheck } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-
 
 export default function HeroBanner() {
   const rootRef = useRef<HTMLElement>(null);
@@ -64,39 +63,35 @@ export default function HeroBanner() {
       <div className="home-hero__shell home-hero__layout">
         <div className="home-hero__copy">
           <p className="home-hero__eyebrow" data-reveal>
-            Independent digital growth agency <span className="home-hero__dot" /> India · Global
+            Globally Recognised Digital Growth Marketing Partner
           </p>
 
-          <h1 id="hero-title" className="home-hero__title" ref={titleRef} onPointerMove={onPointerMove} data-reveal>
-            Be found
+          <h1
+            id="hero-title"
+            className="home-hero__title"
+            ref={titleRef}
+            onPointerMove={onPointerMove}
+            data-reveal
+          >
+            Stop Working in Silos.
             <br />
-            Be chosen
-            <br />
-            <span>Keep growing</span>
+            <span>Start Growing as One.</span>
           </h1>
 
           <p className="home-hero__lead" data-reveal>
-            SEO, AI search, paid media and content designed to work as one. We help ambitious businesses turn
-            visibility into valuable conversations.
+            Your marketing strategies, advanced technology and AI expertise work
+            better together.
           </p>
 
           <div className="home-hero__actions" data-reveal>
-            <Link href="#audit" className="home-hero__btn">
-              Explore a visibility review
+            <Link href="tel:+919876543210" className="home-hero__btn">
+              Get a Free Audit Report
               <ArrowUpRight size={20} strokeWidth={2.2} />
             </Link>
-            <Link href="#work" className="home-hero__link">
-              See our approach
-              <ArrowDown size={18} strokeWidth={2.2} />
+            <Link href="/contact" className="home-hero__link">
+              Book a Free Consultation
+              <CalendarCheck size={18} strokeWidth={2.2} />
             </Link>
-          </div>
-
-          <div className="home-hero__tags" data-reveal>
-            <span>Strategy</span>
-            <i />
-            <span>Creative</span>
-            <i />
-            <span>Performance</span>
           </div>
         </div>
 
@@ -112,11 +107,11 @@ export default function HeroBanner() {
           </div>
 
           <div className="home-hero__card">
-            <span>THE DEBON METHOD / 01</span>
+            <span>THE DEBON METHOD</span>
             <strong>
-              Attention
+              Connect
               <br />
-              into action
+              the Dots
             </strong>
             <svg viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="40" />
@@ -124,7 +119,7 @@ export default function HeroBanner() {
             </svg>
           </div>
 
-          <div className="home-hero__vertical">GROWTH IS A DIRECTION, NOT A DASHBOARD</div>
+          <div className="home-hero__vertical">START GROWING AS ONE</div>
         </div>
       </div>
     </section>

@@ -56,19 +56,16 @@ export default function Insights() {
         {/* ---- Heading ---- */}
         <Row className="home-insights__head align-items-end">
           <Col md={7}>
-            <p className="home-insights__eyebrow" data-reveal>
-              13 / Insights
-            </p>
+           
             <h2 id="insights-title" className="home-insights__title" data-reveal>
-              Questions shaping
+              The Brain Behind
               <br />
-              <em>tomorrow&apos;s marketing</em>
+              <em>the Brand.</em>
             </h2>
           </Col>
           <Col md={5}>
             <p className="home-insights__intro" data-reveal>
-              Starting points for conversations about search, content and performance. Full articles can be added
-              when your editorial library is ready.
+              Making sense of marketing, technology and things that help your brand grow.
             </p>
           </Col>
         </Row>

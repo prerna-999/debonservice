@@ -3,68 +3,48 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowUpRight, Search, Sparkles, Users, TrendingUp, ShieldCheck, FileText } from "lucide-react";
+import { ArrowUpRight, Globe, Code2, Bot } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Service = {
-  id: string; 
+  id: string;
   tag: string;
   icon: LucideIcon;
   title: [string, string];
   text: string;
   aria: string;
+  href: string;
 };
 
 const SERVICES: Service[] = [
   {
-    id: "organic-seo",
-    tag: "01 / SEARCH",
-    icon: Search,
-    title: ["Organic Search", "Optimization"],
-    text: "Improve technical health, page relevance and content depth so the right people find you in Google Search.",
-    aria: "Discuss organic search optimization",
+    id: "web-development",
+    tag: "01",
+    icon: Globe,
+    title: ["Web", "Development"],
+    text: "We design websites to impress, express, perform and convert. We transform innovative ideas into seamless online experiences that grow with your business.",
+    aria: "Discuss web development",
+    href: "/web-development",
   },
   {
-    id: "ai-seo",
-    tag: "02 / DISCOVERY",
-    icon: Sparkles,
-    title: ["AI-Powered", "SEO"],
-    text: "Structure useful, credible information to improve your chances of being surfaced in AI search and answer experiences.",
-    aria: "Discuss AI SEO",
+    id: "software-app-development",
+    tag: "02",
+    icon: Code2,
+    title: ["Software and App", "Development"],
+    text: "We simplify your complex business requirements into meaningful and scalable software and personalised mobile apps. We create digital solutions that work the way you do.",
+    aria: "Discuss software and app development",
+    href: "/software-app-development",
   },
   {
-    id: "social-growth",
-    tag: "03 / COMMUNITY",
-    icon: Users,
-    title: ["Social Media", "Growth Management"],
-    text: "Build a consistent brand voice across the platforms your audience uses, with content and community care.",
-    aria: "Discuss social media growth",
-  },
-  {
-    id: "performance",
-    tag: "04 / MEDIA",
-    icon: TrendingUp,
-    title: ["Performance", "Marketing"],
-    text: "Reach high-intent audiences through paid campaigns with thoughtful creative, conversion tracking and regular testing.",
-    aria: "Discuss performance marketing",
-  },
-  {
-    id: "conversion",
-    tag: "05 / TRUST",
-    icon: ShieldCheck,
-    title: ["Conversion &", "Reputation"],
-    text: "Improve landing-page journeys, reduce friction and strengthen the signals that help visitors feel confident.",
-    aria: "Discuss conversion and reputation",
-  },
-  {
-    id: "content",
-    tag: "06 / STORY",
-    icon: FileText,
-    title: ["Content", "Creation"],
-    text: "Create useful stories and assets for search, social and paid media that educate people and move them to act.",
-    aria: "Discuss content creation",
+    id: "ai-solutions",
+    tag: "03",
+    icon: Bot,
+    title: ["AI", "Solutions"],
+    text: "We make technology work smarter for your unique brand. From intelligent chatbots to personalised AI tools, we provide advanced AI solutions to unlock new possibilities.",
+    aria: "Discuss AI solutions",
+    href: "/ai-solutions",
   },
 ];
 
@@ -99,21 +79,12 @@ export default function Services() {
     <section className="home-services" id="services" aria-labelledby="services-title" ref={rootRef}>
       <Container>
         <Row className="home-services__head align-items-end">
-          <Col md={7}>
-            <p className="home-services__eyebrow" data-reveal>
-              02 / What we do
-            </p>
+          <Col md={12}>
             <h2 id="services-title" className="home-services__title" data-reveal>
-              One connected
+              Powering Possibilities
               <br />
-              <em>growth system</em>
+              <em>Through Development Solutions</em>
             </h2>
-          </Col>
-          <Col md={5}>
-            <p className="home-services__intro" data-reveal>
-              Six focused services that help your brand appear where decisions begin and perform when interest
-              turns into intent.
-            </p>
           </Col>
         </Row>
 
@@ -121,7 +92,7 @@ export default function Services() {
           {SERVICES.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Col key={s.id} xs={12} sm={6} lg={4}>
+              <Col key={s.id} xs={12} md={4}>
                 <article
                   className={`home-services__card home-services__card--${i + 1}`}
                   id={s.id}
@@ -143,7 +114,7 @@ export default function Services() {
 
                   <p className="home-services__text">{s.text}</p>
 
-                  <Link href="#contact" className="home-services__cta" aria-label={s.aria}>
+                  <Link href={s.href} className="home-services__cta" aria-label={s.aria}>
                     Discuss this service
                     <ArrowUpRight size={18} strokeWidth={2.4} />
                   </Link>

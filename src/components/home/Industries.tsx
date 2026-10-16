@@ -1,3 +1,6 @@
+
+
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -5,65 +8,56 @@ type Industry = {
   name: string;
   summary: string;
   description: string;
-  services: string[];
 };
 
 const industries: Industry[] = [
   {
-    name: "Real estate",
-    summary: "Local discovery and qualified property enquiries.",
-    description:
-      "Buyers compare locations, prices and developers long before they call. We focus on local search, listing visibility and follow-up so serious enquiries reach your team first.",
-    services: ["Local SEO", "Performance Ads", "Content"],
-  },
-  {
-    name: "Healthcare & clinics",
-    summary: "Helpful information and trust through the care journey.",
-    description:
-      "Patients look for clear answers and signs of trust before they book. We build helpful content and a credible online presence that makes the next step feel safe and simple.",
-    services: ["Organic SEO", "Reputation", "Content"],
-  },
-  {
-    name: "Education & coaching",
-    summary: "Clear programmes and stronger student interest.",
-    description:
-      "Students and parents compare programmes, results and reviews. We present your courses clearly and guide interested learners from first click to enquiry.",
-    services: ["Social Growth", "Performance Ads", "Conversion"],
-  },
-  {
-    name: "E-commerce",
-    summary: "Product discovery and more effective purchase paths.",
-    description:
-      "Shoppers move between search, social and marketplaces before they buy. We connect product discovery, paid campaigns and the checkout path so fewer visits go to waste.",
-    services: ["Performance Ads", "Conversion", "AI SEO"],
-  },
-  {
-    name: "Professional services",
-    summary: "Authority, clarity and meaningful enquiries.",
-    description:
-      "Clients choose advisers they trust, and trust is built through clarity. We shape content and visibility that shows your expertise and attracts the right enquiries.",
-    services: ["Organic SEO", "Content", "Reputation"],
-  },
-  {
-    name: "Hospitality & travel",
-    summary: "Inspiration that leads to confident booking.",
-    description:
-      "Travellers plan with images, reviews and local tips. We help your property or experience stand out at every step, from inspiration to confirmed booking.",
-    services: ["Social Growth", "Content", "Local SEO"],
-  },
-  {
-    name: "Local businesses",
-    summary: "More visibility where nearby customers are looking.",
-    description:
-      "Most customers search close to home and decide quickly. We improve your local presence, reviews and social activity so nearby buyers can find and choose you.",
-    services: ["Local SEO", "Reputation", "Social Growth"],
-  },
-  {
     name: "Technology & SaaS",
-    summary: "Simpler stories for complex products and buying teams.",
+    summary: "Software companies, IT services, AI businesses and technology startups.",
     description:
-      "Complex products need simple stories for several decision makers. We explain value in plain language and support each stage of the buying journey.",
-    services: ["AI SEO", "Content", "Performance Ads"],
+      "Companies find it difficult to stand out in crowded markets, explain complex solutions, generate qualified leads and reduce customer churn.",
+  },
+  {
+    name: "Finance & Fintech",
+    summary: "Financial services, fintech platforms, accounting firms and insurance providers.",
+    description:
+      "Businesses find it difficult to build customer trust, navigate compliance requirements, simplify complex services and acquire customers in competitive markets.",
+  },
+  {
+    name: "E-commerce & Retail",
+    summary: "Online stores, consumer brands, retail chains and direct-to-consumer businesses.",
+    description:
+      "It becomes an overwhelming experience for businesses to reduce cart abandonment, manage rising customer acquisition costs, stand out among competitors and encourage repeat purchases.",
+  },
+  {
+    name: "Healthcare & Wellness",
+    summary: "Clinics, healthcare providers, wellness brands and health technology companies.",
+    description:
+      "It becomes difficult to build credibility, reach the right patients or customers, communicate services clearly and maintain privacy and advertising compliance.",
+  },
+  {
+    name: "Real Estate & Construction",
+    summary: "Property developers, real estate agencies, construction firms and property management companies.",
+    description:
+      "It becomes difficult to generate qualified enquiries, build buyer confidence, differentiate properties and convert long sales cycles into deals.",
+  },
+  {
+    name: "Education & EdTech",
+    summary: "Educational institutions, online learning platforms, training providers and professional development businesses.",
+    description:
+      "It is not a cinch to attract prospective students, stand out in a crowded market, improve enrolment conversions and maintain learner engagement.",
+  },
+  {
+    name: "Manufacturing & Industrial",
+    summary: "Manufacturers, industrial suppliers, engineering companies and B2B product businesses.",
+    description:
+      "Businesses find it hard to reach niche B2B buyers, generate qualified business leads, communicate technical expertise and modernise outdated digital processes.",
+  },
+  {
+    name: "Hospitality & Travel",
+    summary: "Hotels, resorts, travel companies, restaurants and experience-led businesses.",
+    description:
+      "Owners find it difficult to stand out in competitive destinations, increase direct bookings, manage online reviews and turn seasonal demand into consistent revenue.",
   },
 ];
 
@@ -97,16 +91,16 @@ export default function Industries() {
       <Container>
         <Row className="industries-heading-row align-items-end">
           <Col lg={7}>
-            <p className="industries-eyebrow">07 / Industries</p>
             <h2 className="industries-title" id="industries-title">
-              Marketing shaped by
+              Different Industries,
               <br />
-              <em>your industry</em>
+              <em>Shared Ambitions</em>
             </h2>
           </Col>
           <Col lg={5}>
             <p className="industries-intro">
-              We adapt channel choices and messages to the way buyers research and decide in each market.
+              Whatever your industry is, we create the right strategies, pick the right technologies and
+              leverage AI solutions to pace up your business growth.
             </p>
           </Col>
         </Row>
@@ -171,16 +165,7 @@ export default function Industries() {
               <h3 className="industries-panel-title">{current.name}</h3>
               <p className="industries-panel-summary">{current.summary}</p>
               <p className="industries-panel-description">{current.description}</p>
-              <div className="industries-panel-chips">
-                {current.services.map((service) => (
-                  <span className="industries-panel-chip" key={service}>
-                    {service}
-                  </span>
-                ))}
-              </div>
-              <a className="industries-panel-link" href="/contact">
-                See how we help &#8599;
-              </a>
+              
             </div>
           </div>
         </div>

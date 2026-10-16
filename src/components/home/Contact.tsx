@@ -1,3 +1,5 @@
+
+
 "use client";
 import { useEffect, useRef, type FormEvent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
@@ -57,21 +59,14 @@ export default function Contact() {
         <Row className="home-contact__layout">
           {/* ---- Left copy ---- */}
           <Col lg={5}>
-            <p className="home-contact__eyebrow" data-reveal>
-              14 / Contact
-            </p>
             <h2 id="contact-title" className="home-contact__title" data-reveal>
-              Tell us what
+              Big Ideas Deserve
               <br />
-              you want to <em>grow</em>
+              Better <em>Execution.</em>
             </h2>
             <p className="home-contact__intro" data-reveal>
-              Share your challenge and the best way to reach you. We will start with a useful conversation about your
-              goals.
+              Your key takeaway awaits. Get the right strategy, smarter technology and advanced AI solutions today.
             </p>
-            <a className="home-contact__mail" href={`mailto:${EMAIL}`} data-reveal>
-              {EMAIL} <span aria-hidden="true">↗</span>
-            </a>
           </Col>
 
           {/* ---- Form ---- */}

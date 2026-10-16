@@ -1,42 +1,42 @@
+
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
-import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const FAQS = [
   {
-    q: "How long does SEO take to show progress?",
-    a: "It depends on your site's history, competition and the work required. We agree on milestones and report early signs such as technical improvements, visibility and useful traffic before judging longer term business results.",
+    q: "What makes Debonaire different from other digital marketing agencies?",
+    a: "In short, Debonaire's combination of strategy, creativity, and technology enables businesses to grow with intent. As a digital growth marketing agency, we focus on your goals to find fresh opportunities for innovative solutions to drive marketing to meaningful business results.",
   },
   {
-    q: "What does AI search optimization involve?",
-    a: "We improve the quality, structure and credibility of your content so your expertise is easier to understand across emerging answer experiences. No agency can promise placement in a particular AI answer.",
+    q: "What is performance marketing, and how can it help my business?",
+    a: "Performance marketing is about measuring measurable actions, such as leads, sales, and conversions. Through well-defined campaigns, our marketing team allows you to better understand marketing and engage in efficient and meaningful campaigns.",
   },
   {
-    q: "Can search and paid campaigns run together?",
-    a: "Yes. Paid campaigns can test messages and reach buyers quickly while organic search develops lasting visibility. We connect both to a common conversion goal.",
+    q: "How can content creation help my brand attract more customers?",
+    a: "The key value of content creation is that it helps communicate your business's value and respond to customer questions. This way, we create relevant content for various platforms.",
   },
   {
-    q: "Do you build a custom plan for each business?",
-    a: "Yes. The plan starts with your audience, market, offer, budget and goals. We then choose the work that best fits those conditions.",
+    q: "What is AI for SEO, and why does my business need it?",
+    a: "AI for SEO allows brands to keep pace with both evolving search behaviours and AI-powered searches. We integrate the core principles of SEO with Answer Engine Optimisation (AEO), Generative Engine Optimisation (GEO), and effective content strategies to help businesses increase their chances of being found through search engines as well as AI platforms.",
   },
   {
-    q: "How will we know what is working?",
-    a: "We set up useful measurement, review it with you and explain the next actions. Reporting is built around the outcomes that matter to your business.",
+    q: "Why is social media content creation important for business growth?",
+    a: "Social media content creation makes your business more visible, communicative, and connected with its target audience. We generate effective and platform-specific posts, Reels, videos, and creatives that help achieve brand presence, engagement, community building, and business objectives.",
   },
   {
-    q: "Can you work with teams outside India?",
-    a: "Yes. Discovery, planning, delivery and reporting can all happen remotely with an agreed communication rhythm.",
+    q: "How do I choose the right performance-based marketing agency for my business?",
+    a: "Look for a performance marketing company that understands your business model, has well-defined goals and metrics to track, and optimises strategies based on real-time performance. At Debonaire, we approach every situation individually and recommend the most suitable approach for your needs instead of offering an off-the-shelf solution.",
   },
 ];
 
 export default function Faq() {
   const rootRef = useRef<HTMLElement>(null);
   const baseId = useId();
-  const [open, setOpen] = useState<number | null>(null); 
+  const [open, setOpen] = useState<number | null>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -57,26 +57,18 @@ export default function Faq() {
 
   return (
     <section className="home-faq" id="faq" aria-labelledby="faq-title" ref={rootRef}>
-      <Container >
+      <Container>
         <Row className="home-faq__row">
           {/* ---- Copy ---- */}
           <Col lg={5}>
-            <p className="home-faq__eyebrow" data-reveal>
-              11 / Good questions
-            </p>
             <h2 id="faq-title" className="home-faq__title" data-reveal>
-              Let&apos;s clear
+              Curious?
               <br />
-              things <em>up</em>
+              Let&apos;s Get You <em>Sorted.</em>
             </h2>
             <p className="home-faq__text" data-reveal>
-              These are the questions we hear most often when a business is planning its next phase of digital
-              growth.
+              Here&apos;s everything you need to know to get started.
             </p>
-            <Link href="#contact" className="home-faq__link" data-reveal>
-              Ask us something else
-              <ArrowUpRight size={18} strokeWidth={2.4} />
-            </Link>
           </Col>
 
           {/* ---- Accordion ---- */}

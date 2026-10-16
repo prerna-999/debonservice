@@ -73,33 +73,31 @@ export default function About() {
                   sizes="(max-width: 768px) 45vw, 22vw"
                 />
               </div>
-              <div className="home-about__index">01 — UNDERSTAND BEFORE YOU AMPLIFY</div>
             </div>
           </Col>
 
           <Col md={6}>
             <div className="home-about__copy">
               <p className="home-about__eyebrow" data-reveal>
-                01 / About DebonServices
+               About Debonaire Capital Asset
               </p>
               <h2 id="about-title" className="home-about__title" data-reveal>
-                Search changed
+                Your Vision
                 <br />
-                <em>Good thinking</em>
+                <em>Our Strategy</em>
                 <br />
-                still wins
+                Shared Growth
               </h2>
               <p className="home-about__text" data-reveal>
-                People now discover businesses through search results, AI answers, social feeds and
-                recommendations. We connect those moments into a clear plan for reaching the right audience and
-                earning its trust.
+                Debonaire Capital Asset is a leading digital growth marketing agency that integrates marketing, technology, and business solutions in a strategic way so brands like yours can strive for progress with confidence. We convert complicated problems into easy solutions and effective online experiences. 
+
               </p>
               <p className="home-about__text" data-reveal>
-                Our work starts with your customer, your market and the action you need to create. Every channel
-                has a role; every result should teach us something useful.
+              With the help of strategic digital marketing services, website, app and software development services and advanced AI solutions, we connect every element to your business goals. To bring remarkable results, we leverage creativity in implementation and analytical skills in optimisation. We also provide business operations & corporate support services and flexible co-sharing & workspace for rent.
+
               </p>
-              <Link href="#process" className="home-about__link" data-reveal>
-                How we work
+              <Link href="/about" className="home-about__link" data-reveal>
+              Know more
                 <ArrowUpRight size={18} strokeWidth={2.4} />
               </Link>
             </div>

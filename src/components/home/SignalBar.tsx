@@ -1,13 +1,26 @@
+
+
 import { Asterisk } from "lucide-react";
 
-const WORDS = ["SEARCH", "AI VISIBILITY", "PAID MEDIA", "SOCIAL MEDIA", "CONVERSION"];
-const COPIES = 4; 
+const WORDS = [
+    "SEO & AI SEO",
+    "PAID MEDIA & PERFORMANCE MARKETING",
+    "CONTENT & SOCIAL",
+    "CUSTOMER ENGAGEMENT",
+    "REPUTATION & OPTIMIZATION",
+    "WEB DEVELOPMENT",
+    "SOFTWARE & APP DEVELOPMENT",
+    "AI SOLUTIONS",
+    "BUSINESS OPERATIONS",
+    "CORPORATE SUPPORT SERVICES",
+];
+const COPIES = 4;
 
 export default function SignalBar() {
     return (
         <section
             className="home-signal"
-            aria-label="Our connected disciplines: search, AI visibility, paid media, social and conversion"
+            aria-label="Our services: SEO and AI SEO, paid media and performance marketing, content and social, customer engagement, reputation and optimization, web development, software and app development, AI solutions, business operations and corporate support services"
         >
             <div className="home-signal__shell">
                 <span className="home-signal__label">

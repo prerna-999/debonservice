@@ -1,20 +1,20 @@
 
 
+
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowUpRight, ArrowLeft, ArrowRight, Plus, Minus, Search, Sparkles, Users, TrendingUp, ShieldCheck, FileText } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Plus, Minus, Search, TrendingUp, FileText, MessageCircle, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Service = {
-  category: string;
   title: string;
   description: string;
-  anchor: string;
+  href: string;
   service: string;
   image: string;
   icon: LucideIcon;
@@ -22,58 +22,44 @@ type Service = {
 
 const SERVICES: Service[] = [
   {
-    category: "SEARCH",
-    title: "Be found where intent begins",
-    description: "Improve technical foundations and useful content so more of the right people find your business.",
-    anchor: "organic-seo",
-    service: "Organic Search Optimization",
+    title: "SEO and AI SEO",
+    description: "Increase visibility on search engines and AI platforms so customers can easily find your business.",
+    href: "/digital-marketing/seo-and-ai-seo",
+    service: "SEO and AI SEO",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: Search,
   },
   {
-    category: "AI DISCOVERY",
-    title: "Be understood by answer engines",
-    description: "Shape clear, credible information that helps your expertise surface in AI search experiences.",
-    anchor: "ai-seo",
-    service: "AI-Powered SEO",
-    image: "/assets/img/all-img/home/home-about-1.avif",
-    icon: Sparkles,
-  },
-  {
-    category: "SOCIAL GROWTH",
-    title: "Build an audience that stays",
-    description: "Create a consistent social presence and a stronger relationship with your community.",
-    anchor: "social-growth",
-    service: "Social Media Growth Management",
-    image: "/assets/img/all-img/home/home-about-1.avif",
-    icon: Users,
-  },
-  {
-    category: "PAID MEDIA",
-    title: "Turn spend into measurable demand",
-    description: "Connect focused paid campaigns with creative, tracking and a clear route to action.",
-    anchor: "performance",
-    service: "Performance Marketing",
+    title: "Paid Media & Performance Marketing",
+    description: "Make sure you reach the right people through advertising, influencer partnerships, and outreach campaigns.",
+    href: "/digital-marketing/performance-marketing",
+    service: "Paid Media & Performance Marketing",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: TrendingUp,
   },
   {
-    category: "CONVERSION",
-    title: "Give every visit a better next step",
-    description: "Reduce friction, sharpen your offer and strengthen the proof people need to choose you.",
-    anchor: "conversion",
-    service: "Conversion & Reputation",
-    image: "/assets/img/all-img/home/home-about-1.avif",
-    icon: ShieldCheck,
-  },
-  {
-    category: "CONTENT",
-    title: "Make your expertise useful everywhere",
-    description: "Bring a clear story to search, social and campaigns with content built to help people act.",
-    anchor: "content",
-    service: "Content Creation",
+    title: "Content & Social",
+    description: "Create content, social experiences, and videos that effectively generate brand awareness and spur positive actions.",
+    href: "/digital-marketing/content-social",
+    service: "Content & Social",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: FileText,
+  },
+  {
+    title: "Customer Engagement",
+    description: "Strengthen customer relationships with the help of personalised email and WhatsApp campaigns.",
+    href: "/digital-marketing/customer-engagement",
+    service: "Customer Engagement",
+    image: "/assets/img/all-img/home/home-about-1.avif",
+    icon: MessageCircle,
+  },
+  {
+    title: "Reputation and Optimisation",
+    description: "Create a great reputation for your brand by making your digital presence much more reliable.",
+    href: "/digital-marketing/reputation-and-optimisation",
+    service: "Reputation and Optimisation",
+    image: "/assets/img/all-img/home/home-about-1.avif",
+    icon: ShieldCheck,
   },
 ];
 
@@ -81,24 +67,34 @@ const STEPS: { question: string; label: string; options: { text: string; match?:
   {
     question: "1. Where is your growth right now?",
     label: "Current growth stage",
-    options: [{ text: "Launching" }, { text: "Growing" }, { text: "Plateaued" }, { text: "Scaling" }],
-  },
-  {
-    question: "2. What should improve first?",
-    label: "Primary growth priority",
     options: [
-      { text: "Search visibility", match: 0 },
-      { text: "AI discovery", match: 1 },
-      { text: "Social reach", match: 2 },
-      { text: "Paid leads", match: 3 },
-      { text: "Conversions", match: 4 },
-      { text: "Content", match: 5 },
+      { text: "Just getting started" },
+      { text: "Growing but need direction" },
+      { text: "Ready to scale faster" },
+      { text: "Looking to improve results" },
     ],
   },
   {
-    question: "3. When would you like to begin?",
+    question: "2. What would you like to improve first?",
+    label: "Primary growth priority",
+    options: [
+      { text: "AI for SEO", match: 0 },
+      { text: "Performance Marketing", match: 1 },
+      { text: "Content Creation", match: 2 },
+      { text: "Social Media Content Creation", match: 2 },
+      { text: "App development" },
+      { text: "Website Development" },
+    ],
+  },
+  {
+    question: "3. When would you like to get started?",
     label: "Preferred start time",
-    options: [{ text: "This month" }, { text: "This quarter" }, { text: "Exploring options" }],
+    options: [
+      { text: "Right away" },
+      { text: "Within the next 2–4 weeks" },
+      { text: "Within the next 1–3 months" },
+      { text: "Just exploring my options" },
+    ],
   },
 ];
 
@@ -115,7 +111,9 @@ export default function ServiceFinder() {
   const [activeCard, setActiveCard] = useState(0);
   const [done, setDone] = useState(false);
 
-  // scroll reveal
+  const priorityOption = STEPS[1].options.find((o) => o.text === answers[1]);
+  const hasMatch = typeof priorityOption?.match === "number";
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.registerPlugin(ScrollTrigger);
@@ -223,11 +221,19 @@ export default function ServiceFinder() {
       setOpenStep(stepIndex + 1);
     } else {
       setDone(true);
+      const chosen = STEPS[1].options.find((o) => o.text === nextAnswers[1]);
+      const matched = typeof chosen?.match === "number";
+
       const select = document.querySelector<HTMLSelectElement>('#enquiry-form select[name="service"]');
-      if (select) select.value = SERVICES[card].service;
+      if (select && matched) select.value = SERVICES[card].service;
+
       const message = document.querySelector<HTMLTextAreaElement>('#enquiry-form textarea[name="message"]');
       if (message && !message.value.trim()) {
-        message.value = `Growth stage: ${nextAnswers[0] || "Not specified"}\nPriority: ${nextAnswers[1] || "Not specified"}\nStart: ${value}\nInterested in: ${SERVICES[card].service}`;
+        message.value =
+          `Growth stage: ${nextAnswers[0] || "Not specified"}\n` +
+          `Priority: ${nextAnswers[1] || "Not specified"}\n` +
+          `Start: ${value}` +
+          (matched ? `\nInterested in: ${SERVICES[card].service}` : "");
       }
     }
   };
@@ -244,21 +250,12 @@ export default function ServiceFinder() {
     <section className="home-finder" id="service-finder" aria-labelledby="service-finder-title" ref={rootRef}>
       <Container>
         <Row className="home-finder__head align-items-end">
-          <Col md={7}>
-            <p className="home-finder__eyebrow" data-reveal>
-              02A / Find your next move
-            </p>
+          <Col md={12}>
             <h2 id="service-finder-title" className="home-finder__title" data-reveal>
-              Tell us the challenge
+              Good Digital Marketing Solutions
               <br />
-              <em>Explore the right service</em>
+              <em>For Great Momentum</em>
             </h2>
-          </Col>
-          <Col md={5}>
-            <p className="home-finder__intro" data-reveal>
-              Answer three quick questions or browse the services. We will help you find a useful starting point
-              for your growth plan.
-            </p>
           </Col>
         </Row>
 
@@ -302,7 +299,11 @@ export default function ServiceFinder() {
                       {i === 2 && (
                         <>
                           <p className="home-finder__result" aria-live="polite">
-                            {done ? `A good place to start: ${SERVICES[activeCard].service}.` : ""}
+                            {done
+                              ? hasMatch
+                                ? `A good place to start: ${SERVICES[activeCard].service}.`
+                                : "Thanks! Share your brief and we will suggest the right starting point."
+                              : ""}
                           </p>
                           {done && (
                             <Link href="#contact" className="home-finder__cta">
@@ -337,7 +338,7 @@ export default function ServiceFinder() {
                     const Icon = s.icon;
                     return (
                       <article
-                        key={s.anchor}
+                        key={s.href}
                         ref={(el) => {
                           cardRefs.current[i] = el;
                         }}
@@ -348,7 +349,6 @@ export default function ServiceFinder() {
                           <span className="home-finder__card-icon" aria-hidden="true">
                             <Icon size={20} strokeWidth={1.8} />
                           </span>
-                          <span>{s.category}</span>
                         </div>
 
                         <div className="home-finder__card-copy">
@@ -356,9 +356,9 @@ export default function ServiceFinder() {
                           <p>{s.description}</p>
                         </div>
 
-                        <Link href={`#${s.anchor}`} className="home-finder__card-link" aria-label={`Explore ${s.service}`}>
+                        <Link href={s.href} className="home-finder__card-link" aria-label={`Explore ${s.service}`}>
                           {s.image ? <Image src={s.image} alt="" fill sizes="360px" /> : null}
-                          <span>Explore service</span>
+                          <span>Explore More</span>
                           <span className="home-finder__card-arrow" aria-hidden="true">
                             <ArrowUpRight size={20} strokeWidth={2} />
                           </span>
