@@ -290,9 +290,16 @@
    white-space: nowrap;
 }
 
-.corporate-marquee>div {
-   display: inline-block;
-   animation: corporate-marquee-scroll 26s linear infinite;
+.corporate-marquee-track {
+   display: flex;
+   width: max-content;
+   animation: corporate-marquee-scroll 30s linear infinite;
+   will-change: transform;
+}
+
+.corporate-marquee-group {
+   display: flex;
+   flex-shrink: 0;
 }
 
 .corporate-marquee span {
@@ -304,8 +311,18 @@
 .corporate-marquee span:nth-child(even) {
    color: var(--accent-light);
 }
+.corporate-marquee-track {
+   display: flex;
+   width: max-content;
+   animation: corporate-marquee-scroll 90s linear infinite;
+   will-change: transform;
+}
 
 @keyframes corporate-marquee-scroll {
+   from {
+      transform: translateX(0);
+   }
+
    to {
       transform: translateX(-50%);
    }
@@ -915,7 +932,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-   .corporate-marquee>div {
+   .corporate-marquee-track {
       animation: none;
    }
 

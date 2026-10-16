@@ -1,8 +1,10 @@
+
+
+
 // "use client";
 
-// import { useEffect, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 // import Link from "next/link";
-// import { Container, Row, Col } from "react-bootstrap";
 // import type { IconType } from "react-icons";
 // import { FiArrowRight, FiArrowUpRight, FiCheck, FiMessageSquare, FiPlus } from "react-icons/fi";
 
@@ -95,9 +97,9 @@
 // function Hero({ data }: { data: DevPageData }) {
 //   return (
 //     <header className="dv-hero">
-//       <Container className="dv-hero-inner">
-//         <Row className="align-items-center g-5">
-//           <Col lg={6}>
+//       <div className="dv-wrap dv-hero-inner">
+//         <div className="dv-grid dv-cols-half dv-center">
+//           <div>
 //             <span className="dv-tag">{data.eyebrow}</span>
 //             <h1 className="dv-title">
 //               {data.title} <em>{data.highlight}</em>
@@ -109,12 +111,12 @@
 //               </Link>
 //               <a href="#services" className="dv-btn dv-btn-ghost">View services</a>
 //             </div>
-//           </Col>
-//           <Col lg={6}>
+//           </div>
+//           <div>
 //             <CodeWindow file={data.file} lines={data.code} />
-//           </Col>
-//         </Row>
-//       </Container>
+//           </div>
+//         </div>
+//       </div>
 //     </header>
 //   );
 // }
@@ -135,16 +137,16 @@
 //   const n = items.length;
 //   return (
 //     <section className="dv-section dv-paper" id="services">
-//       <Container>
+//       <div className="dv-wrap">
 //         <p className="dv-eyebrow">01 / What we build</p>
 //         <h2 className="dv-h2">Everything you need, <em>in one place</em></h2>
 //         <p className="dv-sub">Focused services that help your business launch, grow and stay reliable.</p>
-//         <Row className="g-4">
+//         <div className="dv-cards">
 //           {items.map((s, i) => {
 //             const half = n % 3 === 2 && i >= n - 2; /* last row of 2 gets 2 wider cards */
 //             const Icon = s.icon;
 //             return (
-//               <Col key={s.title} md={6} lg={half ? 6 : 4}>
+//               <div key={s.title} className={half ? "dv-cards-half" : undefined}>
 //                 <article className="dv-card">
 //                   <span className="dv-card-no">{pad(i)}</span>
 //                   <div className="dv-card-top">
@@ -161,30 +163,52 @@
 //                     <span className="dv-arrow"><FiArrowUpRight /></span>
 //                   </div>
 //                 </article>
-//               </Col>
+//               </div>
 //             );
 //           })}
-//         </Row>
-//       </Container>
+//         </div>
+//       </div>
 //     </section>
 //   );
 // }
 
 // function Process({ steps }: { steps: Step[] }) {
+//   const listRef = useRef<HTMLOListElement>(null);
+//   useEffect(() => {
+//     const list = listRef.current;
+//     if (!list || !("IntersectionObserver" in window)) return;
+//     const items = Array.from(list.querySelectorAll<HTMLElement>(".dv-step"));
+//     const io = new IntersectionObserver(
+//       (entries) =>
+//         entries.forEach((e) => {
+//           if (e.isIntersecting) {
+//             e.target.classList.remove("dv-pre");
+//             io.unobserve(e.target);
+//           }
+//         }),
+//       { threshold: 0.15 }
+//     );
+//     items.forEach((el, i) => {
+//       el.style.transitionDelay = `${(i % 4) * 90}ms`;
+//       el.classList.add("dv-pre");
+//       io.observe(el);
+//     });
+//     return () => io.disconnect();
+//   }, [steps]);
 //   return (
 //     <section className="dv-section dv-dark">
-//       <Container>
-//         <Row className="g-5">
-//           <Col lg={5}>
+//       <div className="dv-wrap">
+//         <div className="dv-grid dv-cols-5-7">
+//           <div>
 //             <div className="dv-sticky">
 //               <p className="dv-eyebrow">02 / How we work</p>
 //               <h2 className="dv-h2">From idea to live <em>in four stages</em></h2>
 //               <p className="dv-sub">A clear process, so you always know what happens next.</p>
 //               <Link href="/contact" className="dv-btn dv-btn-primary">Start your project <FiArrowRight /></Link>
 //             </div>
-//           </Col>
-//           <Col lg={7}>
-//             <ol className="dv-steps">
+//           </div>
+//           <div>
+//             <ol className="dv-steps" ref={listRef}>
 //               {steps.map((s, i) => (
 //                 <li key={s.title} className="dv-step">
 //                   <div className="dv-step-no"><span>{pad(i)}</span></div>
@@ -201,9 +225,9 @@
 //                 </li>
 //               ))}
 //             </ol>
-//           </Col>
-//         </Row>
-//       </Container>
+//           </div>
+//         </div>
+//       </div>
 //     </section>
 //   );
 // }
@@ -211,9 +235,9 @@
 // function Why({ data }: { data: DevPageData }) {
 //   return (
 //     <section className="dv-section">
-//       <Container>
-//         <Row className="g-4 align-items-stretch">
-//           <Col lg={5}>
+//       <div className="dv-wrap">
+//         <div className="dv-grid dv-cols-5-7 dv-gap-md">
+//           <div>
 //             <div className="dv-why">
 //               <p className="dv-eyebrow">03 / Why Debon Service</p>
 //               <h2 className="dv-h2">{data.whyTitle}</h2>
@@ -223,25 +247,25 @@
 //               </div>
 //               <Link href="/contact" className="dv-btn dv-btn-primary">Get a free quote <FiArrowRight /></Link>
 //             </div>
-//           </Col>
-//           <Col lg={7}>
-//             <Row className="g-3 h-100">
+//           </div>
+//           <div>
+//             <div className="dv-benefits">
 //               {data.benefits.map((b) => {
 //                 const Icon = b.icon;
 //                 return (
-//                   <Col key={b.title} sm={6}>
+//                   <div key={b.title}>
 //                     <div className="dv-benefit">
 //                       <span className="dv-icon"><Icon /></span>
 //                       <h3>{b.title}</h3>
 //                       <p>{b.text}</p>
 //                     </div>
-//                   </Col>
+//                   </div>
 //                 );
 //               })}
-//             </Row>
-//           </Col>
-//         </Row>
-//       </Container>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
 //     </section>
 //   );
 // }
@@ -250,9 +274,9 @@
 //   const [open, setOpen] = useState<number | null>(0);
 //   return (
 //     <section className="dv-section dv-paper">
-//       <Container>
-//         <Row className="g-5">
-//           <Col lg={5}>
+//       <div className="dv-wrap">
+//         <div className="dv-grid dv-cols-5-7">
+//           <div>
 //             <div className="dv-sticky">
 //               <p className="dv-eyebrow">04 / Questions</p>
 //               <h2 className="dv-h2">Things people <em>ask first</em></h2>
@@ -264,8 +288,8 @@
 //                 <Link href="/contact" className="dv-btn dv-btn-primary">Talk to our team <FiArrowRight /></Link>
 //               </div>
 //             </div>
-//           </Col>
-//           <Col lg={7}>
+//           </div>
+//           <div>
 //             <div className="dv-faqs">
 //               {items.map((f, i) => (
 //                 <div key={f.q} className={`dv-faq ${open === i ? "is-open" : ""}`}>
@@ -280,29 +304,50 @@
 //                 </div>
 //               ))}
 //             </div>
-//           </Col>
-//         </Row>
-//       </Container>
+//           </div>
+//         </div>
+//       </div>
 //     </section>
 //   );
 // }
 
+// // function Cta({ data }: { data: DevPageData }) {
+// //   return (
+// //     <section className="dv-cta">
+// //       <div className="dv-cta-word" aria-hidden="true">{data.bigWord}</div>
+// //       <div className="dv-wrap">
+// //         <h2>{data.ctaTitle}</h2>
+// //         <p>{data.ctaText}</p>
+// //         <Link href="/contact" className="dv-btn dv-btn-primary">Talk to our team <FiArrowRight /></Link>
+// //       </div>
+// //     </section>
+// //   );
+// // }
+
 // function Cta({ data }: { data: DevPageData }) {
 //   return (
 //     <section className="dv-cta">
-//       <div className="dv-cta-word" aria-hidden="true">{data.bigWord}</div>
-//       <Container>
+//       <div className="dv-cta-word" aria-hidden="true">
+//         <div className="dv-cta-word-track">
+//           {[0, 1].map((i) => (
+//             <span key={i} className="dv-cta-word-item">
+//               {`${data.bigWord} `.repeat(3)}
+//             </span>
+//           ))}
+//         </div>
+//       </div>
+//       <div className="dv-wrap">
 //         <h2>{data.ctaTitle}</h2>
 //         <p>{data.ctaText}</p>
 //         <Link href="/contact" className="dv-btn dv-btn-primary">Talk to our team <FiArrowRight /></Link>
-//       </Container>
+//       </div>
 //     </section>
 //   );
 // }
 
 // export default function DevServicePage({ data }: { data: DevPageData }) {
 //   return (
-//     <main className="dv">
+//     <div className="dv">
 //       <Hero data={data} />
 //       <StackStrip items={data.stack} />
 //       <Services items={data.services} />
@@ -310,7 +355,7 @@
 //       <Why data={data} />
 //       <Faq items={data.faqs} />
 //       <Cta data={data} />
-//     </main>
+//     </div>
 //   );
 // }
 
@@ -436,11 +481,16 @@ function Hero({ data }: { data: DevPageData }) {
 }
 
 function StackStrip({ items }: { items: string[] }) {
+  const group = Array.from({ length: 4 }).flatMap(() => items);
   return (
     <div className="dv-strip" aria-hidden="true">
       <div className="dv-strip-track">
-        {[...items, ...items].map((s, i) => (
-          <span key={`${s}-${i}`}>{s}</span>
+        {[0, 1].map((g) => (
+          <div key={g} className="dv-strip-group">
+            {group.map((s, i) => (
+              <span key={`${g}-${i}`}>{s}</span>
+            ))}
+          </div>
         ))}
       </div>
     </div>
@@ -624,19 +674,6 @@ function Faq({ items }: { items: { q: string; a: string }[] }) {
     </section>
   );
 }
-
-// function Cta({ data }: { data: DevPageData }) {
-//   return (
-//     <section className="dv-cta">
-//       <div className="dv-cta-word" aria-hidden="true">{data.bigWord}</div>
-//       <div className="dv-wrap">
-//         <h2>{data.ctaTitle}</h2>
-//         <p>{data.ctaText}</p>
-//         <Link href="/contact" className="dv-btn dv-btn-primary">Talk to our team <FiArrowRight /></Link>
-//       </div>
-//     </section>
-//   );
-// }
 
 function Cta({ data }: { data: DevPageData }) {
   return (

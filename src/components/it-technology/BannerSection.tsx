@@ -152,7 +152,7 @@ const BannerSection = ({
 
   return (
   <section ref={sectionRef} className="web-app-development-banner-section">
-    <Container className="web-app-development-banner-container">
+    <Container>
       <Row className="web-app-development-banner-row">
         <Col xs={12} lg={6} className="web-app-development-banner-content-col">
           <span className="web-app-development-banner-badge">

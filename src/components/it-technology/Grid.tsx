@@ -27,7 +27,7 @@ type ColProps = {
 };
 
 export const Container = ({ className, children }: ContainerProps) => (
-  <div className={joinClasses("web-app-development-container", className)}>
+  <div className={joinClasses("container", className)}>
     {children}
   </div>
 );

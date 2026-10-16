@@ -19,19 +19,19 @@ const COMPANY = {
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Blog’s", href: "/blog" },
-  { label: "FAQ’S", href: "/faq" },
-  { label: "Testimonial", href: "/testimonial" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Blog’s", href: "" },
+  { label: "FAQ’S", href: "" },
+  { label: "Testimonial", href: "" },
+  { label: "Contact Us", href: "" },
 ];
 
 const SERVICES = [
-  { label: "Creative & Branding", href: "/services/creative-branding" },
-  { label: "Website Development", href: "/services/website-development" },
-  { label: "Digital Marketing", href: "/services/digital-marketing" },
-  { label: "Software & App Development", href: "/services/software-app-development" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms & Condition", href: "/terms" },
+  { label: "Creative & Branding", href: "" },
+  { label: "Website Development", href: "" },
+  { label: "Digital Marketing", href: "" },
+  { label: "Software & App Development", href: "" },
+  { label: "Privacy Policy", href: "" },
+  { label: "Terms & Condition", href: "" },
 ];
 
 type SocialKey = "facebook" | "instagram" | "linkedin" | "x" | "youtube" | "pinterest";

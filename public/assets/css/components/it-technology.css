@@ -34,11 +34,7 @@ html {
   text-decoration: none;
 }
 
-.web-app-development-container {
-  width: 100%;
-  padding-left: clamp(16px, 5vw, 80px);
-  padding-right: clamp(16px, 5vw, 80px);
-}
+
 
 .web-app-development-row {
   display: grid;

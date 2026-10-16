@@ -1,5 +1,3 @@
-
-
 .dv {
   --pr: var(--primary-color, #17709f);
   --ac: var(--accent-light, #5fd0e3);
@@ -267,9 +265,16 @@
 
 .dv-strip-track {
   display: flex;
-  gap: 44px;
   width: max-content;
-  animation: dvMove 30s linear infinite
+  animation: dvMove 40s linear infinite;
+  will-change: transform
+}
+
+.dv-strip-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 44px;
+  padding-right: 44px
 }
 
 .dv-strip-track span {
@@ -776,12 +781,39 @@
 .dv-cta-word {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
   font: 700 clamp(90px, 18vw, 220px)/1 var(--font-family-display, "Space Grotesk");
-  color: rgba(255, 255, 255, .04);
-  text-transform: uppercase;
-  white-space: nowrap
+  text-transform: uppercase
+}
+
+.dv-cta-word-track {
+  display: flex;
+  width: max-content;
+  animation: dv-cta-marquee 30s linear infinite;
+  will-change: transform
+}
+
+.dv-cta-word-item {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 0.3em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+  paint-order: stroke fill
+}
+
+@keyframes dv-cta-marquee {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(-50%)
+  }
 }
 
 .dv-cta .dv-wrap {
@@ -849,6 +881,7 @@
   }
 
   .dv-strip-track,
+  .dv-cta-word-track,
   .dv-cur {
     animation: none
   }
@@ -970,47 +1003,4 @@
 .dv a.dv-btn:hover,
 .dv a.dv-btn:focus {
   color: #fff
-}
-
-
-
-.dv-cta-word {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-}
-
-.dv-cta-word-track {
-  display: flex;
-  width: max-content;
-  animation: dv-cta-marquee 30s linear infinite;
-  will-change: transform;
-}
-
-.dv-cta-word-item {
-  flex-shrink: 0;
-  white-space: nowrap;
-  padding-right: 0.3em;
-}
-
-@keyframes dv-cta-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dv-cta-word-track { animation: none; }
-}
-
-.dv-cta-word-item {
-  flex-shrink: 0;
-  white-space: nowrap;
-  padding-right: 0.3em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
-  paint-order: stroke fill;
 }
