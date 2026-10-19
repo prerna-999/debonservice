@@ -1,12 +1,14 @@
+
+
 import type { CSSProperties, ReactNode } from "react";
 import Reveal from "./Reveal";
 
 const nodes: { t: string; d: string; icon: ReactNode }[] = [
-  { t: "Intake", d: "A request arrives by email, chat, form or phone and is logged.", icon: <path d="M4 4h16v12H8l-4 4z" /> },
-  { t: "Triage", d: "We sort it by type and urgency and send it to the right person.", icon: <path d="M3 5h18l-7 8v6l-4-2v-4z" /> },
-  { t: "Resolve", d: "A trained team member completes the task using your rules.", icon: <path d="m5 12 5 5 9-10" /> },
-  { t: "Review", d: "A second check for accuracy, tone and policy.", icon: <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></> },
-  { t: "Report", d: "Results flow into a simple report you can act on.", icon: <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" /> },
+  { t: "Tell Us What You Need", d: "We listen to your needs and understand how your business works.", icon: <path d="M4 4h16v12H8l-4 4z" /> },
+  { t: "Let’s Make a Plan", d: "We discuss your goals and work out what will help you most.", icon: <path d="M3 5h18l-7 8v6l-4-2v-4z" /> },
+  { t: "Find What Works for You", d: "We help you choose the services that fit your business.", icon: <path d="m5 12 5 5 9-10" /> },
+  { t: "Leave the Details to Us", d: "We get things moving and help take everyday tasks off your plate.", icon: <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></> },
+  { t: "We’re Here as You Grow", d: "We stay by your side as your business needs change.", icon: <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" /> },
 ];
 
 export default function Flow() {
@@ -14,9 +16,8 @@ export default function Flow() {
     <section className="bo-section bo-paper">
       <div className="bo-container">
         <Reveal className="bo-head">
-          <span className="bo-eyebrow">03 / How a request moves</span>
-          <h2 className="bo-title">From first message to <em>finished and reported</em></h2>
-          <p className="bo-lead">Every task follows the same visible path, so nothing gets lost and you can see where work stands.</p>
+          <span className="bo-eyebrow">Here’s How We Work</span>
+          <h2 className="bo-title">Simple Steps, <em>The Right Support</em></h2>
         </Reveal>
 
         <div className="bo-flow">
