@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
-const words = ["Get", "found", "online.", "Win", "more", "customers."];
+const words = ["Don't ", "Just", "Show", "Up.", "Stand", "Out."];
 
 export default function Hero() {
   return (
@@ -10,8 +10,9 @@ export default function Hero() {
 
       <div className="og-container og-heroGrid">
         <div>
-          <span className="og-eyebrow og-fadeIn">Online Growth Services</span>
-          <h1 className="og-title og-heroTitle" aria-label="Get found online. Win more customers.">
+          <span className="og-eyebrow og-fadeIn">Digital Marketing Services
+</span>
+          <h1 className="og-title og-heroTitle" aria-label="Don't Just Show Up. Stand Out.">
             {words.map((w, i) => (
               <Fragment key={w}>
                 <span className="og-word" aria-hidden="true">
@@ -22,18 +23,18 @@ export default function Hero() {
             ))}
           </h1>
           <p className="og-lead og-fadeIn og-d1">
-            Search, ads, social media and a website that converts. We bring you steady leads and show you the numbers every month.
+            Debonair’s Digital Marketing Services connect your brand with people who matter and actually care! We solve the bottlenecks, beat your competitors, and become the only choice your potential customers would like to choose. 
+
           </p>
           <div className="og-actions og-fadeIn og-d2">
             <Link href="/contact" className="og-btn og-btnAccent">
               Get a free growth plan
               <svg className="og-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </Link>
-            <a href="#services" className="og-btn og-btnGhost">See our services</a>
+            {/* <a href="#services" className="og-btn og-btnGhost">See our services</a> */}
           </div>
         </div>
 
-        {/* A search that ends with your business on top */}
         <div className="og-visual" aria-hidden="true">
           <div className="og-serp">
             <div className="og-serpBar">

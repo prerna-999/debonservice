@@ -1,10 +1,12 @@
+
+
 import Reveal from "./Reveal";
 
 const steps = [
-  { title: "Audit", text: "We review your website, search presence, ads and competitors to find the biggest gaps." },
-  { title: "Plan", text: "You get a clear plan with channels, budget and the results to expect." },
-  { title: "Launch", text: "We build, publish and run campaigns, keeping you updated at every stage." },
-  { title: "Improve", text: "We track results every month and put more effort into what brings leads." },
+  { title: "Discover", text: "We identify your potential customers, comprehend their search behaviour and assess your competition to find a space where your brand will shine." },
+  { title: "Strategise", text: "From SEO and AI optimisation to paid ads and social media marketing, we select the channels that match your audience, objectives and budget." },
+  { title: "Execute", text: "We bring the final marketing strategy into action with structured content, planned campaigns, unceasing and consistent communication. We also modify strategy if needed." },
+  { title: "Optimise", text: "We track how our campaigns perform, study essential metrics and develop ways which will enable enhancing visibility, engagement, and the number of leads." },
 ];
 
 export default function Process() {
@@ -13,7 +15,7 @@ export default function Process() {
       <div className="og-container">
         <Reveal className="og-head">
           <span className="og-eyebrow">How we work</span>
-          <h2 className="og-title">From first call to steady leads in four steps</h2>
+          <h2 className="og-title">Here's How We Plot Your Path to Digital Growth.</h2>
         </Reveal>
         <ol className="og-rows">
           {steps.map((st, i) => (

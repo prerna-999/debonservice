@@ -1,16 +1,17 @@
+
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 
 const points = [
-  "One team for strategy, creative and reporting, so nothing falls between vendors.",
-  "Clear monthly numbers on leads, cost and return, not vanity metrics.",
-  "No long lock-in. We keep your business by delivering results.",
+  "Strategy That Fits Your Business",
+  "Data Over Guesswork",
+  "Search Beyond the Search Bar",
+  "Connected Marketing, Not Isolated Efforts",
 ];
 
-// Replace these with your real numbers
 const stats = [
-  { to: 6, suffix: "", label: "Growth services under one roof" },
+  { to: 5, suffix: "", label: "Growth services under one roof" },
   { to: 4, suffix: "", label: "Simple steps from audit to results" },
   { to: 24, suffix: "h", label: "Typical reply time on support" },
   { to: 100, suffix: "%", label: "Focus on your lead goals" },
@@ -62,9 +63,9 @@ export default function Outcomes() {
       <div className="og-container og-split">
         <div>
           <Reveal>
-            <span className="og-eyebrow">Why Debonaire Capital Assets</span>
-            <h2 className="og-title">Marketing that you can measure</h2>
-            <p className="og-lead">We keep things clear and accountable so you always know what your marketing spend is doing.</p>
+            <span className="og-eyebrow">Why Digital Marketing Services by Debonaire</span>
+            <h2 className="og-title">Give People a Reason to Choose You.</h2>
+            <p className="og-lead">Getting noticed is good, but getting chosen is even better. We help your brand reach the right people, show them what makes you different and earn their trust. From search engines to social media, we make every channel count. So when customers are ready to choose, they think of you.</p>
           </Reveal>
           <ul className="og-checks">
             {points.map((p, i) => (
