@@ -8,7 +8,6 @@ const STAR = "M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5
 const HEART =
   "M12 21.5l-1.4-1.3C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.7z";
 
-/* ---------- SEO: search bar types, AI answer appears, your result climbs to #1 ---------- */
 function SearchVisual() {
   return (
     <div className="spv spv-search">
