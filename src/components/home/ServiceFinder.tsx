@@ -24,7 +24,7 @@ const SERVICES: Service[] = [
   {
     title: "SEO and AI SEO",
     description: "Increase visibility on search engines and AI platforms so customers can easily find your business.",
-    href: "/digital-marketing/seo-and-ai-seo",
+    href: "/digital-marketing/seo-ai-seo",
     service: "SEO and AI SEO",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: Search,
@@ -32,7 +32,7 @@ const SERVICES: Service[] = [
   {
     title: "Paid Media & Performance Marketing",
     description: "Make sure you reach the right people through advertising, influencer partnerships, and outreach campaigns.",
-    href: "/digital-marketing/performance-marketing",
+    href: "/digital-marketing/paid-media",
     service: "Paid Media & Performance Marketing",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: TrendingUp,
@@ -56,7 +56,7 @@ const SERVICES: Service[] = [
   {
     title: "Reputation and Optimisation",
     description: "Create a great reputation for your brand by making your digital presence much more reliable.",
-    href: "/digital-marketing/reputation-and-optimisation",
+    href: "/digital-marketing/reputation-optimization",
     service: "Reputation and Optimisation",
     image: "/assets/img/all-img/home/home-about-1.avif",
     icon: ShieldCheck,

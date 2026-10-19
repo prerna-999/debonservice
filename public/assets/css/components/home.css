@@ -4085,12 +4085,12 @@
 .home-sector__panels {
     display: flex;
     flex-wrap: nowrap;
-    gap: 16px;
+    gap: 12px;
     height: 540px;
 }
 
 .home-sector__panels > .home-sector__col {
-    flex: 0 0 88px;
+    flex: 0 0 72px;
     width: auto;
     max-width: none;
     height: 100%;
@@ -4222,7 +4222,7 @@
     z-index: 1;
     display: flex;
     align-items: flex-end;
-    padding: clamp(24px, 4vw, 56px);
+    padding: clamp(20px, 3vw, 48px);
     overflow: hidden;
     pointer-events: none;
     visibility: hidden;
@@ -4233,12 +4233,13 @@
     visibility: visible;
     pointer-events: auto;
     transition: visibility 0s;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* fixed width: panel expand hote waqt text re-wrap nahi hoga */
 .home-sector__story {
     flex: 0 0 auto;
-    width: min(560px, calc(100vw - 160px));
+    width: min(480px, 100%);
 }
 
 .home-sector__story h3,
@@ -4284,41 +4285,155 @@
     outline-offset: -6px;
 }
 
-/* ---------- Mobile ---------- */
-@media (max-width: 767px) {
+/* ---------- Small desktop / large tablet landscape (992–1199) ---------- */
+@media (min-width: 992px) and (max-width: 1199px) {
     .home-sector__panels {
-        flex-direction: column;
-        height: auto;
+        height: 500px;
+        gap: 10px;
     }
 
     .home-sector__panels > .home-sector__col {
-        flex: 0 0 auto;
-        height: 72px;
-        transition: height 0.6s ease;
-    }
-
-    .home-sector__panels > .home-sector__col.is-active {
-        height: 440px;
-    }
-
-    .home-sector__toggle {
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        padding: 0 20px;
+        flex-basis: 60px;
     }
 
     .home-sector__label {
+        font-size: 15px;
+    }
+
+    .home-sector__story {
+        width: min(380px, 100%);
+    }
+
+    .home-sector__content {
+        padding: 28px;
+    }
+}
+
+/* ---------- Tablet + Mobile: vertical accordion (≤991) ---------- */
+@media (max-width: 991px) {
+    .home-sector__head {
+        margin-bottom: 28px;
+    }
+
+    .home-sector__intro {
+        font-size: 15px;
+    }
+
+    .home-sector__panels {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+    }
+
+    .home-sector__panels > .home-sector__col,
+    .home-sector__panels > .home-sector__col.is-active {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .home-sector__panels > .home-sector__col {
+        height: 60px;
+    }
+
+    .home-sector__panels > .home-sector__col.is-active {
+        height: 250px;
+    }
+
+    .home-sector__toggle {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .home-sector__marker {
+        display: none;
+    }
+
+    .home-sector__label {
+        order: 1;
         writing-mode: horizontal-tb;
         transform: none;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .home-sector__plus {
+        order: 2;
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
     }
 
     .is-active .home-sector__toggle {
-        height: 72px;
+        height: 60px;
+        flex-direction: row;
+        justify-content: flex-start;
         padding: 0 20px;
     }
 
     .home-sector__story {
         width: 100%;
+    }
+
+    .home-sector__content {
+        padding: 20px;
+        padding-top: 68px;
+        overflow-y: auto;
+    }
+
+    .home-sector__story h3 {
+        font-size: clamp(26px, 5vw, 38px);
+        margin-bottom: 12px;
+    }
+
+    .home-sector__story p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
+/* ---------- Small phones (≤575) ---------- */
+@media (max-width: 575px) {
+    .home-sector__panels > .home-sector__col {
+        height: 60px;
+    }
+
+    .home-sector__panels > .home-sector__col.is-active {
+        height: 350px;
+    }
+
+    .home-sector__toggle,
+    .is-active .home-sector__toggle {
+        padding: 0 16px;
+    }
+
+    .is-active .home-sector__toggle {
+        height: 60px;
+    }
+
+    .home-sector__content {
+        padding: 16px;
+        padding-top: 68px;
+    }
+
+    .home-sector__label {
+        font-size: 15px;
+    }
+
+    .home-sector__plus {
+        width: 34px;
+        height: 34px;
+    }
+
+    .home-sector__story h3 {
+        font-size: 26px;
+    }
+
+    .home-sector__story p {
+        font-size: 14.5px;
     }
 }
 

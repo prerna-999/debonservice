@@ -10,8 +10,6 @@ import Consultation from "./Consultation";
 import Process from "./Process";
 import Why from "./Why";
 import Industries from "./Industries";
-
-
 import Social from "./Social";
 import Testimonials from "./Testimonials";
 import Faq from "./Faq";
