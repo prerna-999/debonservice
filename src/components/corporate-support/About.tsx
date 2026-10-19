@@ -7,9 +7,9 @@ const documents = [
 ];
 
 const takeover = [
-  "Filings and licences, on time",
-  "Payroll and invoices, processed",
-  "Contracts and paperwork, organized",
+  "Rent on Your Terms",
+  "Space for Every Business",
+  "Room to Grow",
 ];
 
 export default function About() {
@@ -32,22 +32,18 @@ export default function About() {
             </div>
           </Col>
           <Col lg={6} className="corporate-about-content">
-            <div className="corporate-section-label">01 / About Debon Services</div>
+            <div className="corporate-section-label">About Debonaire Flexible Workspaces</div>
             <h2 className="corporate-section-title">
-              Back offices are busy <em>Good support</em> keeps them calm
+             Your Business <em>Needs Space, </em> We Have It!
             </h2>
             <p>
-              Filings, payroll, invoices and paperwork never stop. When they pile up, leaders lose time they
-              should spend growing the business.
+              Every business needs the right space to get things done. Whether you need a desk for a day, a private office, a meeting room or a larger commercial space, we help you find an option that suits your needs. Choose a space that works for you, without committing to more than you need.
             </p>
             <ul className="corporate-about-takeover-list">
               {takeover.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <a href="#corporate-process-section" className="corporate-button corporate-button-primary">
-              How we work
-            </a>
           </Col>
         </Row>
       </Container>

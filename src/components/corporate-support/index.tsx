@@ -2,10 +2,10 @@ import Hero from "./Hero";
 import Marquee from "./Marquee";
 import About from "./About";
 import Services from "./Services";
-import Brief from "./Brief";
-import Process from "./Process";
+// import Brief from "./Brief";
 import Why from "./Why";
-import Faq from "./Faq";
+import Process from "./Process";
+// import Faq from "./Faq";
 import Cta from "./Cta";
 
 export default function CorporateSupport() {
@@ -15,10 +15,10 @@ export default function CorporateSupport() {
       <Marquee />
       <About />
       <Services />
-      <Brief />
-      <Process />
+      {/* <Brief /> */}
       <Why />
-      <Faq />
+        <Process />
+      {/* <Faq /> */}
       <Cta />
     </>
   );

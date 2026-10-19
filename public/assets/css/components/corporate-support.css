@@ -44,7 +44,7 @@
 }
 
 .corporate-margin-bottom {
-   margin-bottom: 40px;
+   margin-bottom: 40px !important;
 }
 
 .corporate-margin-top {
@@ -79,7 +79,7 @@
 }
 
 .corporate-lead-text {
-   max-width: 540px;
+   max-width: 900px;
    font-size: 17px;
 }
 
@@ -478,8 +478,9 @@
    position: relative;
    display: block;
    overflow: hidden;
-   min-height: 250px;
-   padding: 30px;
+   height: calc(100% - 24px);
+   min-height: 240px;
+   padding: 30px 30px 36px;
    margin-bottom: 24px;
    background: #fff;
    border: 1px solid var(--line-color);
@@ -497,36 +498,59 @@
    transition: opacity .4s;
 }
 
-.corporate-service-card>* {
+.corporate-service-card > * {
    position: relative;
 }
 
-.corporate-service-card-label {
-   font: 600 13px var(--font-family-display);
-   letter-spacing: .06em;
-   color: var(--primary-color);
+.corporate-service-card-number {
+   position: absolute;
+   top: 22px;
+   right: 28px;
+   font: 600 48px/1 var(--font-family-display);
+   color: rgba(15, 40, 90, .07);
+   transition: color .4s;
+}
+
+.corporate-service-card-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 54px;
+   height: 54px;
+   margin-bottom: 20px;
+   border-radius: 16px;
+   background: var(--hero-gradient);
+   color: #fff;
+   transition: background .4s;
+}
+
+.corporate-service-card-icon svg {
+   width: 26px;
+   height: 26px;
 }
 
 .corporate-service-card h3 {
-   font-size: 27px;
-   margin: 12px 0 10px;
+   font-size: 22px;
+   line-height: 1.3;
+   margin: 0 0 12px;
+   transition: color .4s;
 }
 
 .corporate-service-card p {
-   margin: 0 0 20px;
+   margin: 0;
    font-size: 15.5px;
+   line-height: 1.65;
+   transition: color .4s;
 }
 
-.corporate-service-card-link {
-   display: flex;
-   justify-content: space-between;
-   font: 600 14px var(--font-family-display);
-   color: var(--primary-color);
-}
-
-.corporate-service-card-link small {
-   font-weight: 500;
-   color: var(--text-color);
+.corporate-service-card-bar {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 56px;
+   height: 4px;
+   background: var(--hero-gradient);
+   transition: width .5s, background .4s;
 }
 
 .corporate-service-card:hover {
@@ -540,13 +564,37 @@
 }
 
 .corporate-service-card:hover h3,
-.corporate-service-card:hover p,
-.corporate-service-card:hover .corporate-service-card-label,
-.corporate-service-card:hover .corporate-service-card-link,
-.corporate-service-card:hover small {
+.corporate-service-card:hover p {
    color: #fff;
 }
 
+.corporate-service-card:hover .corporate-service-card-icon {
+   background: rgba(255, 255, 255, .2);
+}
+
+.corporate-service-card:hover .corporate-service-card-number {
+   color: rgba(255, 255, 255, .18);
+}
+
+.corporate-service-card:hover .corporate-service-card-bar {
+   width: 100%;
+   background: rgba(255, 255, 255, .55);
+}
+
+@media (max-width: 991px) {
+   .corporate-service-card {
+      min-height: 0;
+      padding: 24px 24px 32px;
+   }
+
+   .corporate-service-card h3 {
+      font-size: 20px;
+   }
+
+   .corporate-service-card-number {
+      font-size: 38px;
+   }
+}
 /* 
    Services Section (02 / What we do) End
     */

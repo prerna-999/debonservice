@@ -1,20 +1,20 @@
+
+
+
 import { Container, Row, Col } from "react-bootstrap";
 
 const steps = [
-  { t: "Discover", d: "Understand your business, structure and current back-office setup." },
-  { t: "Plan", d: "Agree scope, timelines and one point of contact." },
-  { t: "Set up", d: "Move tasks over with checklists, access and tracking in place." },
-  { t: "Improve", d: "Review, report and refine so the next month runs smoother." },
+  { t: "Tell Us What You Need", d: "Let us know what kind of space you're looking for." },
+  { t: "Explore Your Options", d: "We'll help you find a space that suits your needs and budget." },
+  { t: "Choose Your Space", d: "Pick the space that works best for you." },
+  { t: "Get Started", d: "Settle in and get on with your work." },
 ];
 
 export default function Process() {
   return (
     <section className="corporate-section" id="corporate-process-section">
       <Container>
-        <div className="corporate-section-label">03 / How we work</div>
-        <h2 className="corporate-section-title">
-          From first question <em>to steady support</em>
-        </h2>
+        <h2 className="corporate-section-title">From Space Hunting to Settling In</h2>
         <Row className="corporate-process-list">
           {steps.map((s, i) => (
             <Col md={6} lg={3} key={s.t}>
