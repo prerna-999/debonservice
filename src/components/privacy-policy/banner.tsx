@@ -44,7 +44,7 @@ export default function AboutHero() {
                             </p>
                         </div>
                     </Col>
-                </Row>
+                </Row> 
             </Container>
 
             <svg className="contact-banner__edge" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
