@@ -243,14 +243,14 @@ const QUICK_LINKS = [
   { label: "Blog’s", href: "" },
   { label: "FAQ’S", href: "" },
   { label: "Testimonial", href: "" },
-  { label: "Contact Us", href: "" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const SERVICES = [
-  { label: "Creative & Branding", href: "" },
-  { label: "Website Development", href: "" },
-  { label: "Digital Marketing", href: "" },
-  { label: "Software & App Development", href: "" },
+  { label: "Digital Marketing Services", href: "/digital-marketing" },
+  { label: "Website & App Development", href: "/web-app-development" },
+  { label: "Business Operations", href: "/business-operations" },
+  { label: "Flexible Workspaces", href: "/flexible-workspaces" },
   { label: "Privacy Policy", href: "" },
   { label: "Terms & Condition", href: "" },
 ];
@@ -258,12 +258,12 @@ const SERVICES = [
 type SocialKey = "facebook" | "instagram" | "linkedin" | "x" | "youtube" | "pinterest";
 
 const SOCIALS: { key: SocialKey; label: string; href: string }[] = [
-  { key: "facebook", label: "Facebook", href: "#" },
-  { key: "instagram", label: "Instagram", href: "#" },
-  { key: "linkedin", label: "LinkedIn", href: "#" },
-  { key: "x", label: "X", href: "#" },
-  { key: "youtube", label: "YouTube", href: "#" },
-  { key: "pinterest", label: "Pinterest", href: "#" },
+  { key: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61595055103862" },
+  { key: "instagram", label: "Instagram", href: "https://www.instagram.com/debon.services/" },
+  // { key: "linkedin", label: "LinkedIn", href: "#" },
+  // { key: "x", label: "X", href: "#" },
+  // { key: "youtube", label: "YouTube", href: "#" },
+  // { key: "pinterest", label: "Pinterest", href: "#" },
 ];
 
 const SocialIcon = ({ name }: { name: SocialKey }) => {
