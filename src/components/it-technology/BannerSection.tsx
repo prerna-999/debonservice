@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import type { IconType } from "react-icons";
@@ -11,17 +14,11 @@ import { Container, Row, Col, joinClasses } from "./Grid";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type BannerButton = {
   label: string;
   href: string;
-};
-
-type BannerStat = {
-  value: string;
-  label: string;
 };
 
 type BannerCodeSegment = {
@@ -48,18 +45,10 @@ type BannerSectionProps = {
   titleEnd?: string;
   description?: string;
   primaryButton?: BannerButton;
-  secondaryButton?: BannerButton;
-  statList?: BannerStat[];
   codeAddress?: string;
   codeLineList?: BannerCodeLine[];
   floatingCardList?: BannerFloatingCard[];
 };
-
-const bannerStatList: BannerStat[] = [
-  { value: "120+", label: "Projects" },
-  { value: "60+", label: "Clients" },
-  { value: "5+", label: "Years" },
-];
 
 const bannerCodeLineList: BannerCodeLine[] = [
   {
@@ -104,18 +93,15 @@ const BannerSection = ({
   badgeText = "Web and app development services",
   titleStart = "We build",
   titleAccent = "websites, apps",
-  titleEnd = "and AI that scale",
-  description = "One team for design, development, and automation. From idea to launch, we ship products that actually grow your business.",
-  primaryButton = { label: "Get a free quote", href: "#contact" },
-  secondaryButton = { label: "View our work", href: "#web-development" },
-  statList = bannerStatList,
+  titleEnd = "& softwares that scale",
+  description = "From your first website to a custom mobile app, we build digital solutions that look good, work smoothly and make life easier for your customers. You bring the idea; we'll help bring it to life.",
+  primaryButton = { label: "Let's Build Something", href: "/contact" },
   codeAddress = "yourbrand.com",
   codeLineList = bannerCodeLineList,
   floatingCardList = bannerFloatingCardList,
 }: BannerSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // GSAP: one orchestrated intro on load, then a slow float on the cards
   useIsoLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -131,7 +117,6 @@ const BannerSection = ({
         .from(q(".web-app-development-banner-title"), { y: 28, autoAlpha: 0, duration: 0.7 }, "-=0.25")
         .from(q(".web-app-development-banner-description"), { y: 20, autoAlpha: 0, duration: 0.6 }, "-=0.45")
         .from(q(".web-app-development-banner-button-group"), { y: 20, autoAlpha: 0, duration: 0.5 }, "-=0.4")
-        .from(q(".web-app-development-banner-stat-item"), { y: 16, autoAlpha: 0, duration: 0.45, stagger: 0.08 }, "-=0.3")
         .from(q(".web-app-development-banner-code-window"), { x: 48, autoAlpha: 0, duration: 0.8 }, 0.25)
         .from(q(".web-app-development-banner-code-line"), { x: -12, autoAlpha: 0, duration: 0.35, stagger: 0.09 }, 0.8)
         .from(
@@ -167,28 +152,10 @@ const BannerSection = ({
             {titleEnd}
           </h1>
           <p className="web-app-development-banner-description">{description}</p>
-          <div className="web-app-development-banner-button-group">
+          <div className="web-app-development-banner-button-group mt-30">
             <a href={primaryButton.href} className="web-app-development-button-light">
               {primaryButton.label}
             </a>
-            <a
-              href={secondaryButton.href}
-              className="web-app-development-button-outline-light"
-            >
-              {secondaryButton.label}
-            </a>
-          </div>
-          <div className="web-app-development-banner-stat-list">
-            {statList.map((stat) => (
-              <div key={stat.label} className="web-app-development-banner-stat-item">
-                <strong className="web-app-development-banner-stat-value">
-                  {stat.value}
-                </strong>
-                <span className="web-app-development-banner-stat-label">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
           </div>
         </Col>
 

@@ -1,6 +1,5 @@
 import BannerSection from "./BannerSection";
 import ServiceTabsSection from "./ServiceTabsSection";
-import ServiceOverviewSection from "./ServiceOverviewSection";
 import TechnologySection from "./TechnologySection";
 import ProcessSection from "./ProcessSection";
 import FaqSection from "./FaqSection";
@@ -10,7 +9,6 @@ const WebAppDevelopmentPage = () => (
   <main className="web-app-development-page">
     <BannerSection />
     <ServiceTabsSection />
-    <ServiceOverviewSection />
     <TechnologySection />
     <ProcessSection />
     <FaqSection />

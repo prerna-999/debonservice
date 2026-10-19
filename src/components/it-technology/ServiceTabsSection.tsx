@@ -12,15 +12,12 @@ import {
   TbDeviceDesktop,
   TbSearch,
   TbBolt,
-  TbShieldCheck,
   TbDevices,
   TbApi,
   TbCloudUpload,
-  TbHeadset,
   TbMessageChatbot,
   TbSettingsAutomation,
   TbPlugConnected,
-  TbChartDots,
   TbShoppingCart,
   TbUsers,
   TbChartBar,
@@ -33,8 +30,9 @@ import { Container, joinClasses } from "./Grid";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
-// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+const contentItemStyle: CSSProperties = { marginTop: 20 };
 
 type ServiceTabFeature = {
   icon: IconType;
@@ -42,22 +40,25 @@ type ServiceTabFeature = {
   text: string;
 };
 
+type ServiceTabButton = {
+  label: string;
+  href: string;
+};
+
 type ServiceTab = {
   anchor: string;
   tabIcon: IconType;
   tabLabel: string;
-  eyebrow: string;
   title: string;
   description: string;
   featureList: ServiceTabFeature[];
+  cta: ServiceTabButton;
   visual: ReactNode;
 };
 
 type ServiceTabsSectionProps = {
   serviceTabList?: ServiceTab[];
   defaultActiveIndex?: number;
-  primaryButton?: { label: string; href: string };
-  secondaryButton?: { label: string; href: string };
 };
 
 const Chip = ({
@@ -182,48 +183,48 @@ const defaultServiceTabList: ServiceTab[] = [
     anchor: "web-development",
     tabIcon: TbWorldWww,
     tabLabel: "Web development",
-    eyebrow: "Web development",
-    title: "Websites built to perform",
+    title: "Websites That Work as Hard as You Do",
     description:
-      "From landing pages to full e-commerce platforms, we build fast, SEO-ready, mobile-first websites.",
+      "We build fast, user-friendly websites that look great and work smoothly across devices. From business websites to e-commerce stores, we create online experiences that support your goals and help your business grow.",
     featureList: [
-      { icon: TbDeviceDesktop, title: "Responsive design", text: "Looks right on every screen" },
-      { icon: TbSearch, title: "SEO optimised", text: "Built to rank from day one" },
-      { icon: TbBolt, title: "Fast loading", text: "Under two seconds" },
-      { icon: TbShieldCheck, title: "Secure and scalable", text: "Safe code, ready to grow" },
+      { icon: TbDevices, title: "Responsive by Design", text: "Websites that work seamlessly across mobiles, tablets and desktops." },
+      { icon: TbBolt, title: "Built for Speed", text: "Fast-loading pages that make browsing easier for your visitors." },
+      { icon: TbDeviceDesktop, title: "Easy to Navigate", text: "Simple, user-friendly layouts that help people find what they need." },
+      { icon: TbSearch, title: "SEO-Friendly Structure", text: "Built with search engine best practices to support your online visibility." },
     ],
+    cta: { label: "Let's Build Your Website", href: "/web-development" },
     visual: <WebVisual />,
   },
   {
     anchor: "software-app-development",
     tabIcon: TbDeviceMobileCode,
     tabLabel: "Software and app development",
-    eyebrow: "Software and app development",
-    title: "Software made around your workflow",
+    title: "Software & App Development Built Around Your Needs",
     description:
-      "Custom apps and internal tools that replace spreadsheets and manual processes.",
+      "We develop custom software and mobile apps that solve real business problems and make everyday tasks easier. From streamlining operations to improving customer experiences, we build solutions that grow with your business.",
     featureList: [
-      { icon: TbDevices, title: "Cross-platform apps", text: "One codebase, two stores" },
-      { icon: TbApi, title: "API development", text: "Clean, documented endpoints" },
-      { icon: TbCloudUpload, title: "Cloud deployment", text: "Hosted and monitored" },
-      { icon: TbHeadset, title: "Ongoing support", text: "Updates after launch" },
+      { icon: TbDeviceMobileCode, title: "Custom-Built Solutions", text: "Software and apps designed around your unique business needs." },
+      { icon: TbDeviceDesktop, title: "Simple, User-Friendly Design", text: "Easy-to-use interfaces that make every interaction smoother." },
+      { icon: TbCloudUpload, title: "Built to Scale", text: "Flexible solutions that adapt as your business grows." },
+      { icon: TbApi, title: "Seamless Integrations", text: "Connect your apps and software with the tools you already use." },
     ],
+    cta: { label: "Let's Build Your Solution", href: "/software-app-development" },
     visual: <AppVisual />,
   },
   {
     anchor: "ai-solutions",
     tabIcon: TbBrain,
     tabLabel: "AI solutions",
-    eyebrow: "AI solutions",
-    title: "Put AI to work in your business",
+    title: "AI Solutions That Make Work Easier",
     description:
-      "Smart assistants and automation that save hours every week and improve customer experience.",
+      "We build AI tools that help your business save time, handle tasks and serve customers better. From chatbots to custom AI systems, we make technology useful for your everyday business needs.",
     featureList: [
-      { icon: TbMessageChatbot, title: "Custom chatbots", text: "Trained on your content" },
-      { icon: TbSettingsAutomation, title: "Process automation", text: "Less manual work" },
-      { icon: TbPlugConnected, title: "LLM integrations", text: "Add AI to your product" },
-      { icon: TbChartDots, title: "Data insights", text: "Answers from your data" },
+      { icon: TbBrain, title: "Made for Your Business", text: "AI solutions designed around your needs and goals." },
+      { icon: TbSettingsAutomation, title: "Save Time on Routine Tasks", text: "Automate repetitive work and focus on what matters most." },
+      { icon: TbMessageChatbot, title: "Better Customer Support", text: "Help customers get quick answers and useful recommendations." },
+      { icon: TbPlugConnected, title: "Works With Your Existing Tools", text: "Connect AI with your current systems and software." },
     ],
+    cta: { label: "Let's Build Your AI Solution", href: "/ai-solutions" },
     visual: <AiVisual />,
   },
 ];
@@ -231,8 +232,6 @@ const defaultServiceTabList: ServiceTab[] = [
 const ServiceTabsSection = ({
   serviceTabList = defaultServiceTabList,
   defaultActiveIndex = 0,
-  primaryButton = { label: "Get a free quote", href: "#contact" },
-  secondaryButton = { label: "See our work", href: "#web-development" },
 }: ServiceTabsSectionProps) => {
   const [activeTabIndex, setActiveTabIndex] = useState<number>(defaultActiveIndex);
   const sectionRef = useRef<HTMLElement>(null);
@@ -258,7 +257,6 @@ const ServiceTabsSection = ({
     return () => window.removeEventListener("hashchange", openTabFromHash);
   }, [serviceTabList]);
 
-  // Sliding pill behind the active tab (CSS highlight is the no-JS fallback).
   useIsoLayoutEffect(() => {
     const bar = barRef.current;
     const pill = pillRef.current;
@@ -291,7 +289,6 @@ const ServiceTabsSection = ({
     return () => window.removeEventListener("resize", handleResize);
   }, [activeTabIndex]);
 
-  // Content motion: plays on scroll the first time, instantly on every tab switch.
   useIsoLayoutEffect(() => {
     const panel = panelRef.current;
     const bar = barRef.current;
@@ -348,7 +345,6 @@ const ServiceTabsSection = ({
         repeat: -1,
       });
 
-      // AI tab: user message -> typing dots -> bot reply
       if (q(cls("msg-user")).length) {
         timeline
           .from(q(cls("msg-user")), { y: 10, autoAlpha: 0, scale: 0.9, duration: 0.4, ease: "back.out(1.6)" }, 0.9)
@@ -435,23 +431,23 @@ const ServiceTabsSection = ({
           className="web-app-development-service-tabs-panel"
         >
           <div className="web-app-development-service-tabs-content">
-            <p
-              className="web-app-development-service-detail-eyebrow web-app-development-service-tabs-in"
-            >
-              {activeService.eyebrow}
-            </p>
             <h2
               className="web-app-development-service-detail-title web-app-development-service-tabs-in"
+              style={contentItemStyle}
             >
               {activeService.title}
             </h2>
             <p
               className="web-app-development-service-detail-description web-app-development-service-tabs-in"
+              style={contentItemStyle}
             >
               {activeService.description}
             </p>
 
-            <div className="web-app-development-service-detail-feature-grid">
+            <div
+              className="web-app-development-service-detail-feature-grid"
+              style={contentItemStyle}
+            >
               {activeService.featureList.map((feature) => {
                 const FeatureIcon = feature.icon;
                 return (
@@ -473,18 +469,13 @@ const ServiceTabsSection = ({
 
             <div
               className="web-app-development-service-tabs-cta-group web-app-development-service-tabs-in"
+              style={contentItemStyle}
             >
               <a
-                href={primaryButton.href}
+                href={activeService.cta.href}
                 className="web-app-development-service-tabs-cta-primary"
               >
-                {primaryButton.label}
-              </a>
-              <a
-                href={secondaryButton.href}
-                className="web-app-development-service-tabs-cta-secondary"
-              >
-                {secondaryButton.label}
+                {activeService.cta.label}
               </a>
             </div>
           </div>

@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import type { IconType } from "react-icons";
@@ -5,11 +8,11 @@ import {
   SiReact,
   SiNextdotjs,
   SiTypescript,
+  SiJavascript,
   SiNodedotjs,
   SiWordpress,
-  SiPython,
-  SiFlutter,
-  SiMongodb,
+  SiShopify,
+  SiPostgresql,
 } from "react-icons/si";
 import { Container } from "./Grid";
 import SectionHeading from "./SectionHeading";
@@ -19,7 +22,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
-// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type Technology = {
@@ -37,11 +39,11 @@ const technologyList: Technology[] = [
   { icon: SiReact, label: "React" },
   { icon: SiNextdotjs, label: "Next.js" },
   { icon: SiTypescript, label: "TypeScript" },
+  { icon: SiJavascript, label: "JavaScript" },
   { icon: SiNodedotjs, label: "Node.js" },
   { icon: SiWordpress, label: "WordPress" },
-  { icon: SiPython, label: "Python" },
-  { icon: SiFlutter, label: "Flutter" },
-  { icon: SiMongodb, label: "MongoDB" },
+  { icon: SiShopify, label: "Shopify" },
+  { icon: SiPostgresql, label: "PostgreSQL" },
 ];
 
 const TechnologySection = ({
@@ -51,7 +53,6 @@ const TechnologySection = ({
 }: TechnologySectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // GSAP: scroll-in reveal for this section (skipped if the visitor prefers reduced motion)
   useIsoLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;

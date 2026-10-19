@@ -1,3 +1,7 @@
+
+
+
+
 "use client";
 
 import { Container, Row, Col } from "./Grid";
@@ -8,7 +12,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
-// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type ProcessStep = {
@@ -23,20 +26,19 @@ type ProcessSectionProps = {
 };
 
 const processStepList: ProcessStep[] = [
-  { title: "Discover", description: "Goals, scope, and requirements" },
-  { title: "Design", description: "UI, UX, and user flow" },
-  { title: "Develop", description: "Build, test, and review" },
-  { title: "Deploy", description: "Launch and support" },
+  { title: "Get the Idea Rolling", description: "We understand your goals, ideas and requirements before we start building." },
+  { title: "Plan Before We Build", description: "We map out the design, features and technology that fit your needs." },
+  { title: "Build, Test, Perfect", description: "We bring your idea to life, test every detail and fine-tune it along the way." },
+  { title: "Launch and Let It Fly", description: "We get your website or app ready to go live and help you take the next step." },
 ];
 
 const ProcessSection = ({
-  eyebrow = "Our process",
-  title = "How we work",
+  eyebrow = "Our Process",
+  title = "From “What If?” to “It’s Live!”",
   stepList = processStepList,
 }: ProcessSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // GSAP: scroll-in reveal for this section (skipped if the visitor prefers reduced motion)
   useIsoLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;

@@ -1,5 +1,3 @@
-
-
 html {
   scroll-behavior: smooth;
 }
@@ -293,77 +291,6 @@ html {
   bottom: 14px;
 }
 
-.web-app-development-service-overview-section {
-  padding: clamp(56px, 8vw, 100px) 0;
-}
-
-.web-app-development-service-overview-card {
-  height: 100%;
-  background: var(--bg-white);
-  border: 1px solid var(--border-soft);
-  border-radius: 18px;
-  padding: 36px 30px;
-  box-shadow: var(--box-shadow-3);
-  transition: transform 0.25s ease;
-}
-
-.web-app-development-service-overview-card:hover {
-  transform: translateY(-6px);
-}
-
-.web-app-development-service-overview-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  background: var(--color-1);
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  margin-bottom: 22px;
-}
-
-.web-app-development-service-overview-title {
-  font-size: 22px;
-  color: var(--color-2);
-  margin-bottom: 10px;
-}
-
-.web-app-development-service-overview-description {
-  font-size: 15px;
-  margin-bottom: 18px;
-}
-
-.web-app-development-service-overview-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-}
-
-.web-app-development-service-overview-list-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 5px 0;
-  font-size: 15px;
-  color: var(--text-color-2);
-}
-
-.web-app-development-service-overview-list-item svg {
-  color: var(--primary-color);
-  flex-shrink: 0;
-}
-
-.web-app-development-service-overview-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--primary-color);
-  font-weight: 500;
-  font-size: 15px;
-}
-
 .web-app-development-technology-section {
   padding: clamp(56px, 8vw, 100px) 0;
 }
@@ -546,197 +473,77 @@ html {
     }
 }
 
-.web-app-development-col-xs-1 {
-  grid-column: span 1;
-}
-.web-app-development-col-xs-2 {
-  grid-column: span 2;
-}
-.web-app-development-col-xs-3 {
-  grid-column: span 3;
-}
-.web-app-development-col-xs-4 {
-  grid-column: span 4;
-}
-.web-app-development-col-xs-5 {
-  grid-column: span 5;
-}
-.web-app-development-col-xs-6 {
-  grid-column: span 6;
-}
-.web-app-development-col-xs-7 {
-  grid-column: span 7;
-}
-.web-app-development-col-xs-8 {
-  grid-column: span 8;
-}
-.web-app-development-col-xs-9 {
-  grid-column: span 9;
-}
-.web-app-development-col-xs-10 {
-  grid-column: span 10;
-}
-.web-app-development-col-xs-11 {
-  grid-column: span 11;
-}
-.web-app-development-col-xs-12 {
-  grid-column: span 12;
-}
+.web-app-development-col-xs-1 { grid-column: span 1; }
+.web-app-development-col-xs-2 { grid-column: span 2; }
+.web-app-development-col-xs-3 { grid-column: span 3; }
+.web-app-development-col-xs-4 { grid-column: span 4; }
+.web-app-development-col-xs-5 { grid-column: span 5; }
+.web-app-development-col-xs-6 { grid-column: span 6; }
+.web-app-development-col-xs-7 { grid-column: span 7; }
+.web-app-development-col-xs-8 { grid-column: span 8; }
+.web-app-development-col-xs-9 { grid-column: span 9; }
+.web-app-development-col-xs-10 { grid-column: span 10; }
+.web-app-development-col-xs-11 { grid-column: span 11; }
+.web-app-development-col-xs-12 { grid-column: span 12; }
 
 @media (min-width: 576px) {
-  .web-app-development-col-sm-1 {
-      grid-column: span 1;
-    }
-  .web-app-development-col-sm-2 {
-      grid-column: span 2;
-    }
-  .web-app-development-col-sm-3 {
-      grid-column: span 3;
-    }
-  .web-app-development-col-sm-4 {
-      grid-column: span 4;
-    }
-  .web-app-development-col-sm-5 {
-      grid-column: span 5;
-    }
-  .web-app-development-col-sm-6 {
-      grid-column: span 6;
-    }
-  .web-app-development-col-sm-7 {
-      grid-column: span 7;
-    }
-  .web-app-development-col-sm-8 {
-      grid-column: span 8;
-    }
-  .web-app-development-col-sm-9 {
-      grid-column: span 9;
-    }
-  .web-app-development-col-sm-10 {
-      grid-column: span 10;
-    }
-  .web-app-development-col-sm-11 {
-      grid-column: span 11;
-    }
-  .web-app-development-col-sm-12 {
-      grid-column: span 12;
-    }
+  .web-app-development-col-sm-1 { grid-column: span 1; }
+  .web-app-development-col-sm-2 { grid-column: span 2; }
+  .web-app-development-col-sm-3 { grid-column: span 3; }
+  .web-app-development-col-sm-4 { grid-column: span 4; }
+  .web-app-development-col-sm-5 { grid-column: span 5; }
+  .web-app-development-col-sm-6 { grid-column: span 6; }
+  .web-app-development-col-sm-7 { grid-column: span 7; }
+  .web-app-development-col-sm-8 { grid-column: span 8; }
+  .web-app-development-col-sm-9 { grid-column: span 9; }
+  .web-app-development-col-sm-10 { grid-column: span 10; }
+  .web-app-development-col-sm-11 { grid-column: span 11; }
+  .web-app-development-col-sm-12 { grid-column: span 12; }
 }
 
 @media (min-width: 768px) {
-  .web-app-development-col-md-1 {
-      grid-column: span 1;
-    }
-  .web-app-development-col-md-2 {
-      grid-column: span 2;
-    }
-  .web-app-development-col-md-3 {
-      grid-column: span 3;
-    }
-  .web-app-development-col-md-4 {
-      grid-column: span 4;
-    }
-  .web-app-development-col-md-5 {
-      grid-column: span 5;
-    }
-  .web-app-development-col-md-6 {
-      grid-column: span 6;
-    }
-  .web-app-development-col-md-7 {
-      grid-column: span 7;
-    }
-  .web-app-development-col-md-8 {
-      grid-column: span 8;
-    }
-  .web-app-development-col-md-9 {
-      grid-column: span 9;
-    }
-  .web-app-development-col-md-10 {
-      grid-column: span 10;
-    }
-  .web-app-development-col-md-11 {
-      grid-column: span 11;
-    }
-  .web-app-development-col-md-12 {
-      grid-column: span 12;
-    }
+  .web-app-development-col-md-1 { grid-column: span 1; }
+  .web-app-development-col-md-2 { grid-column: span 2; }
+  .web-app-development-col-md-3 { grid-column: span 3; }
+  .web-app-development-col-md-4 { grid-column: span 4; }
+  .web-app-development-col-md-5 { grid-column: span 5; }
+  .web-app-development-col-md-6 { grid-column: span 6; }
+  .web-app-development-col-md-7 { grid-column: span 7; }
+  .web-app-development-col-md-8 { grid-column: span 8; }
+  .web-app-development-col-md-9 { grid-column: span 9; }
+  .web-app-development-col-md-10 { grid-column: span 10; }
+  .web-app-development-col-md-11 { grid-column: span 11; }
+  .web-app-development-col-md-12 { grid-column: span 12; }
 }
 
 @media (min-width: 992px) {
-  .web-app-development-col-lg-1 {
-      grid-column: span 1;
-    }
-  .web-app-development-col-lg-2 {
-      grid-column: span 2;
-    }
-  .web-app-development-col-lg-3 {
-      grid-column: span 3;
-    }
-  .web-app-development-col-lg-4 {
-      grid-column: span 4;
-    }
-  .web-app-development-col-lg-5 {
-      grid-column: span 5;
-    }
-  .web-app-development-col-lg-6 {
-      grid-column: span 6;
-    }
-  .web-app-development-col-lg-7 {
-      grid-column: span 7;
-    }
-  .web-app-development-col-lg-8 {
-      grid-column: span 8;
-    }
-  .web-app-development-col-lg-9 {
-      grid-column: span 9;
-    }
-  .web-app-development-col-lg-10 {
-      grid-column: span 10;
-    }
-  .web-app-development-col-lg-11 {
-      grid-column: span 11;
-    }
-  .web-app-development-col-lg-12 {
-      grid-column: span 12;
-    }
+  .web-app-development-col-lg-1 { grid-column: span 1; }
+  .web-app-development-col-lg-2 { grid-column: span 2; }
+  .web-app-development-col-lg-3 { grid-column: span 3; }
+  .web-app-development-col-lg-4 { grid-column: span 4; }
+  .web-app-development-col-lg-5 { grid-column: span 5; }
+  .web-app-development-col-lg-6 { grid-column: span 6; }
+  .web-app-development-col-lg-7 { grid-column: span 7; }
+  .web-app-development-col-lg-8 { grid-column: span 8; }
+  .web-app-development-col-lg-9 { grid-column: span 9; }
+  .web-app-development-col-lg-10 { grid-column: span 10; }
+  .web-app-development-col-lg-11 { grid-column: span 11; }
+  .web-app-development-col-lg-12 { grid-column: span 12; }
 }
 
 @media (min-width: 1200px) {
-  .web-app-development-col-xl-1 {
-      grid-column: span 1;
-    }
-  .web-app-development-col-xl-2 {
-      grid-column: span 2;
-    }
-  .web-app-development-col-xl-3 {
-      grid-column: span 3;
-    }
-  .web-app-development-col-xl-4 {
-      grid-column: span 4;
-    }
-  .web-app-development-col-xl-5 {
-      grid-column: span 5;
-    }
-  .web-app-development-col-xl-6 {
-      grid-column: span 6;
-    }
-  .web-app-development-col-xl-7 {
-      grid-column: span 7;
-    }
-  .web-app-development-col-xl-8 {
-      grid-column: span 8;
-    }
-  .web-app-development-col-xl-9 {
-      grid-column: span 9;
-    }
-  .web-app-development-col-xl-10 {
-      grid-column: span 10;
-    }
-  .web-app-development-col-xl-11 {
-      grid-column: span 11;
-    }
-  .web-app-development-col-xl-12 {
-      grid-column: span 12;
-    }
+  .web-app-development-col-xl-1 { grid-column: span 1; }
+  .web-app-development-col-xl-2 { grid-column: span 2; }
+  .web-app-development-col-xl-3 { grid-column: span 3; }
+  .web-app-development-col-xl-4 { grid-column: span 4; }
+  .web-app-development-col-xl-5 { grid-column: span 5; }
+  .web-app-development-col-xl-6 { grid-column: span 6; }
+  .web-app-development-col-xl-7 { grid-column: span 7; }
+  .web-app-development-col-xl-8 { grid-column: span 8; }
+  .web-app-development-col-xl-9 { grid-column: span 9; }
+  .web-app-development-col-xl-10 { grid-column: span 10; }
+  .web-app-development-col-xl-11 { grid-column: span 11; }
+  .web-app-development-col-xl-12 { grid-column: span 12; }
 }
 
 
@@ -1256,4 +1063,3 @@ html {
     padding: 18px;
   }
 }
-

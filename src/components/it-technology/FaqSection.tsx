@@ -9,7 +9,6 @@ import SectionHeading from "./SectionHeading";
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
-// useLayoutEffect in the browser (no flash), useEffect on the server (no warning)
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type Faq = {
@@ -26,30 +25,30 @@ type FaqSectionProps = {
 
 const faqItemList: Faq[] = [
   {
-    question: "How long does a website take?",
+    question: "How do I know which website or app I need?",
     answer:
-      "A business website usually takes 2 to 4 weeks. Larger e-commerce and custom web apps take longer, and we share a clear timeline after the discovery call.",
+      "It depends on what you want to achieve. Tell us your idea, and we'll help you choose the right solution for your business.",
   },
   {
-    question: "Do you provide support after launch?",
+    question: "How long does it take to build a website or app?",
     answer:
-      "Yes. Every project includes post-launch support, and we offer monthly maintenance plans for updates, security, and performance.",
+      "It depends on the features, design and complexity of your project. We'll discuss the timeline with you before development begins.",
   },
   {
-    question: "Can you build a custom mobile app?",
+    question: "Can you improve my existing website or app?",
     answer:
-      "Yes. We build Android and iOS apps, including cross-platform apps with a single codebase, along with the backend and APIs they need.",
+      "Absolutely! We can update the design, add new features, fix issues or improve how it works to better suit your needs.",
   },
   {
-    question: "How can AI help my business?",
+    question: "Will my website or app work on different devices?",
     answer:
-      "AI can answer customer questions, automate repetitive tasks, and turn your data into insights. We start with one workflow and expand from there.",
+      "Yes, we'll build it to work smoothly across the devices and screen sizes relevant to your project, so users can access it with ease.",
   },
 ];
 
 const FaqSection = ({
   eyebrow = "FAQ",
-  title = "Common questions",
+  title = "Got Questions? We've Got Answers.",
   faqList = faqItemList,
   defaultOpenIndex = 0,
 }: FaqSectionProps) => {
@@ -57,7 +56,6 @@ const FaqSection = ({
 
   const sectionRef = useRef<HTMLElement>(null);
 
-  // GSAP: scroll-in reveal for this section (skipped if the visitor prefers reduced motion)
   useIsoLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
