@@ -1,18 +1,20 @@
+
 // "use client";
 
 // import { useEffect, useState } from "react";
 // import Image from "next/image";
 // import Link from "next/link";
 // import { Container } from "react-bootstrap";
+// import { useLocale } from "@/i18n/LocaleProvider";
 
 
 // const COMPANY = {
 //   name: "Debon Servces",
 //   logo: "/assets/img/logo/logo.png", 
-//   phone: "+91 6239845962",
+//   phone: "+65 9223 7396",
 //   email: "support@demo.com",
 //   address:
-//     "Mohali Citi Center 2,F Block, Gmada Aerocity, Sahibzada Ajit Singh Nagar, Punjab 140306",
+//     "111 North Bridge Road, #21-01, Peninsula Plaza, Singapore 179098",
 //   mapQuery: "Debon Servces, Mohali Citi Center 2, Aerocity, Mohali",
 // };
 
@@ -22,14 +24,14 @@
 //   { label: "Blog’s", href: "" },
 //   { label: "FAQ’S", href: "" },
 //   { label: "Testimonial", href: "" },
-//   { label: "Contact Us", href: "" },
+//   { label: "Contact Us", href: "/contact" },
 // ];
 
 // const SERVICES = [
-//   { label: "Creative & Branding", href: "" },
-//   { label: "Website Development", href: "" },
-//   { label: "Digital Marketing", href: "" },
-//   { label: "Software & App Development", href: "" },
+//   { label: "Digital Marketing Services", href: "/digital-marketing" },
+//   { label: "Website & App Development", href: "/web-app-development" },
+//   { label: "Business Operations", href: "/business-operations" },
+//   { label: "Flexible Workspaces", href: "/flexible-workspaces" },
 //   { label: "Privacy Policy", href: "" },
 //   { label: "Terms & Condition", href: "" },
 // ];
@@ -37,12 +39,12 @@
 // type SocialKey = "facebook" | "instagram" | "linkedin" | "x" | "youtube" | "pinterest";
 
 // const SOCIALS: { key: SocialKey; label: string; href: string }[] = [
-//   { key: "facebook", label: "Facebook", href: "#" },
-//   { key: "instagram", label: "Instagram", href: "#" },
-//   { key: "linkedin", label: "LinkedIn", href: "#" },
-//   { key: "x", label: "X", href: "#" },
-//   { key: "youtube", label: "YouTube", href: "#" },
-//   { key: "pinterest", label: "Pinterest", href: "#" },
+//   { key: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61595055103862" },
+//   { key: "instagram", label: "Instagram", href: "https://www.instagram.com/debon.services/" },
+//   // { key: "linkedin", label: "LinkedIn", href: "#" },
+//   // { key: "x", label: "X", href: "#" },
+//   // { key: "youtube", label: "YouTube", href: "#" },
+//   // { key: "pinterest", label: "Pinterest", href: "#" },
 // ];
 
 // const SocialIcon = ({ name }: { name: SocialKey }) => {
@@ -109,6 +111,7 @@
 
 // export default function Footer() {
 //   const [showTop, setShowTop] = useState(false);
+//   const { t } = useLocale();
 
 //   useEffect(() => {
 //     const onScroll = () => setShowTop(window.scrollY > 300);
@@ -160,31 +163,31 @@
 //         </div>
 
 //         {/* Quick links */}
-//         <nav className="site-footer__col" aria-label="Quick Links">
-//           <h3 className="site-footer__title">Quick Links</h3>
+//         <nav className="site-footer__col" aria-label={t("Quick Links")}>
+//           <h3 className="site-footer__title">{t("Quick Links")}</h3>
 //           <ul className="site-footer__links">
 //             {QUICK_LINKS.map((l) => (
 //               <li key={l.label}>
-//                 <Link href={l.href}>{l.label}</Link>
+//                 <Link href={l.href}>{t(l.label)}</Link>
 //               </li>
 //             ))}
 //           </ul>
 //         </nav>
 
 //         {/* Services */}
-//         <nav className="site-footer__col" aria-label="Our Services">
-//           <h3 className="site-footer__title">Our Services</h3>
+//         <nav className="site-footer__col" aria-label={t("Our Services")}>
+//           <h3 className="site-footer__title">{t("Our Services")}</h3>
 //           <ul className="site-footer__links">
 //             {SERVICES.map((l) => (
 //               <li key={l.label}>
-//                 <Link href={l.href}>{l.label}</Link>
+//                 <Link href={l.href}>{t(l.label)}</Link>
 //               </li>
 //             ))}
 //           </ul>
 //         </nav>
 
 //         <div className="site-footer__col site-footer__map-col">
-//           <h3 className="site-footer__title">Office Location</h3>
+//           <h3 className="site-footer__title">{t("Office Location")}</h3>
 //           <div className="site-footer__map">
 //             <iframe
 //               title={`${COMPANY.name} location`}
@@ -199,7 +202,7 @@
 
 //       <div className="site-footer__bottom">
 //         <p>
-//           © Copyright {new Date().getFullYear()} | <strong>{COMPANY.name}</strong> | All rights reserved.
+//           © {t("Copyright")} {new Date().getFullYear()} | <strong>{COMPANY.name}</strong> | {t("All rights reserved.")}
 //         </p>
 //       </div>
 
@@ -218,6 +221,7 @@
 //   );
 // }
 
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -228,13 +232,12 @@ import { useLocale } from "@/i18n/LocaleProvider";
 
 
 const COMPANY = {
-  name: "Debon Servces",
-  logo: "/assets/img/logo/logo.png", 
-  phone: "+91 6239845962",
+  name: "Debon Services",
+  logo: "/assets/img/logo/logo.png",
+  phone: "+65 9223 7396",
   email: "support@demo.com",
   address:
-    "Mohali Citi Center 2,F Block, Gmada Aerocity, Sahibzada Ajit Singh Nagar, Punjab 140306",
-  mapQuery: "Debon Servces, Mohali Citi Center 2, Aerocity, Mohali",
+    "111 North Bridge Road, #21-01, Peninsula Plaza, Singapore 179098",
 };
 
 const QUICK_LINKS = [
@@ -345,96 +348,97 @@ export default function Footer() {
     <footer className="site-footer">
       <Container>
         <div className="site-footer__inner">
-        <div className="site-footer__col site-footer__brand">
-          <Link href="/" aria-label={COMPANY.name} className="site-footer__logo">
-            <Image src={COMPANY.logo} alt={COMPANY.name} width={250} height={80} priority={false} />
-          </Link>
+          <div className="site-footer__col site-footer__brand">
+            <Link href="/" aria-label={COMPANY.name} className="site-footer__logo">
+              <Image src={COMPANY.logo} alt={COMPANY.name} width={250} height={80} priority={false} />
+            </Link>
 
-          <ul className="site-footer__contact">
-            <li>
-              <PhoneIcon />
-              <a href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}>{COMPANY.phone}</a>
-            </li>
-            <li>
-              <MailIcon />
-              <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
-            </li>
-            <li>
-              <PinIcon />
-              <span>{COMPANY.address}</span>
-            </li>
-          </ul>
+            <ul className="site-footer__contact">
+              <li>
+                <PhoneIcon />
+                <a href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}>{COMPANY.phone}</a>
+              </li>
+              <li>
+                <MailIcon />
+                <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
+              </li>
+              <li>
+                <PinIcon />
+                <span>{COMPANY.address}</span>
+              </li>
+            </ul>
 
-          <div className="site-footer__socials mt-30">
-            {SOCIALS.map((s) => (
-              <a
-                key={s.key}
-                href={s.href}
-                aria-label={s.label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`site-footer__social site-footer__social--${s.key}`}
-              >
-                <SocialIcon name={s.key} />
-              </a>
-            ))}
+            <div className="site-footer__socials mt-30">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.key}
+                  href={s.href}
+                  aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`site-footer__social site-footer__social--${s.key}`}
+                >
+                  <SocialIcon name={s.key} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick links */}
+          <nav className="site-footer__col" aria-label={t("Quick Links")}>
+            <h3 className="site-footer__title">{t("Quick Links")}</h3>
+            <ul className="site-footer__links">
+              {QUICK_LINKS.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href}>{t(l.label)}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Services */}
+          <nav className="site-footer__col" aria-label={t("Our Services")}>
+            <h3 className="site-footer__title">{t("Our Services")}</h3>
+            <ul className="site-footer__links">
+              {SERVICES.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href}>{t(l.label)}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Map – always follows COMPANY.address */}
+          <div className="site-footer__col site-footer__map-col">
+            <h3 className="site-footer__title">{t("Office Location")}</h3>
+            <div className="site-footer__map">
+              <iframe
+                title={`${COMPANY.name} location`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(COMPANY.address)}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
 
-        {/* Quick links */}
-        <nav className="site-footer__col" aria-label={t("Quick Links")}>
-          <h3 className="site-footer__title">{t("Quick Links")}</h3>
-          <ul className="site-footer__links">
-            {QUICK_LINKS.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href}>{t(l.label)}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Services */}
-        <nav className="site-footer__col" aria-label={t("Our Services")}>
-          <h3 className="site-footer__title">{t("Our Services")}</h3>
-          <ul className="site-footer__links">
-            {SERVICES.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href}>{t(l.label)}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="site-footer__col site-footer__map-col">
-          <h3 className="site-footer__title">{t("Office Location")}</h3>
-          <div className="site-footer__map">
-            <iframe
-              title={`${COMPANY.name} location`}
-              src={`https://www.google.com/maps?q=${encodeURIComponent(COMPANY.mapQuery)}&output=embed`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
+        <div className="site-footer__bottom">
+          <p>
+            © {t("Copyright")} {new Date().getFullYear()} | <strong>{COMPANY.name}</strong> | {t("All rights reserved.")}
+          </p>
         </div>
-      </div>
 
-      <div className="site-footer__bottom">
-        <p>
-          © {t("Copyright")} {new Date().getFullYear()} | <strong>{COMPANY.name}</strong> | {t("All rights reserved.")}
-        </p>
-      </div>
-
-      <button
-        type="button"
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-        className={`site-footer__top ${showTop ? "is-visible" : ""}`}
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.400" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M12 19V5M5 12l7-7 7 7" />
-        </svg>
-      </button>
+        <button
+          type="button"
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+          className={`site-footer__top ${showTop ? "is-visible" : ""}`}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.400" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg>
+        </button>
       </Container>
     </footer>
   );
