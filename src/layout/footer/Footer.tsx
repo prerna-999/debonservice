@@ -254,7 +254,7 @@ const SERVICES = [
   { label: "Website & App Development", href: "/web-app-development" },
   { label: "Business Operations", href: "/business-operations" },
   { label: "Flexible Workspaces", href: "/flexible-workspaces" },
-  { label: "Privacy Policy", href: "" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Condition", href: "" },
 ];
 
