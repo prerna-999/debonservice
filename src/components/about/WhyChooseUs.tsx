@@ -1,17 +1,17 @@
+
 "use client";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRight, BarChart3, Lightbulb, Users, Target } from "lucide-react";
+import { Layers, SlidersHorizontal, Building2, LifeBuoy } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const REASONS: { icon: LucideIcon; title: string; text: string }[] = [
-  { icon: BarChart3, title: "Data-Driven Strategy", text: "Every decision is backed by real data and insights." },
-  { icon: Lightbulb, title: "Creative Excellence", text: "Fresh ideas that make your brand stand out." },
-  { icon: Users, title: "Experienced Team", text: "Skilled professionals who care about your success." },
-  { icon: Target, title: "Proven Results", text: "More traffic, better engagement and higher conversions." },
+  { icon: Layers, title: "All-in-One Business Partner", text: "Advertising, technology, business operations and co-sharing workspaces for rentals, all under one roof." },
+  { icon: SlidersHorizontal, title: "Solutions That Fit You", text: "We provide personalised solutions that align with your business’s unique requirements, goals and budget." },
+  { icon: Building2, title: "Space to Work & Grow", text: "We understand your requirements and provide flexible and affordable workspaces available by the hour, day, week, or month." },
+  { icon: LifeBuoy, title: "Support Beyond Delivery", text: "Ongoing guidance and reliable support to help your business adapt, improve and grow with confidence." },
 ];
 
 export default function WhyChooseUs() {
@@ -48,15 +48,12 @@ export default function WhyChooseUs() {
         <Row className="align-items-center">
           <Col lg={5}>
             <p className="about-eyebrow about-eyebrow--light" data-reveal>Why Choose Us</p>
-            <h2 id="why-title" className="about-title about-title--light" data-reveal>
-              Built for visibility. <em>Designed for growth.</em>
+              <h2 id="why-title" className="about-title about-title--light" data-reveal>
+              Better Together <em>with Debonaire</em>
             </h2>
             <p className="about-text about-text--light" data-reveal>
-              We combine data, creativity and technology to deliver strategies that work — today and tomorrow.
+              We bring the right expertise, practical solutions and personalised support to help your business grow seamlessly.
             </p>
-            <Link href="#contact" className="about-btn" data-reveal>
-              Work With Us <ArrowRight size={20} strokeWidth={2.2} />
-            </Link>
           </Col>
 
           <Col lg={7}>

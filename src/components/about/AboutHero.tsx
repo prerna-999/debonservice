@@ -1,12 +1,10 @@
 
-
 import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 
-
 const TORN = (() => {
   const W = 1440;
-  const STEP = 6; 
+  const STEP = 6;
   const rnd = (n: number) => {
     const s = Math.sin(n * 127.1) * 43758.5453;
     return s - Math.floor(s);
@@ -28,20 +26,18 @@ const TORN = (() => {
 export default function AboutHero() {
     return (
         <section className="contact-banner" aria-labelledby="contact-banner-title">
-           <Image src="/assets/img/all-img/home/home-about-1.avif" alt="" fill priority sizes="100vw" className="contact-banner__bg" />
+            <Image src="/assets/img/all-img/home/home-about-1.avif" alt="" fill priority sizes="100vw" className="contact-banner__bg" />
             <div className="contact-banner__overlay" aria-hidden="true" />
 
             <Container className="contact-banner__container">
                 <Row className="justify-content-center">
                     <Col lg={8} xl={7}>
                         <div className="contact-banner__inner">
-                            <span className="contact-banner__pill">We&apos;d love to hear from you</span>
                             <h1 id="contact-banner-title" className="contact-banner__title">
-                               About Us
+                                Debonaire Capital Assets
                             </h1>
                             <p className="contact-banner__text">
-                                Tell us about your business and your growth goals. Our team will get back to you with a clear next
-                                step, usually within one working day.
+                                SMEs and startups at The Business Show Asia face recurring challenges that limit their growth. Debonaire Capital Assets solves these with precision and accountability.
                             </p>
                         </div>
                     </Col>

@@ -1,16 +1,16 @@
+
+
+
 "use client";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const STATS = [
-  { value: 5, suffix: "+", label: "Years of Experience" },
-  { value: 100, suffix: "+", label: "Projects Delivered" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 230, suffix: "+", label: "Projects" },
+  { value: 5, suffix: "+", label: "Years" },
 ];
 
 export default function WhoWeAre() {
@@ -45,7 +45,6 @@ export default function WhoWeAre() {
             gsap.to(o, { v: end, duration: 1.8, ease: "power2.out", onUpdate: () => (el.textContent = Math.round(o.v) + suffix) }),
         });
       });
-      gsap.from(".about-who__bigno", { xPercent: -30, autoAlpha: 0, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: ".about-who", start: "top 75%" } });
       gsap.from(".about-who__line", { scaleY: 0, transformOrigin: "top", duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: ".about-who__stats", start: "top 85%" } });
       gsap.from(".about-who__circle", { scale: 0, duration: 1, ease: "back.out(1.6)", scrollTrigger: { trigger: ".about-who__visual", start: "top 80%" } });
       gsap.fromTo(".about-who__photo", { y: 24 }, { y: -24, ease: "none", scrollTrigger: { trigger: ".about-who__visual", start: "top bottom", end: "bottom top", scrub: 1 } });
@@ -57,23 +56,16 @@ export default function WhoWeAre() {
   return (
     <section className="about-who" id="who" aria-labelledby="who-title" ref={rootRef}>
       <Container>
-        <p className="about-eyebrow" data-reveal>Who We Are</p>
         <Row className="align-items-center">
           <Col xl={5} lg={6}>
             <div className="about-who__copy">
-              <span className="about-who__bigno" aria-hidden="true">01</span>
               <div>
-                <h2 id="who-title" className="about-title" data-reveal>
-                  A team of digital thinkers, creators <em>and problem solvers.</em>
-                </h2>
+                 <h2 id="who-title" className="about-title" data-reveal>
+                   Your Digital Growth & <em>Business Support Partner</em>
+               </h2>
                 <p className="about-text" data-reveal>
-                  We&apos;re more than just a digital marketing agency — we&apos;re your growth partner. With a blend of
-                  strategy, creativity and technology, we help businesses build a strong online presence and achieve
-                  long-term success.
+                  Debonaire Capital Assets is a full-service Digital Marketing &amp; Technology solutions company helping businesses build stronger digital brands, generate qualified leads, find flexible workspaces and accelerate sustainable growth. From high-performance websites and software solutions to SEO, AI SEO, social media, performance marketing, content, branding, analytics, and affordable workspaces, we provide end-to-end support tailored to each client&apos;s business objectives.
                 </p>
-                <Link href="#what" className="about-link" data-reveal>
-                  Our Story <ArrowRight size={18} strokeWidth={2.4} />
-                </Link>
               </div>
             </div>
           </Col>
