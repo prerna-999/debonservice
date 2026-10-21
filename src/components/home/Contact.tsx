@@ -1,24 +1,163 @@
 
 
+// "use client";
+// import { useEffect, useRef, type FormEvent } from "react";
+// import { Container, Row, Col } from "react-bootstrap";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// const EMAIL = "hello@debonservices.com";
+
+// const SERVICES = [
+//   "Organic Search Optimization",
+//   "AI-Powered SEO",
+//   "Social Media Growth Management",
+//   "Performance Marketing",
+//   "Conversion & Reputation",
+//   "Content Creation",
+// ];
+
+// export default function Contact() {
+//   const rootRef = useRef<HTMLElement>(null);
+
+//   useEffect(() => {
+//     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+//     gsap.registerPlugin(ScrollTrigger);
+//     const ctx = gsap.context(() => {
+//       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+//         gsap.from(el, {
+//           y: 34,
+//           duration: 0.85,
+//           ease: "power3.out",
+//           clearProps: "all",
+//           scrollTrigger: { trigger: el, start: "top 91%", toggleActions: "play none none reverse", invalidateOnRefresh: true },
+//         });
+//       });
+//     }, rootRef);
+//     return () => ctx.revert();
+//   }, []);
+
+//   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     const fd = new FormData(e.currentTarget);
+//     const get = (k: string) => String(fd.get(k) ?? "").trim();
+//     const subject = `Enquiry: ${get("service") || "General enquiry"}`;
+//     const body = [
+//       `Name: ${get("name")}`,
+//       `Email: ${get("email")}`,
+//       `Phone: ${get("phone") || "-"}`,
+//       `Service: ${get("service") || "General enquiry"}`,
+//       "",
+//       get("message"),
+//     ].join("\n");
+//     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+//   };
+
+//   return (
+//     <section className="home-contact" id="contact" aria-labelledby="contact-title" ref={rootRef}>
+//       <Container>
+//         <Row className="home-contact__layout">
+//           {/* ---- Left copy ---- */}
+//           <Col lg={5}>
+//             <h2 id="contact-title" className="home-contact__title" data-reveal>
+//               Big Ideas Deserve
+//               <br />
+//               Better <em>Execution.</em>
+//             </h2>
+//             <p className="home-contact__intro" data-reveal>
+//               Your key takeaway awaits. Get the right strategy, smarter technology and advanced AI solutions today.
+//             </p>
+//           </Col>
+
+//           {/* ---- Form ---- */}
+//           <Col lg={7}>
+//             <form className="home-contact__form" id="enquiry-form" onSubmit={handleSubmit} data-reveal>
+//               <div className="home-contact__pair">
+//                 <label className="home-contact__label">
+//                   Your name
+//                   <input name="name" autoComplete="name" required placeholder="Your name" />
+//                 </label>
+//                 <label className="home-contact__label">
+//                   Work email
+//                   <input name="email" type="email" autoComplete="email" required placeholder="you@company.com" />
+//                 </label>
+//               </div>
+
+//               <div className="home-contact__pair">
+//                 <label className="home-contact__label">
+//                   Phone, optional
+//                   <input name="phone" type="tel" autoComplete="tel" placeholder="+91 ..." />
+//                 </label>
+//                 <label className="home-contact__label">
+//                   Service interest
+//                   <select name="service" defaultValue="General enquiry">
+//                     <option value="General enquiry">Select a service</option>
+//                     {SERVICES.map((s) => (
+//                       <option key={s} value={s}>
+//                         {s}
+//                       </option>
+//                     ))}
+//                   </select>
+//                 </label>
+//               </div>
+
+//               <label className="home-contact__label">
+//                 What are you working toward?
+//                 <textarea name="message" rows={4} required placeholder="A little about your business and goals" />
+//               </label>
+
+//               <button className="home-contact__btn" type="submit">
+//                 Prepare email enquiry <span aria-hidden="true">↗</span>
+//               </button>
+//             </form>
+//           </Col>
+//         </Row>
+//       </Container>
+//     </section>
+//   );
+// }
+
+
 "use client";
-import { useEffect, useRef, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PhoneInput, { isValidPhoneNumber, getCountries } from "react-phone-number-input";
+import en from "react-phone-number-input/locale/en.json";
+import "react-phone-number-input/style.css";
 
 const EMAIL = "hello@debonservices.com";
 
-const SERVICES = [
-  "Organic Search Optimization",
-  "AI-Powered SEO",
-  "Social Media Growth Management",
-  "Performance Marketing",
-  "Conversion & Reputation",
-  "Content Creation",
+const SERVICE_GROUPS = [
+  {
+    label: "Digital Marketing Services",
+    items: [
+      "SEO & AI SEO",
+      "Paid Media & Performance Marketing",
+      "Content & Social",
+      "Customer Engagement",
+      "Reputation & Optimization",
+    ],
+  },
+  {
+    label: "Web and App Development Services",
+    items: ["Web Development", "Software & App Development", "AI Solutions"],
+  },
 ];
+
+const SINGLE_SERVICES = ["Business Operations", "Flexible Workspaces"];
+
+const COUNTRY_NAMES = en as Record<string, string>;
+const COUNTRY_OPTIONS = getCountries()
+  .map((code) => ({ code, name: COUNTRY_NAMES[code] }))
+  .filter((c) => c.name)
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export default function Contact() {
   const rootRef = useRef<HTMLElement>(null);
+  const [phone, setPhone] = useState<string | undefined>();
+  const [phoneError, setPhoneError] = useState("");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -39,13 +178,21 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!phone || !isValidPhoneNumber(phone)) {
+      setPhoneError("Enter a valid phone number.");
+      return;
+    }
+    setPhoneError("");
+
     const fd = new FormData(e.currentTarget);
     const get = (k: string) => String(fd.get(k) ?? "").trim();
     const subject = `Enquiry: ${get("service") || "General enquiry"}`;
     const body = [
       `Name: ${get("name")}`,
       `Email: ${get("email")}`,
-      `Phone: ${get("phone") || "-"}`,
+      `Phone: ${phone}`,
+      `Country: ${get("country") || "-"}`,
       `Service: ${get("service") || "General enquiry"}`,
       "",
       get("message"),
@@ -85,16 +232,37 @@ export default function Contact() {
 
               <div className="home-contact__pair">
                 <label className="home-contact__label">
-                  Phone, optional
-                  <input name="phone" type="tel" autoComplete="tel" placeholder="+91 ..." />
+                  Phone
+                  <PhoneInput
+                    international
+                    withCountryCallingCode
+                    countrySelectComponent={() => null}
+                    defaultCountry="SG"
+                    value={phone}
+                    onChange={(v) => {
+                      setPhone(v);
+                      if (phoneError) setPhoneError("");
+                    }}
+                    placeholder="Phone number"
+                    autoComplete="tel"
+                    aria-invalid={!!phoneError}
+                    required
+                  />
+                  {phoneError && (
+                    <span style={{ display: "block", marginTop: 6, fontSize: 13, fontWeight: 600, color: "#d93025" }}>
+                      {phoneError}
+                    </span>
+                  )}
                 </label>
                 <label className="home-contact__label">
-                  Service interest
-                  <select name="service" defaultValue="General enquiry">
-                    <option value="General enquiry">Select a service</option>
-                    {SERVICES.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
+                  Country
+                  <select name="country" defaultValue="" autoComplete="country-name" required>
+                    <option value="" disabled>
+                      Select your country
+                    </option>
+                    {COUNTRY_OPTIONS.map((c) => (
+                      <option key={c.code} value={c.name}>
+                        {c.name}
                       </option>
                     ))}
                   </select>
@@ -102,12 +270,35 @@ export default function Contact() {
               </div>
 
               <label className="home-contact__label">
+                Service interest
+                <select name="service" defaultValue="" required>
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  {SERVICE_GROUPS.map((g) => (
+                    <optgroup key={g.label} label={g.label}>
+                      {g.items.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                  {SINGLE_SERVICES.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="home-contact__label">
                 What are you working toward?
                 <textarea name="message" rows={4} required placeholder="A little about your business and goals" />
               </label>
 
               <button className="home-contact__btn" type="submit">
-                Prepare email enquiry <span aria-hidden="true">↗</span>
+               Send Message <span aria-hidden="true">↗</span>
               </button>
             </form>
           </Col>

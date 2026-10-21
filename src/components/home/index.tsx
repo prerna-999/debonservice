@@ -11,9 +11,9 @@ import Process from "./Process";
 import Why from "./Why";
 import Industries from "./Industries";
 import Social from "./Social";
-import Testimonials from "./Testimonials";
+// import Testimonials from "./Testimonials";
 import Faq from "./Faq";
-import Insights from "./Insights";
+// import Insights from "./Insights";
 import Contact from "./Contact";
 const HomePage =()=>{
     return(<>
@@ -30,9 +30,9 @@ const HomePage =()=>{
       <Why/>
        <Industries/> 
     <Social/>
-    <Testimonials/>
+    {/* <Testimonials/> */}
     <Faq/>
-    <Insights/>
+    {/* <Insights/> */}
     <Contact/>
         </>
     )

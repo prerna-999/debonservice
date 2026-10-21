@@ -243,9 +243,9 @@ const COMPANY = {
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Blog’s", href: "" },
+  // { label: "Blog’s", href: "" },
   { label: "FAQ’S", href: "" },
-  { label: "Testimonial", href: "" },
+  // { label: "Testimonial", href: "" },
   { label: "Contact Us", href: "/contact" },
 ];
 
