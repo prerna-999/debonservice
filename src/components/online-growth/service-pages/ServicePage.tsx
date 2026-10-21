@@ -756,6 +756,7 @@
 
 
 
+
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
 import Link from "next/link";
@@ -774,9 +775,11 @@ export type ServicePageData = {
 
   practicesEyebrow?: string;
   practicesTitle?: string;
+  practicesSub?: string;
   whyEyebrow?: string;
   faqEyebrow?: string;
   faqTitle?: string;
+  faqSub?: string;
 
   practices: { title: string; text: string; points: string[] }[];
   process: { title: string; text: string }[];
@@ -856,7 +859,6 @@ function CountUp({ value }: { value: string }) {
   );
 }
 
-/* headline words slide up one after another */
 function Words({ text, offset = 0 }: { text: string; offset?: number }) {
   return (
     <>
@@ -897,7 +899,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
     el.style.setProperty("--rx", "0deg");
   };
 
-  /* soft light that follows the cursor on cards */
   const spot = (e: MouseEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
@@ -908,7 +909,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
 
   return (
     <main className="sp">
-      {/* HERO */}
       <section className="sp-hero" onMouseMove={tilt} onMouseLeave={untilt}>
         <div className="sp-hero-bg" aria-hidden="true">
           <span className="sp-orb sp-orb-1" />
@@ -937,9 +937,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </Link>
-              {/* <a href="#practices" className="sp-btn sp-btn-ghost">
-                See what is included
-              </a> */}
             </div>
           </div>
 
@@ -956,7 +953,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* STATS */}
       <section className="sp-stats-wrap">
         <div className="sp-container">
           <Fx>
@@ -972,12 +968,12 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* PRACTICES */}
       <section className="sp-section" id="practices">
         <div className="sp-container">
           <Fx className="sp-head">
             {data.practicesEyebrow && <p className="sp-eyebrow">{data.practicesEyebrow}</p>}
             {data.practicesTitle && <h2 className="sp-h2">{data.practicesTitle}</h2>}
+            {data.practicesSub && <p className="sp-sub">{data.practicesSub}</p>}
           </Fx>
 
           <Fx delay={120}>
@@ -1024,35 +1020,12 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
                     </li>
                   ))}
                 </ul>
-                {/* <Link href="/contact" className="sp-btn sp-btn-primary mt-30">
-                  Ask about this
-                </Link> */}
               </div>
             </div>
           </Fx>
         </div>
       </section>
 
-      {/* PROCESS */}
-      {/* <section className="sp-section sp-dark">
-        <div className="sp-container">
-          <Fx className="sp-head">
-            <p className="sp-eyebrow sp-eyebrow-light">How we work</p>
-            <h2 className="sp-h2 sp-h2-light">From first call to steady leads in four steps</h2>
-          </Fx>
-          <ol ref={stepsRef} className={`sp-steps ${stepsIn ? "is-in" : ""}`}>
-            {data.process.map((p, i) => (
-              <li key={p.title} className="sp-step" style={vars({ "--i": i })} onMouseMove={spot}>
-                <span className="sp-num">{pad(i)}</span>
-                <h3>{p.title}</h3>
-                <p>{p.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section> */}
-
-      {/* WHY */}
       <section className="sp-section sp-paper">
         <div className="sp-container sp-why">
           <Fx>
@@ -1074,12 +1047,12 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="sp-section">
         <div className="sp-container sp-faq-grid">
           <Fx>
             {data.faqEyebrow && <p className="sp-eyebrow">{data.faqEyebrow}</p>}
             {data.faqTitle && <h2 className="sp-h2">{data.faqTitle}</h2>}
+            {data.faqSub && <p className="sp-sub">{data.faqSub}</p>}
           </Fx>
           <Fx delay={120}>
             <div className="sp-faqs">
@@ -1101,7 +1074,6 @@ export default function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="og-section og-dark og-cta">
         <div className="og-bigWord" aria-hidden="true">
           {`${data.marquee} `.repeat(4).trim()}

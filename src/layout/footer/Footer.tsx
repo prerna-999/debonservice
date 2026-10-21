@@ -235,7 +235,7 @@ const COMPANY = {
   name: "Debon Services",
   logo: "/assets/img/logo/logo.png",
   phone: "+65 9223 7396",
-  email: "support@demo.com",
+  email: "support@debonservices.com",
   address:
     "111 North Bridge Road, #21-01, Peninsula Plaza, Singapore 179098",
 };
