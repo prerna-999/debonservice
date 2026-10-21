@@ -85,7 +85,7 @@ const data: ServicePageData = {
 
   practicesTitle: "Content and Social Media That Grow Your Brand",
   practicesSub: "We create purposeful content and manage your social presence strategically to make your brand memorable.",
-  // faqEyebrow: "FAQs",
+  faqEyebrow: "Frequently Asked Questions",
   faqTitle: "Got Questions About Content & Social Media?",
   faqSub: "Here are a few things you might want to know before getting started.",
 

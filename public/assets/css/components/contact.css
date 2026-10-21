@@ -128,7 +128,7 @@
   color: var(--color-2);
 }
 .contact-main .contact-main__heading--sm {
-  margin: 38px 0 10px;
+  margin: 0 0 10px;
 }
 .contact-main .contact-main__text {
   max-width: none;
@@ -175,7 +175,7 @@
 .contact-main .contact-main__map iframe {
   display: block;
   width: 100%;
-  height: clamp(280px, 30vw, 360px);
+  height: clamp(340px, 42vw, 560px);
   border: 0;
 }
 
@@ -267,9 +267,63 @@
 .contact-main .contact-main__field textarea:focus {
   outline: none;
   border-style: solid;
-  border-color: var(--primary-color, #17709f);
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(23, 112, 159, 0.18);
 }
+
+/* ---------- Phone input (bina flag ke) ---------- */
+.contact-main .PhoneInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 22px;
+  border: 1px dashed var(--color-2);
+  border-radius: 999px;
+  background: var(--color-1);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-main .PhoneInput:focus-within {
+  border-style: solid;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(23, 112, 159, 0.18);
+}
+/* Flag / country select poora hide */
+.contact-main .PhoneInputCountry {
+  display: none;
+}
+.contact-main .PhoneInput .PhoneInputInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  padding: 12px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-2);
+  font: 400 15px/1.5 var(--font-family);
+}
+.contact-main .PhoneInput .PhoneInputInput:focus {
+  outline: none;
+  border: 0;
+  box-shadow: none;
+}
+.contact-main .PhoneInput .PhoneInputInput::placeholder {
+  color: var(--link-line, #6e839a);
+  opacity: 1;
+}
+.contact-main .PhoneInput:has(input[aria-invalid="true"]) {
+  border-color: #d93025;
+}
+.contact-main .contact-main__error {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d93025;
+}
+
+/* ---------- Button & status ---------- */
 .contact-main .contact-main__btn {
   display: inline-block;
   width: auto;
@@ -294,7 +348,7 @@
   cursor: wait;
 }
 .contact-main .contact-main__btn:focus-visible {
-  outline: 2px solid var(--primary-color, #17709f);
+  outline: 2px solid var(--primary-color);
   outline-offset: 3px;
 }
 .contact-main .contact-main__status {
@@ -302,23 +356,16 @@
   margin: 14px 0 0;
   font-size: 15px;
   font-weight: 600;
-  color: var(--primary-color, #17709f);
+  color: var(--primary-color);
 }
 
-.contact-main .contact-main__heading--sm {
-  margin: 0 0 10px;
-}
-
-.contact-main .contact-main__map iframe {
-  display: block;
-  width: 100%;
-  height: clamp(340px, 42vw, 560px);
-  border: 0;
-}
 @media (max-width: 575.98px) {
   .contact-main .contact-main__field input,
   .contact-main .contact-main__field select {
     padding-left: 18px;
+  }
+  .contact-main .PhoneInput {
+    padding: 0 18px;
   }
   .contact-main .contact-main__btn {
     width: 100%;

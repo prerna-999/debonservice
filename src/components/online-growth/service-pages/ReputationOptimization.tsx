@@ -85,7 +85,7 @@ const data: ServicePageData = {
   ],
 
   practicesTitle: "Make Every Visit Count With Our CRO & ORM Solutions",
-  // faqEyebrow: "FAQs",
+  // faqEyebrow: "Frequently Asked Questions",
   faqTitle: "Frequently Asked Questions About CRO & ORM Services",
 
   practices: [
