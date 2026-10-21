@@ -255,7 +255,7 @@ const SERVICES = [
   { label: "Business Operations", href: "/business-operations" },
   { label: "Flexible Workspaces", href: "/flexible-workspaces" },
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms & Condition", href: "" },
+  { label: "Terms & Condition", href: "/terms-and-conditions" },
 ];
 
 type SocialKey = "facebook" | "instagram" | "linkedin" | "x" | "youtube" | "pinterest";
