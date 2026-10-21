@@ -33,6 +33,7 @@ export default function AboutHero() {
                 <Row className="justify-content-center">
                     <Col lg={8} xl={7}>
                         <div className="contact-banner__inner">
+                              <span className="contact-banner__pill">About Us</span>
                             <h1 id="contact-banner-title" className="contact-banner__title">
                                 Debonaire Capital Assets
                             </h1>
