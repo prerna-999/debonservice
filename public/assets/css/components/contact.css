@@ -271,12 +271,11 @@
   box-shadow: 0 0 0 3px rgba(23, 112, 159, 0.18);
 }
 
-/* ---------- Phone input (bina flag ke) ---------- */
+/* ---------- Phone input (flag + code dropdown) ---------- */
 .contact-main .PhoneInput {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
-  padding: 0 22px;
   border: 1px dashed var(--color-2);
   border-radius: 999px;
   background: var(--color-1);
@@ -287,15 +286,125 @@
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(23, 112, 159, 0.18);
 }
-/* Flag / country select poora hide */
-.contact-main .PhoneInputCountry {
-  display: none;
+.contact-main .contact-main__phone-country {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+}
+.contact-main .contact-main__phone-country-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 14px 0 20px;
+  border: 0;
+  border-radius: 999px 0 0 999px;
+  background: rgba(12, 36, 72, 0.07);
+  color: var(--color-2);
+  font: 400 15px/1.5 var(--font-family);
+  cursor: pointer;
+}
+.contact-main .contact-main__phone-country-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.contact-main .contact-main__phone-country-flag {
+  display: block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(12, 36, 72, 0.15);
+}
+.contact-main .contact-main__phone-country-flag svg,
+.contact-main .contact-main__phone-country-flag img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.contact-main .contact-main__phone-country-code {
+  color: var(--link-line, #6e839a);
+}
+.contact-main .contact-main__phone-country-arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid var(--color-2);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  opacity: 0.7;
+}
+.contact-main .contact-main__phone-country-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 30;
+  width: 320px;
+  max-width: calc(100vw - 64px);
+  padding: 8px;
+  border: 1px solid rgba(12, 36, 72, 0.08);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: 0 18px 50px rgba(12, 36, 72, 0.22);
+}
+.contact-main .contact-main__field .contact-main__phone-country-search,
+.contact-main .contact-main__field .contact-main__phone-country-search:focus {
+  width: 100%;
+  margin: 0 0 6px;
+  padding: 10px 16px;
+  border: 1px solid rgba(12, 36, 72, 0.15);
+  border-radius: 999px;
+  background: var(--color-1);
+  box-shadow: none;
+  font: 400 14px/1.4 var(--font-family);
+  outline: none;
+}
+.contact-main .contact-main__phone-country-list {
+  max-height: 260px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.contact-main .contact-main__phone-country-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-2);
+  font: 400 14px/1.4 var(--font-family);
+  text-align: left;
+  cursor: pointer;
+}
+.contact-main .contact-main__phone-country-option:hover,
+.contact-main .contact-main__phone-country-option--active {
+  background: rgba(23, 112, 159, 0.1);
+}
+.contact-main .contact-main__phone-country-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.contact-main .contact-main__phone-country-dial {
+  flex: 0 0 auto;
+  color: var(--link-line, #6e839a);
+}
+.contact-main .contact-main__phone-country-empty {
+  padding: 10px;
+  font-size: 14px;
+  color: var(--link-line, #6e839a);
 }
 .contact-main .PhoneInput .PhoneInputInput {
   flex: 1 1 auto;
   min-width: 0;
   width: auto;
-  padding: 12px 0;
+  padding: 12px 22px 12px 16px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -364,8 +473,11 @@
   .contact-main .contact-main__field select {
     padding-left: 18px;
   }
-  .contact-main .PhoneInput {
-    padding: 0 18px;
+  .contact-main .contact-main__phone-country-button {
+    padding: 0 12px 0 16px;
+  }
+  .contact-main .PhoneInput .PhoneInputInput {
+    padding-right: 18px;
   }
   .contact-main .contact-main__btn {
     width: 100%;

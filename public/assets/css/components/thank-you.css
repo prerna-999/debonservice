@@ -1,0 +1,96 @@
+/* Uses your global :root tokens (--font-family, --primary-color, etc.) */
+.thank {
+  --thank-success: #16a34a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  line-height: 1.6;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, var(--bg-paper), var(--bg-white) 75%);
+}
+.thank *,
+.thank *::before,
+.thank *::after { box-sizing: border-box; }
+
+.thank__inner { width: 100%; max-width: 720px; }
+
+.thank__tick { width: 80px; height: 80px; display: block; margin: 0 auto 20px; }
+.thank__tick circle,
+.thank__tick path {
+  fill: none;
+  stroke: var(--thank-success);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: thank-draw 0.8s ease forwards;
+}
+.thank__tick circle { stroke-width: 5; stroke-dasharray: 302; stroke-dashoffset: 302; }
+.thank__tick path { stroke-width: 6; stroke-dasharray: 60; stroke-dashoffset: 60; animation-duration: 0.5s; animation-delay: 0.7s; }
+@keyframes thank-draw { to { stroke-dashoffset: 0; } }
+
+.thank__title {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  font-size: clamp(44px, 8vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+  color: var(--color-2);
+}
+.thank__title span { color: var(--thank-success); }
+
+.thank__lead {
+  max-width: 480px;
+  margin: 0 auto 28px;
+  font-size: 17px;
+  color: var(--text-color-2);
+}
+
+.thank__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-color);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.thank__btn:hover { transform: translateY(-2px); box-shadow: var(--box-shadow-2); }
+
+.thank__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+  text-align: left;
+}
+.thank__step {
+  background: var(--bg-white);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 20px;
+}
+.thank__step b {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--color-white);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.thank__step h3 { font-size: 15px; font-weight: 700; margin: 0 0 4px; color: var(--color-2); }
+.thank__step p { margin: 0; font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 720px) {
+  .thank__steps { grid-template-columns: 1fr; }
+}

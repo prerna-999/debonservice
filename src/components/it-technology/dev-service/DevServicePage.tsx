@@ -884,7 +884,7 @@ function Services({ data }: { data: DevPageData }) {
     <section className="dv-section dv-paper" id="services">
       <div className="dv-wrap">
         {data.servicesEyebrow && <p className="dv-eyebrow">{data.servicesEyebrow}</p>}
-        {data.servicesTitle && <h2 className="dv-h2">{data.servicesTitle}</h2>}
+        {data.servicesTitle && <h2 className="dv-h2 mb-30">{data.servicesTitle}</h2>}
         {data.servicesSub && <p className="dv-sub">{data.servicesSub}</p>}
         <div className="dv-cards">
           {items.map((s, i) => {
