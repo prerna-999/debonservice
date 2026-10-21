@@ -79,12 +79,12 @@
 
 .contact-info__card--featured {
     background: var(--color-2);
-    border-color: var(--accent-light, #5fd0e3);
+    border-color: var(--accent-light);
     color: var(--text-on-dark, #c2d1df);
 }
 
 .contact-info__card--featured .contact-info__icon {
-    background: var(--accent-light, #5fd0e3);
+    background: var(--accent-light);
     color: var(--color-2);
 }
 
@@ -106,9 +106,9 @@
 /* Contact Main  */
 .contact-main {
   padding: 0 0 clamp(56px, 7vw, 100px);
-  background: var(--bg-white, #ffffff);
+  background: var(--bg-white);
   color: var(--text-color, #56687c);
-  font-family: var(--font-family, "DM Sans", Arial, sans-serif);
+  font-family: var(--font-family);
   font-size: 1.0625rem;
   line-height: 1.7;
 }
@@ -120,21 +120,27 @@
 
 .contact-main .contact-main__heading {
   margin: 0 0 14px;
-  font-family: var(--font-family, "DM Sans", Arial, sans-serif);
+  font-family: var(--font-family);
   font-size: clamp(1.5rem, 2vw, 1.85rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: var(--color-2, #0c2448);
+  color: var(--color-2);
 }
 .contact-main .contact-main__heading--sm {
-  margin: 38px 0 18px;
+  margin: 38px 0 10px;
 }
 .contact-main .contact-main__text {
   max-width: none;
   margin: 0 0 24px;
   font-size: 15px;
   line-height: 1.75;
+  color: var(--text-color, #56687c);
+}
+.contact-main .contact-main__address {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--text-color, #56687c);
 }
 .contact-main .contact-main__hours {
@@ -158,12 +164,12 @@
   flex: 0 0 18px;
   width: 18px;
   height: 18px;
-  color: var(--color-2, #0c2448);
+  color: var(--color-2);
 }
 .contact-main .contact-main__map {
   overflow: hidden;
   border-radius: 26px;
-  background: var(--color-1, #eef6fa);
+  background: var(--color-1);
   box-shadow: 0 8px 24px rgba(12, 36, 72, 0.1);
 }
 .contact-main .contact-main__map iframe {
@@ -173,31 +179,34 @@
   border: 0;
 }
 
-/* ---------- right: form ---------- */
 .contact-main .contact-main__pill {
   display: inline-block;
   padding: 7px 24px;
-  border: 1px solid var(--color-2, #0c2448);
+  border: 1px solid var(--color-2);
   border-radius: 999px;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.3;
-  color: var(--color-2, #0c2448);
+  color: var(--color-2);
 }
 .contact-main .contact-main__title {
   margin: 10px 0 22px;
-  font-family: var(--font-family, "DM Sans", Arial, sans-serif);
+  font-family: var(--font-family);
   font-size: clamp(2.2rem, 3.6vw, 3rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--color-2, #0c2448);
+  color: var(--color-2);
 }
 .contact-main .contact-main__form {
   padding: clamp(22px, 3vw, 32px);
   border-radius: 24px;
-  background: var(--color-white, #ffffff);
+  background: var(--color-white);
   box-shadow: 0 18px 50px rgba(12, 36, 72, 0.16);
+}
+.contact-main .contact-main__fields {
+  --bs-gutter-x: 18px;
+  --bs-gutter-y: 0;
 }
 .contact-main .contact-main__field {
   margin-bottom: 18px;
@@ -208,20 +217,39 @@
   font-size: 15px;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--color-2, #0c2448);
+  color: var(--color-2);
 }
 .contact-main .contact-main__field input,
+.contact-main .contact-main__field select,
 .contact-main .contact-main__field textarea {
   display: block;
   width: 100%;
   padding: 12px 22px;
-  border: 1px dashed var(--color-2, #0c2448);
+  border: 1px dashed var(--color-2);
   border-radius: 999px;
-  background: var(--color-1, #eef6fa);
-  color: var(--color-2, #0c2448);
-  font: 400 15px/1.5 var(--font-family, "DM Sans", Arial, sans-serif);
+  background: var(--color-1);
+  color: var(--color-2);
+  font: 400 15px/1.5 var(--font-family);
   box-shadow: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-main .contact-main__field select {
+  padding-right: 48px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c2448' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 16px;
+}
+.contact-main .contact-main__field select:invalid {
+  color: var(--link-line, #6e839a);
+}
+.contact-main .contact-main__field select option,
+.contact-main .contact-main__field select optgroup {
+  color: var(--color-2);
 }
 .contact-main .contact-main__field textarea {
   min-height: 150px;
@@ -235,6 +263,7 @@
   opacity: 1;
 }
 .contact-main .contact-main__field input:focus,
+.contact-main .contact-main__field select:focus,
 .contact-main .contact-main__field textarea:focus {
   outline: none;
   border-style: solid;
@@ -248,16 +277,16 @@
   padding: 12px 34px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent-light, #5fd0e3);
-  color: var(--color-2, #0c2448);
-  font: 600 15px/1.3 var(--font-family, "DM Sans", Arial, sans-serif);
+  background: var(--accent-light);
+  color: var(--color-2);
+  font: 600 15px/1.3 var(--font-family);
   cursor: pointer;
   transition: transform 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .contact-main .contact-main__btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  background: var(--color-2, #0c2448);
-  color: var(--color-white, #ffffff);
+  background: var(--color-2);
+  color: var(--color-white);
   box-shadow: var(--box-shadow-2, rgba(23, 112, 159, 0.35) 0 12px 26px 0);
 }
 .contact-main .contact-main__btn:disabled {
@@ -276,9 +305,20 @@
   color: var(--primary-color, #17709f);
 }
 
+.contact-main .contact-main__heading--sm {
+  margin: 0 0 10px;
+}
+
+.contact-main .contact-main__map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 42vw, 560px);
+  border: 0;
+}
 @media (max-width: 575.98px) {
-  .contact-main .contact-main__field input {
-    padding: 12px 18px;
+  .contact-main .contact-main__field input,
+  .contact-main .contact-main__field select {
+    padding-left: 18px;
   }
   .contact-main .contact-main__btn {
     width: 100%;

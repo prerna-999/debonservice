@@ -32,13 +32,12 @@ export default function ContactBanner() {
                 <Row className="justify-content-center">
                     <Col lg={8} xl={7}>
                         <div className="contact-banner__inner">
-                            <span className="contact-banner__pill">We&apos;d love to hear from you</span>
+                            <span className="contact-banner__pill">Contact Us</span>
                             <h1 id="contact-banner-title" className="contact-banner__title">
-                                Contact Us
+                               One Conversation. Endless Possibilities.
                             </h1>
                             <p className="contact-banner__text">
-                                Tell us about your business and your growth goals. Our team will get back to you with a clear next
-                                step, usually within one working day.
+                               Connect with us to explore solutions tailored to your business goals and needs.
                             </p>
                         </div>
                     </Col>
