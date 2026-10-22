@@ -26,7 +26,7 @@ const SERVICES: Service[] = [
     description: "Increase visibility on search engines and AI platforms so customers can easily find your business.",
     href: "/digital-marketing/seo-ai-seo",
     service: "SEO and AI SEO",
-    image: "/assets/img/all-img/home/home-about-1.avif",
+    image: "/assets/img/all-img/home/1 (2).jpg",
     icon: Search,
   },
   {
@@ -42,7 +42,7 @@ const SERVICES: Service[] = [
     description: "Create content, social experiences, and videos that effectively generate brand awareness and spur positive actions.",
     href: "/digital-marketing/content-social",
     service: "Content & Social",
-    image: "/assets/img/all-img/home/home-about-1.avif",
+    image: "/assets/img/all-img/home/3.jpg",
     icon: FileText,
   },
   {
@@ -50,7 +50,7 @@ const SERVICES: Service[] = [
     description: "Strengthen customer relationships with the help of personalised email and WhatsApp campaigns.",
     href: "/digital-marketing/customer-engagement",
     service: "Customer Engagement",
-    image: "/assets/img/all-img/home/home-about-1.avif",
+    image: "/assets/img/all-img/home/4.jpg",
     icon: MessageCircle,
   },
   {
@@ -58,7 +58,7 @@ const SERVICES: Service[] = [
     description: "Create a great reputation for your brand by making your digital presence much more reliable.",
     href: "/digital-marketing/reputation-optimization",
     service: "Reputation and Optimisation",
-    image: "/assets/img/all-img/home/home-about-1.avif",
+    image: "/assets/img/all-img/home/5.jpg",
     icon: ShieldCheck,
   },
 ];
