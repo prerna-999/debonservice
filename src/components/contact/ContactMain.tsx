@@ -40,9 +40,8 @@ const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
 
-const MIN_FILL_TIME_MS = 3000; // isse jaldi submit = bot
+const MIN_FILL_TIME_MS = 3000; 
 
-// Apne thank you page ka URL yahan daalo (sirf yahi ek jagah badalna hai)
 const THANK_YOU_URL = "/thank-you";
 
 type CountryOption = { value?: Country; label: string; divider?: boolean };
@@ -221,7 +220,7 @@ export default function ContactMain() {
     } catch (err) {
       console.error("EmailJS error:", err);
       setStatus("error");
-      // token ek baar hi use hota hai, isliye reset zaroori hai
+     
       setCaptchaToken(null);
       recaptchaRef.current?.reset();
     }
