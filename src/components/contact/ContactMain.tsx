@@ -403,7 +403,7 @@ const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
-const MIN_FILL_TIME_MS = 3000; 
+const MIN_FILL_TIME_MS = 3000;
 
 const THANK_YOU_URL = "/thank-you";
 
@@ -566,8 +566,8 @@ export default function ContactMain() {
     const templateParams = {
       name: fd.get("name"),
       email: fd.get("email"),
-      phone, 
-      country: countryCode ? COUNTRY_NAMES[countryCode] : "", 
+      phone,
+      country: countryCode ? COUNTRY_NAMES[countryCode] : "",
       service: fd.get("service"),
       message: fd.get("message"),
       "g-recaptcha-response": captchaToken,
@@ -583,7 +583,7 @@ export default function ContactMain() {
     } catch (err) {
       console.error("EmailJS error:", err);
       setStatus("error");
-     
+
       setCaptchaToken(null);
       recaptchaRef.current?.reset();
     }
@@ -641,7 +641,7 @@ export default function ContactMain() {
                     <label htmlFor="cf-phone">Phone Number</label>
                     <PhoneInput
                       id="cf-phone"
-                      defaultCountry="IN"
+                      defaultCountry="SG"
                       addInternationalOption={false}
                       countrySelectComponent={CountrySelect}
                       value={phone}
