@@ -273,7 +273,7 @@ export default function ContactMain() {
                   </div>
                 </Col>
 
-                <Col xs={6}>
+                <Col md={6}>
                   <div className="contact-main__field">
                     <label htmlFor="cf-phone">Phone Number</label>
                     <PhoneInput
@@ -294,7 +294,7 @@ export default function ContactMain() {
                   </div>
                 </Col>
 
-                <Col xs={6}>
+                <Col md={6}>
                   <div className="contact-main__field">
                     <label htmlFor="cf-service">Service interest</label>
                     <select id="cf-service" name="service" defaultValue="" required>
