@@ -84,7 +84,7 @@ export default function HeroBanner() {
           </p>
 
           <div className="home-hero__actions" data-reveal>
-            <Link href="tel:+919876543210" className="home-hero__btn">
+            <Link href="tel:+65 9223 7396" className="home-hero__btn">
               Get a Free Audit Report
               <ArrowUpRight size={20} strokeWidth={2.2} />
             </Link>
