@@ -1,7 +1,4 @@
 
-
-
-
 import {
   FiBriefcase, FiCheckSquare, FiClock, FiCloud, FiGlobe, FiHeadphones, FiLayers, FiLink2, FiMessageSquare, FiRepeat,
   FiShield, FiSmartphone, FiTerminal, FiUsers,

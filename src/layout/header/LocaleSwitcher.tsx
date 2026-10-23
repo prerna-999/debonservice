@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLocale, LANGUAGES, LANGUAGE_LIST } from "@/i18n/LocaleProvider";
 
-/** Header language switcher: shows "ENG" by default, other languages open from the same place. */
 export default function LocaleSwitcher() {
   const { lang, setLang } = useLocale();
   const [open, setOpen] = useState(false);
@@ -24,7 +23,7 @@ export default function LocaleSwitcher() {
   }, [open]);
 
   return (
-    // translate="no": the switcher labels stay in their own language
+    
     <div className={`lang-switch notranslate ${open ? "is-open" : ""}`} translate="no" ref={ref}>
       <button
         type="button"

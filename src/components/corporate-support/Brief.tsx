@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-// [name, icon, tasks we take over]
 const plans: [string, string, string[]][] = [
   ["Registration & Compliance", "✓", ["Licence and registration review", "Filing calendar with early reminders", "Statutory returns prepared and filed"]],
   ["Accounting & Bookkeeping", "₹", ["Books cleaned and reconciled", "GST and tax filing support", "Monthly report in plain language"]],

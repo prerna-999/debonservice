@@ -53,7 +53,6 @@ function SearchVisual() {
   );
 }
 
-/* ---------- Paid media: leads climb, cost per lead falls, B wins the test ---------- */
 function AdsVisual() {
   return (
     <div className="spv spv-ads">

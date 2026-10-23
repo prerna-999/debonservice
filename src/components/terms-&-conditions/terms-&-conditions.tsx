@@ -388,7 +388,7 @@ export default function TermsPage() {
                 Website: <a href="https://debonservices.com">debonservices.com</a>
               </p>
               <p className="mail">
-                Email: <a href="mailto:support@debonservices.com">support@debonservices.com</a>
+                Email: <a href="mailto:contact@debonservices.com">contact@debonservices.com</a>
               </p>
             </div>
           </section>

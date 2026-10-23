@@ -1,5 +1,4 @@
 
-
 import { FiLayout, FiShoppingCart, FiSmartphone, FiTag, FiZap } from "react-icons/fi";
 import { SiLaravel, SiReact, SiShopify, SiWordpress } from "react-icons/si";
 import DevServicePage, { DevPageData } from "./DevServicePage";
